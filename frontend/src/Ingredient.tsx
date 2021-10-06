@@ -13,10 +13,6 @@ type IngredientState = {
 
 
 class Ingredient extends React.Component<IngredientProps,IngredientState> {
-  // state: IngredientState = {
-  //   amount: 1,
-  //   isOpen: false,
-  // }
 
   constructor(props: IngredientProps) {
     super(props)
