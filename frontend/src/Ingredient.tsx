@@ -17,7 +17,21 @@ class Ingredient extends React.Component<IngredientProps,IngredientState> {
   };
   
   render () {
-    return <h1>{this.props.name} {this.state.amount} {this.props.unit}</h1>;
+    return (
+      <div className="grid justify-items-center">
+        <button className="bg-red-200 w-2/5 h-12 rounded-lg text-xs">
+        <div className="float-left ml-8">
+        {this.props.name}
+        </div>
+        <div className="float-right mr-8">
+        {this.amount()}
+        </div>
+        </button>
+      </div>);
+  }
+
+  amount() {
+    return (this.state.amount + this.props.unit)
   }
 }
 
