@@ -8,6 +8,7 @@ function App() {
 		<div>
 		<Button/>
         <Ingredient name='Gulrot' unit="stk"/>
+        <Ingredient name='Løk' unit="stk"/>
 		</div>
 	);
 }
