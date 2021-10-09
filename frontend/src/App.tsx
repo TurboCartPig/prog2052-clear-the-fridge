@@ -5,7 +5,7 @@ import "./tailwind.css";
 function App() {
 	return (
 		<div>
-			<h1>Hello and welcome</h1>
+			<h1>Hello and Welcome</h1>
 			<Button />
 		</div>
 	);
