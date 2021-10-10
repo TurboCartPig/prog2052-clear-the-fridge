@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.7"
 
 services:
   mongo:
@@ -8,3 +8,19 @@ services:
       - 27017:27017
     volumes:
       - ./db/init.js:/docker-entrypoint-initdb.d/init.js
+
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - 3080:80
+      - 3443:443
+    environment:
+      - MONGODB_URI=mongo:27017
+
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - 4080:80
+      - 4443:443
