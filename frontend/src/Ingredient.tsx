@@ -1,15 +1,22 @@
 import React from "react";
 import "./tailwind.css";
 
+
 type IngredientProps = {
   name: string,
-  unit: string,
+  unit: Unit,
 };
 
 type IngredientState = {
   amount: number,
   isOpen: boolean,
 };
+
+export enum Unit {
+  pcs,
+  g,
+  ml,
+}
 
 
 class Ingredient extends React.Component<IngredientProps,IngredientState> {
@@ -26,7 +33,7 @@ class Ingredient extends React.Component<IngredientProps,IngredientState> {
     return (
       <div className="grid justify-items-center mt-3">
         <button className="grid grid-cols-10 justify-items-center items-center
-                           bg-red-200 w-2/5 h-12 rounded-lg text-xs"
+                           bg-red-200 w-10/12 lg:w-2/5 h-12 rounded-lg text-xs"
       onClick={() => {this.setState({isOpen: !this.state.isOpen})}}>
 
         <div className="col-span-1">
@@ -45,19 +52,27 @@ class Ingredient extends React.Component<IngredientProps,IngredientState> {
   }
 
   currentAmount() {
-    return (this.state.amount + " " + this.props.unit)
+    return this.printUnit(this.state.amount)
+  }
+  
+  printUnit(amount: number) {
+    switch (this.props.unit) {
+      case Unit.pcs: return amount + " pcs";
+      case Unit.g: return amount * 100 + "g";
+      case Unit.ml: return amount * 100 + "ml";
+    }
   }
 
   modifyIngredient() {
     return (
-      <div className="grid grid-cols-10 bg-red-200 w-2/5 h-12 rounded-b-lg text-xs">
+      <div className="grid grid-cols-10 bg-red-200 w-10/12 lg:w-2/5 h-12 rounded-b-lg text-xs">
         <button className="bg-gray-300 col-span-4 m-2"
-      onClick={() => {this.setState({amount: this.state.amount - 1 })}}>-</button>
+      onClick={() => {this.setState({amount: this.state.amount - 1 })}}>-{this.printUnit(1)}</button>
            <button className="bg-gray-100 col-span-2 my-2 place-self-stretch cursor-default">
                {this.currentAmount()}
            </button>
         <button className ="bg-gray-300 col-span-4 m-2"
-                onClick={() => {this.setState({amount: this.state.amount + 1 })}}>+</button>
+      onClick={() => {this.setState({amount: this.state.amount + 1 })}}>+{this.printUnit(1)}</button>
       </div>
     )
   }
