@@ -58,8 +58,8 @@ class Ingredient extends React.Component<IngredientProps,IngredientState> {
   printUnit(amount: number) {
     switch (this.props.unit) {
       case Unit.pcs: return amount + " pcs";
-      case Unit.g: return amount * 100 + "g";
-      case Unit.ml: return amount * 100 + "ml";
+      case Unit.g: return amount * 100 + " g";
+      case Unit.ml: return amount * 100 + " ml";
     }
   }
 
