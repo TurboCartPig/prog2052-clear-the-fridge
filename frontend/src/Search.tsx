@@ -1,4 +1,5 @@
 import React from "react";
+import "./tailwind.css";
 
 /**
  * The state of the Search component.
@@ -23,11 +24,11 @@ class Search extends React.Component<{}, SearchState> {
 
 	render() {
 		return (
-			<div className="flex flex-column justify-center align-center">
+			<div className="flex justify-center justify-items-center">
 				<div
 					className={`${
 						this.state.focused ? "h-48" : "h-12"
-					} w-10/12 lg:w-2/5 mx-auto rounded-lg bg-green-100`}
+					} w-10/12 lg:w-2/5 rounded-lg bg-green-100`}
 				>
 					<input
 						type="text"
@@ -38,7 +39,7 @@ class Search extends React.Component<{}, SearchState> {
 						className="px-3 py-3 w-full h-12 rounded-lg bg-transparent"
 					></input>
 					{this.state.focused && (
-						<div className="px-3 py-3 mx-auto w-full rounded-lg bg-red-200">
+						<div className="px-3 py-3 mx-auto my-1 w-98/100 rounded-lg bg-red-200">
 							Hidden
 						</div>
 					)}
