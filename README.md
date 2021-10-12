@@ -1,4 +1,28 @@
-# clearthefridge
+# Clear The Fridge
+
+A website/web app for figuring out what you can make from the food in your fridge.
+
+## Development
+
+Start only MongoDB (For development):
+
+```sh
+docker compose up mongo
+```
+
+Start all containers:
+
+```sh
+docker compose up
+```
+
+Stop all containers:
+
+```sh
+docker compose down
+```
+
+See more info in `frontend/readme.md` and `backend/readme.md`.
 
 ## Docker
 
