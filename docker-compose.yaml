@@ -3,7 +3,7 @@ version: "3.7"
 services:
   mongo:
     image: mongo:5.0
-    restart: always
+    restart: unless-stopped
     ports:
       - 27017:27017
     volumes:
@@ -11,7 +11,7 @@ services:
 
   backend:
     build: ./backend
-    restart: always
+    restart: unless-stopped
     ports:
       - 3080:80
       - 3443:443
@@ -20,7 +20,7 @@ services:
 
   frontend:
     build: ./frontend
-    restart: always
+    restart: unless-stopped
     ports:
       - 4080:80
       - 4443:443
