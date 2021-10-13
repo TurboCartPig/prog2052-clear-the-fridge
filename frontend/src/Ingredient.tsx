@@ -30,8 +30,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 		return (
 			<div className="grid justify-items-center mt-3">
 				<button
-					className="grid grid-cols-10 justify-items-center items-center
-                           bg-red-200 w-10/12 lg:w-2/5 h-12 rounded-lg text-xs"
+					className={this.ingredientStyling()}
 					onClick={() => {
 						this.setState({ isOpen: !this.state.isOpen });
 					}}
@@ -69,6 +68,14 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 			case Unit.ml:
 				return amount * 100 + " ml";
 		}
+	}
+
+	ingredientStyling() {
+		return (
+			"grid grid-cols-10 justify-items-center items-center bg-red-200 w-10/12 lg:w-2/5 h-12 " +
+			(this.state.isOpen ? "rounded-t-lg" : "rounded-lg") +
+			" text-xs"
+		);
 	}
 
 	modifyIngredient() {
