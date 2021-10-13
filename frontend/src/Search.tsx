@@ -1,4 +1,5 @@
 import React from "react";
+import IngredientResult from "./IngredientResult";
 import "./tailwind.css";
 
 /**
@@ -39,9 +40,10 @@ class Search extends React.Component<{}, SearchState> {
 						className="px-3 py-3 w-full h-12 rounded-lg bg-transparent"
 					></input>
 					{this.state.focused && (
-						<div className="px-3 py-3 mx-auto my-1 w-98/100 rounded-lg bg-red-200">
-							Hidden
-						</div>
+						<IngredientResult
+							name="Gulrot"
+							onAdd={(name) => console.log("Added " + name)}
+						/>
 					)}
 				</div>
 			</div>
