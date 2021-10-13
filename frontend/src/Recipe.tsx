@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./tailwind.css";
 
+/**
+ * The properties of the Recipe component
+ */
 type RecipeProps = {
 	name: string;
 	imgPath: string;
@@ -9,10 +12,16 @@ type RecipeProps = {
 	instructions: string[];
 };
 
+/**
+ * The state of the Recipe component
+ */
 type RecipeState = {
 	modalOpen: boolean;
 };
 
+/**
+ * Recipe component for view a recipe as a modal window.
+ */
 class Recipe extends React.Component<RecipeProps, RecipeState> {
 	constructor(props: RecipeProps) {
 		super(props);
@@ -43,6 +52,10 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 		);
 	}
 
+	/**
+	 * Function to get the content of the modal window
+	 * @returns createModal()
+	 */
 	modalContent() {
 		if (!this.state.modalOpen) {
 			return null;
@@ -87,6 +100,11 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 		);
 	}
 
+	/**
+	 * Function to create the modal window using the createPortal function
+	 * @param content - React node used in the createPortal function
+	 * @returns createPortal()
+	 */
 	createModal(content: React.ReactNode) {
 		return ReactDOM.createPortal(
 			<div
@@ -103,6 +121,11 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 		);
 	}
 
+	/**
+	 * Function to print data into an unordered list
+	 * @param list - string array with data
+	 * @returns ul element with list elements
+	 */
 	print(list: string[]) {
 		const data = list!;
 		const items = data.map((d) => <li key={d}>{d}</li>);
