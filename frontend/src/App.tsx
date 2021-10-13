@@ -1,5 +1,7 @@
 import React from "react";
 import Recipe from "./components/Recipe";
+import Button from "./Button";
+import Ingredient, {Unit} from "./Ingredient";
 import "./tailwind.css";
 
 function App() {
@@ -23,6 +25,12 @@ function App() {
 					"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.",
 				]}
 			/>
+		<div>
+		<Button/>
+        <Ingredient name='Carrot' unit={Unit.pcs}/>
+        <Ingredient name='Milk' unit={Unit.ml}/>
+        <Ingredient name='Beef' unit={Unit.g}/>
+		</div>
 		</div>
 	);
 }
