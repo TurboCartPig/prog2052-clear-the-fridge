@@ -89,7 +89,9 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 				<button
 					className="bg-gray-300 col-span-4 m-2"
 					onClick={() => {
-						this.setState({ amount: this.state.amount - 1 });
+						this.setState((prev, _) => {
+							return { ...prev, amount: prev.amount - 1 };
+						});
 					}}
 				>
 					-{this.printUnit(1)}
@@ -100,7 +102,9 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 				<button
 					className="bg-gray-300 col-span-4 m-2"
 					onClick={() => {
-						this.setState({ amount: this.state.amount + 1 });
+						this.setState((prev, _) => {
+							return { ...prev, amount: prev.amount + 1 };
+						});
 					}}
 				>
 					+{this.printUnit(1)}

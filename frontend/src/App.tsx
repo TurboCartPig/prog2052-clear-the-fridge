@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import Search from "./Search";
 import Ingredient, { Unit } from "./Ingredient";
 import "./tailwind.css";
 

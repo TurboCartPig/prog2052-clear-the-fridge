@@ -7,3 +7,15 @@
 		@apply px-3 py-3 mx-auto rounded-md shadow-lg transform hover:scale-110 duration-300 font-semibold bg-red-500 active:bg-red-900 focus:outline-none;
 	}
 }
+
+.w-95\/100 {
+	width: 95%;
+}
+
+.w-98\/100 {
+	width: 98%;
+}
+
+.w-99\/100 {
+	width: 99%;
+}
