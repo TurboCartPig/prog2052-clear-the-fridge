@@ -3,10 +3,21 @@ import IngredientResult from "./IngredientResult";
 import "./tailwind.css";
 
 /**
+ * All the data about one ingredient that we received from the backend.
+ */
+type IngredientData = {
+	// Name of the ingredient
+	name: string;
+};
+
+/**
  * The state of the Search component.
  */
 type SearchState = {
+	// Is the search field focused?
 	focused: boolean;
+	// The results of a search
+	results: IngredientData[];
 };
 
 /**
@@ -18,6 +29,26 @@ class Search extends React.Component<{}, SearchState> {
 
 		this.state = {
 			focused: false,
+			results: [
+				{
+					name: "Gulrot",
+				},
+				{
+					name: "Løk",
+				},
+				{
+					name: "Kål",
+				},
+				{
+					name: "Tomat",
+				},
+				{
+					name: "Agurk",
+				},
+				{
+					name: "Død",
+				},
+			],
 		};
 
 		this.onFocus = this.onFocus.bind(this);
@@ -28,7 +59,7 @@ class Search extends React.Component<{}, SearchState> {
 			<div className="flex justify-center justify-items-center">
 				<div
 					className={`${
-						this.state.focused ? "h-48" : "h-12"
+						this.state.focused ? "pb-1" : "h-12"
 					} w-10/12 lg:w-2/5 rounded-lg bg-green-100`}
 				>
 					<input
@@ -40,10 +71,24 @@ class Search extends React.Component<{}, SearchState> {
 						className="px-3 py-3 w-full h-12 rounded-lg bg-transparent"
 					></input>
 					{this.state.focused && (
-						<IngredientResult
-							name="Gulrot"
-							onAdd={(name) => console.log("Added " + name)}
-						/>
+						<div>
+							<hr></hr>
+							<h6 className="my-1 px-3 w-98/100">Results:</h6>
+							<ul>
+								{this.state.results
+									.slice(0, 4)
+									.map((item: any) => (
+										<li key={item.name}>
+											<IngredientResult
+												name={item.name}
+												onAdd={(name) => {
+													console.log(name);
+												}}
+											/>
+										</li>
+									))}
+							</ul>
+						</div>
 					)}
 				</div>
 			</div>
@@ -72,7 +117,11 @@ class Search extends React.Component<{}, SearchState> {
 		// Search with term
 		// const res = await fetch(backend + "/ingredients/" + term)
 
-		// Create some list component based on response
+		// Update results
+		// const results = ?
+		// this.setState((prev, _) => {
+		// 	return { ...prev, results: results };
+		// });
 	}
 }
 

@@ -20,6 +20,9 @@ type IngredientResultState = {
 	added: boolean;
 };
 
+/**
+ * Component for representing a single search result.
+ */
 class IngredientResult extends React.Component<
 	IngredientResultProps,
 	IngredientResultState
@@ -40,7 +43,7 @@ class IngredientResult extends React.Component<
 				<div className="col-span-1">{this.props.name}</div>
 				<img
 					className="col-span-1 col-start-10"
-					src={this.state.added ? undefined : Edit}
+					src={this.state.added ? undefined : Edit} // TODO: Replace the icon with a plus sign
 					onClick={this.onAdd}
 				></img>
 			</div>
