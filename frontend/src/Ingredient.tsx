@@ -4,6 +4,7 @@ import "./tailwind.css";
 type IngredientProps = {
 	name: string;
 	unit: Unit;
+	imgPath: string;
 };
 
 type IngredientState = {
@@ -35,6 +36,10 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						this.setState({ isOpen: !this.state.isOpen });
 					}}
 				>
+					<img
+						className="col-span-1 w-3/5"
+						src={this.props.imgPath}
+					></img>
 					<div className="col-span-1">{this.props.name}</div>
 
 					{!this.state.isOpen && (

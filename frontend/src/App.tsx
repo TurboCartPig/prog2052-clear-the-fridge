@@ -1,15 +1,20 @@
 import React from "react";
 import Button from "./Button";
-import Ingredient, {Unit} from "./Ingredient";
+import Ingredient, { Unit } from "./Ingredient";
 import "./tailwind.css";
+
+const carrot = require("./res/carrot.svg");
+const milk = require("./res/milk.svg");
+const beef = require("./res/beef.svg");
 
 function App() {
 	return (
 		<div>
-		<Button/>
-        <Ingredient name='Carrot' unit={Unit.pcs}/>
-        <Ingredient name='Milk' unit={Unit.ml}/>
-        <Ingredient name='Beef' unit={Unit.g}/>
+			{" "}
+			<Button />
+			<Ingredient name="Carrot" unit={Unit.pcs} imgPath={carrot} />
+			<Ingredient name="Milk" unit={Unit.ml} imgPath={milk} />
+			<Ingredient name="Beef" unit={Unit.g} imgPath={beef} />
 		</div>
 	);
 }
