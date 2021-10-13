@@ -52,9 +52,7 @@ class Search extends React.Component<{}, SearchState> {
 		};
 
 		// Setup event handler for blurring
-		const body = document.getElementsByTagName(
-			"body"
-		)[0] as HTMLBodyElement;
+		const body = document.querySelector("body") as HTMLBodyElement;
 		body.addEventListener("click", (_) => this.onBlur());
 
 		this.onFocus = this.onFocus.bind(this);
