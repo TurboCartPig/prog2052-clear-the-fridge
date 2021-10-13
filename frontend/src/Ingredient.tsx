@@ -4,6 +4,7 @@ import "./tailwind.css";
 type IngredientProps = {
 	name: string;
 	unit: Unit;
+	imgPath: string;
 };
 
 type IngredientState = {
@@ -20,7 +21,6 @@ export enum Unit {
 class Ingredient extends React.Component<IngredientProps, IngredientState> {
 	constructor(props: IngredientProps) {
 		super(props);
-
 		this.state = {
 			amount: 1,
 			isOpen: false,
@@ -31,14 +31,15 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 		return (
 			<div className="grid justify-items-center mt-3">
 				<button
-					className="grid grid-cols-10 justify-items-center items-center
-                           bg-red-200 w-10/12 lg:w-2/5 h-12 rounded-lg text-xs"
+					className={this.ingredientStyling()}
 					onClick={() => {
-						this.setState((prev, _) => {
-							return { ...prev, isOpen: !prev.isOpen };
-						});
+						this.setState({ isOpen: !this.state.isOpen });
 					}}
 				>
+					<img
+						className="col-span-1 w-3/5"
+						src={this.props.imgPath}
+					></img>
 					<div className="col-span-1">{this.props.name}</div>
 
 					{!this.state.isOpen && (
@@ -72,6 +73,14 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 			case Unit.ml:
 				return amount * 100 + " ml";
 		}
+	}
+
+	ingredientStyling() {
+		return (
+			"grid grid-cols-10 justify-items-center items-center bg-red-200 w-10/12 lg:w-2/5 h-12 " +
+			(this.state.isOpen ? "rounded-t-lg" : "rounded-lg") +
+			" text-xs"
+		);
 	}
 
 	modifyIngredient() {
