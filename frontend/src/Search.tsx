@@ -51,7 +51,15 @@ class Search extends React.Component<{}, SearchState> {
 			],
 		};
 
+		// Setup event handler for blurring
+		const body = document.getElementsByTagName(
+			"body"
+		)[0] as HTMLBodyElement;
+		body.addEventListener("click", (_) => this.onBlur());
+
 		this.onFocus = this.onFocus.bind(this);
+		this.onBlur = this.onBlur.bind(this);
+		this.setFocus = this.setFocus.bind(this);
 	}
 
 	render() {
@@ -61,12 +69,14 @@ class Search extends React.Component<{}, SearchState> {
 					className={`${
 						this.state.focused ? "pb-1" : "h-12"
 					} w-10/12 lg:w-2/5 rounded-lg bg-green-100`}
+					// Stop propagation of click event bubbling up to the body.
+					// Prevents the search component from closing immediately
+					onClick={(e) => e.stopPropagation()}
 				>
 					<input
 						type="text"
 						placeholder="Search"
-						onFocus={() => this.onFocus(true)}
-						onBlur={() => this.onFocus(false)}
+						onFocus={this.onFocus}
 						onChange={this.onChange}
 						className="px-3 py-3 w-full h-12 rounded-lg bg-transparent"
 					></input>
@@ -96,10 +106,24 @@ class Search extends React.Component<{}, SearchState> {
 	}
 
 	/**
-	 * Called when the input element gains or looses focus.
+	 * Called when the search component gains focus.
+	 */
+	onFocus() {
+		this.setFocus(true);
+	}
+
+	/**
+	 * Called when the search component blurs, i.e. loses focus.
+	 */
+	onBlur() {
+		this.setFocus(false);
+	}
+
+	/**
+	 * Set the focused state.
 	 * @param focused New focused value
 	 */
-	onFocus(focused: boolean) {
+	setFocus(focused: boolean) {
 		// Update the state of the component by only changing the `focused` field
 		this.setState((prev, _) => {
 			return { ...prev, focused: focused };
