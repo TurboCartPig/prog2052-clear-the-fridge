@@ -39,7 +39,11 @@ class IngredientResult extends React.Component<
 
 	render() {
 		return (
-			<div className="grid justify-items-center py-3 mx-auto my-1 w-98/100 rounded-lg bg-white">
+			<div
+				className={`grid justify-items-center py-3 mx-auto my-1 w-98/100 rounded-lg bg-white ${
+					this.state.added && "opacity-50"
+				}`}
+			>
 				<div className="col-span-1">{this.props.name}</div>
 				<img
 					className="col-span-1 col-start-10"
