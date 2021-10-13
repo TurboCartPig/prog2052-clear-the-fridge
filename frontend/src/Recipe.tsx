@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "../tailwind.css";
+import "./tailwind.css";
 
 type RecipeProps = {
 	name: string;
@@ -50,7 +50,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 				>
 					<img
 						className="rounded-lg"
-						src={require("../img/img_01.png")}
+						src={require("./img/img_01.png")}
 						alt=""
 					/>
 				</button>
@@ -90,7 +90,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 						</h1>
 						<img
 							className="float-right rounded-lg mb-5"
-							src={require("../img/img_01.png")}
+							src={require("./img/img_01.png")}
 							alt=""
 						/>
 					</div>
