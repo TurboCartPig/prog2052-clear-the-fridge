@@ -21,22 +21,6 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 		};
 	}
 
-	Modal: React.FC<{}> = ({ children }) => {
-		return ReactDOM.createPortal(
-			<div
-				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full flex items-center justify-center"
-				onClick={() => {
-					this.setState((prev, _): { modalOpen: boolean } => {
-						return { ...prev, modalOpen: !prev.modalOpen };
-					});
-				}}
-			>
-				<div onClick={(e) => e.stopPropagation()}>{children}</div>
-			</div>,
-			document.getElementById("modal-root")!
-		);
-	};
-
 	render() {
 		return (
 			<div className="grid justify-center m-2">
@@ -64,46 +48,58 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 			return null;
 		}
 
-		return (
-			<this.Modal>
-				<div className="m-5 bg-white grid col-auto items-center relative rounded-lg shadow-lg p-4 w-auto h-screen md:h-auto overflow-scroll md:overflow-auto">
-					<div>
-						<button
-							className="float-right pr-2 mb-5"
-							onClick={() => {
-								this.setState(
-									(prev, _): { modalOpen: boolean } => {
-										return {
-											...prev,
-											modalOpen: !prev.modalOpen,
-										};
-									}
-								);
-							}}
-						>
-							X
-						</button>
-					</div>
-					<div>
-						<h1 className="float-left mb-5 font-bold">
-							{this.props.name}
-						</h1>
-						<img
-							className="float-right rounded-lg mb-5"
-							src={require("./img/img_01.png")}
-							alt=""
-						/>
-					</div>
-					<div>
-						<h3 className="mb-5 font-semibold">Ingredienser:</h3>
-						{this.print(this.props.ingredients)}
-					</div>
-					<div>
-						<h3 className="mb-5 font-semibold">Instruksjoner:</h3>
-						{this.print(this.props.instructions)}
-					</div>
+		return this.createModal(
+			<div className="m-5 bg-white grid col-auto items-center relative rounded-lg shadow-lg p-4 w-auto h-screen md:h-auto overflow-scroll md:overflow-auto">
+				<div>
+					<button
+						className="float-right pr-2 mb-5"
+						onClick={() => {
+							this.setState((prev, _): { modalOpen: boolean } => {
+								return {
+									...prev,
+									modalOpen: !prev.modalOpen,
+								};
+							});
+						}}
+					>
+						X
+					</button>
 				</div>
-			</this.Modal>
+				<div>
+					<h1 className="float-left mb-5 font-bold">
+						{this.props.name}
+					</h1>
+					<img
+						className="float-right rounded-lg mb-5"
+						src={require("./img/img_01.png")}
+						alt=""
+					/>
+				</div>
+				<div>
+					<h3 className="mb-5 font-semibold">Ingredienser:</h3>
+					{this.print(this.props.ingredients)}
+				</div>
+				<div>
+					<h3 className="mb-5 font-semibold">Instruksjoner:</h3>
+					{this.print(this.props.instructions)}
+				</div>
+			</div>
+		);
+	}
+
+	createModal(content: React.ReactNode) {
+		return ReactDOM.createPortal(
+			<div
+				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full flex items-center justify-center"
+				onClick={() => {
+					this.setState((prev, _): { modalOpen: boolean } => {
+						return { ...prev, modalOpen: !prev.modalOpen };
+					});
+				}}
+			>
+				<div onClick={(e) => e.stopPropagation()}>{content}</div>
+			</div>,
+			document.getElementById("modal-root")!
 		);
 	}
 
