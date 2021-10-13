@@ -5,6 +5,8 @@ import path from "path";
 import url from "url";
 import zlib from "zlib";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export default {
 	entry: "./src/main.tsx",
 	output: {
@@ -17,8 +19,7 @@ export default {
 	resolve: {
 		extensions: [".tsx", ".ts", ".js"],
 	},
-	devtool:
-		process.env.NODE_ENV === "production" ? undefined : "inline-source-map",
+	devtool: isProduction ? undefined : "inline-source-map",
 	devServer: {
 		static: "./dist",
 	},
@@ -31,21 +32,28 @@ export default {
 			template: "./src/index.html",
 		}),
 		new MiniCssExtractPlugin(),
-		new CompressionPlugin({
-			filename: "[path][base].gz",
-			test: /\.(js|css|html)$/i,
-			algorithm: "gzip",
-		}),
-		new CompressionPlugin({
-			filename: "[path][base].br",
-			test: /\.(js|css|html)$/i,
-			algorithm: "brotliCompress",
-			compressionOptions: {
-				params: {
-					[zlib.constants.BROTLI_PARAM_QUALITY]: 11,
-				},
-			},
-		}),
+		// Only do compression when in building for production
+		() => {
+			isProduction &&
+				new CompressionPlugin({
+					filename: "[path][base].gz",
+					test: /\.(js|css|html)$/i,
+					algorithm: "gzip",
+				});
+		},
+		() => {
+			isProduction &&
+				new CompressionPlugin({
+					filename: "[path][base].br",
+					test: /\.(js|css|html)$/i,
+					algorithm: "brotliCompress",
+					compressionOptions: {
+						params: {
+							[zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+						},
+					},
+				});
+		},
 	],
 	module: {
 		rules: [
@@ -64,7 +72,7 @@ export default {
 			},
 			{
 				test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-				type: "asset",
+				type: "asset/resource",
 			},
 		],
 	},

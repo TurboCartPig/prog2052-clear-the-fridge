@@ -1,16 +1,19 @@
 import React from "react";
-import Recipe from "./Recipe";
-import Button from "./Button";
+import Search from "./Search";
 import Ingredient, { Unit } from "./Ingredient";
+import Recipe from "./Recipe";
+import Carrot from "./res/carrot.svg";
+import Milk from "./res/milk.svg";
+import Beef from "./res/beef.svg";
 import "./tailwind.css";
 
 function App() {
 	return (
 		<div>
-			<Button />
-			<Ingredient name="Carrot" unit={Unit.pcs} />
-			<Ingredient name="Milk" unit={Unit.ml} />
-			<Ingredient name="Beef" unit={Unit.g} />
+			<Search />
+			<Ingredient name="Carrot" unit={Unit.pcs} imgPath={Carrot} />
+			<Ingredient name="Milk" unit={Unit.ml} imgPath={Milk} />
+			<Ingredient name="Beef" unit={Unit.g} imgPath={Beef} />
 			<Recipe
 				name="Oppskrift 1"
 				imgPath="123"
