@@ -22,35 +22,21 @@ class Search extends React.Component<{}, SearchState> {
 
 		this.state = {
 			focused: false,
-			results: [
-				{
-					name: "Gulrot",
-				},
-				{
-					name: "Løk",
-				},
-				{
-					name: "Kål",
-				},
-				{
-					name: "Tomat",
-				},
-				{
-					name: "Agurk",
-				},
-				{
-					name: "Død",
-				},
-			],
+			results: [],
 		};
+
+		// Get default search recommendations from backend
+		this.search("");
 
 		// Setup event handler for blurring
 		const body = document.querySelector("body") as HTMLBodyElement;
 		body.addEventListener("click", (_) => this.onBlur());
 
+		// Setup binds
 		this.onFocus = this.onFocus.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.setFocus = this.setFocus.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 
 	render() {
@@ -127,14 +113,44 @@ class Search extends React.Component<{}, SearchState> {
 		const term = e.target.value;
 		console.log(term);
 
+		await this.search(term);
+	}
+
+	/**
+	 * Search for ingredients by querying the backend rest api for ingredients, and updating the list of search results accordingly.
+	 * @param term Search term
+	 */
+	async search(term: string) {
+		const backend =
+			"https://4e05fc26-03b8-451a-9ca3-369c57c52186.mock.pstmn.io";
+
+		// Only query if we have a search term
+		// NOTE: this is a workaround for postman mock server
+		if (term !== "") term = "?query=" + term;
+
 		// Search with term
-		// const res = await fetch(backend + "/ingredients/" + term)
+		const res = await fetch(backend + "/api/v1/ingredients" + term);
+
+		// Early return if the search failed
+		if (res.status != 200) return;
+
+		// Deserialize the returned json
+		const data = await res.json();
+
+		console.log(data);
+
+		// Turn the data into an array of ingredients
+		let results: IngredientData[];
+		if (Array.isArray(data)) {
+			results = data;
+		} else {
+			results = [data];
+		}
 
 		// Update results
-		// const results = ?
-		// this.setState((prev, _) => {
-		// 	return { ...prev, results: results };
-		// });
+		this.setState((prev, _) => {
+			return { ...prev, results: results };
+		});
 	}
 }
 
