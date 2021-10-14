@@ -1,3 +1,4 @@
+import _, { DebouncedFunc } from "lodash";
 import React from "react";
 import IngredientResult from "./IngredientResult";
 import { IngredientData } from "./types";
@@ -17,9 +18,15 @@ type SearchState = {
  * Search component for searching ingredients.
  */
 class Search extends React.Component<{}, SearchState> {
+	/**
+	 * Debounced lateinit function called when the search term changes.
+	 */
+	onChange: DebouncedFunc<(term: string) => void>;
+
 	constructor(props: {}) {
 		super(props);
 
+		// Set initial state
 		this.state = {
 			focused: false,
 			results: [],
@@ -27,6 +34,9 @@ class Search extends React.Component<{}, SearchState> {
 
 		// Get default search recommendations from backend
 		this.search("");
+
+		// Create a debounced function for rate limiting searching
+		this.onChange = _.debounce(this.search, 300);
 
 		// Setup event handler for blurring
 		const body = document.querySelector("body") as HTMLBodyElement;
@@ -36,7 +46,6 @@ class Search extends React.Component<{}, SearchState> {
 		this.onFocus = this.onFocus.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.setFocus = this.setFocus.bind(this);
-		this.onChange = this.onChange.bind(this);
 	}
 
 	render() {
@@ -54,7 +63,7 @@ class Search extends React.Component<{}, SearchState> {
 						type="text"
 						placeholder="Search"
 						onFocus={this.onFocus}
-						onChange={this.onChange}
+						onChange={(e) => this.onChange(e.target.value)}
 						className="px-3 py-3 w-full h-12 rounded-lg bg-transparent"
 					></input>
 					{this.state.focused && (
@@ -92,6 +101,7 @@ class Search extends React.Component<{}, SearchState> {
 	 */
 	onBlur() {
 		this.setFocus(false);
+		this.onChange.cancel();
 	}
 
 	/**
@@ -103,17 +113,6 @@ class Search extends React.Component<{}, SearchState> {
 		this.setState((prev, _) => {
 			return { ...prev, focused: focused };
 		});
-	}
-
-	/**
-	 * Called when the input elements value changes, e.i. the user types in the search field.
-	 * @param e Change event
-	 */
-	async onChange(e: React.ChangeEvent<HTMLInputElement>) {
-		const term = e.target.value;
-		console.log(term);
-
-		await this.search(term);
 	}
 
 	/**
