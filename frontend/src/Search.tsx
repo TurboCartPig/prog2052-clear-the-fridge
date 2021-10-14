@@ -1,14 +1,7 @@
 import React from "react";
 import IngredientResult from "./IngredientResult";
+import { IngredientData } from "./types";
 import "./tailwind.css";
-
-/**
- * All the data about one ingredient that we received from the backend.
- */
-type IngredientData = {
-	// Name of the ingredient
-	name: string;
-};
 
 /**
  * The state of the Search component.
@@ -83,18 +76,16 @@ class Search extends React.Component<{}, SearchState> {
 							<hr></hr>
 							<h6 className="my-1 px-3 w-98/100">Results:</h6>
 							<ul>
-								{this.state.results
-									.slice(0, 4)
-									.map((item: any) => (
-										<li key={item.name}>
-											<IngredientResult
-												name={item.name}
-												onAdd={(name) => {
-													console.log(name);
-												}}
-											/>
-										</li>
-									))}
+								{this.state.results.slice(0, 4).map((item) => (
+									<li key={item.name}>
+										<IngredientResult
+											data={item}
+											onAdd={(data) => {
+												console.log(data.name);
+											}}
+										/>
+									</li>
+								))}
 							</ul>
 						</div>
 					)}

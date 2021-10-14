@@ -1,15 +1,16 @@
 import React from "react";
 import Edit from "./res/edit.svg";
+import { IngredientData } from "./types";
 import "./tailwind.css";
 
 /**
  * Properties of an ingredient result.
  */
 type IngredientResultProps = {
-	// Name of the ingredient
-	name: string;
+	// Data about the ingredient
+	data: IngredientData;
 	// Called when the ingredient is added
-	onAdd: (name: string) => void;
+	onAdd: (data: IngredientData) => void;
 };
 
 /**
@@ -44,7 +45,7 @@ class IngredientResult extends React.Component<
 					this.state.added && "opacity-50"
 				}`}
 			>
-				<div className="col-span-1">{this.props.name}</div>
+				<div className="col-span-1">{this.props.data.name}</div>
 				<img
 					className="col-span-1 col-start-10"
 					src={this.state.added ? undefined : Edit} // TODO: Replace the icon with a plus sign
@@ -59,7 +60,7 @@ class IngredientResult extends React.Component<
 	 */
 	onAdd() {
 		this.setState({ added: true });
-		this.props.onAdd(this.props.name);
+		this.props.onAdd(this.props.data);
 	}
 }
 
