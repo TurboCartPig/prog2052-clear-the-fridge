@@ -65,7 +65,7 @@ class Search extends React.Component<{}, SearchState> {
 			<div className="flex justify-center justify-items-center">
 				<div
 					className={`${
-						this.state.focused ? "pb-1" : "h-12"
+						this.state.focused ? "" : "h-12"
 					} w-10/12 lg:w-2/5 rounded-lg bg-green-100`}
 					// Stop propagation of click event bubbling up to the body.
 					// Prevents the search component from closing immediately

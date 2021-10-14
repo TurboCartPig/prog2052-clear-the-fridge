@@ -40,7 +40,7 @@ class IngredientResult extends React.Component<
 	render() {
 		return (
 			<div
-				className={`grid justify-items-center py-3 mx-auto my-1 w-98/100 rounded-lg bg-white ${
+				className={`grid justify-items-center py-3 mx-2 my-2 rounded-lg bg-white ${
 					this.state.added && "opacity-50"
 				}`}
 			>
