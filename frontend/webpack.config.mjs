@@ -53,9 +53,19 @@ export default (env, argv) => {
 		devServer: {
 			static: "./dist",
 		},
+		target: ["web", "es6"],
 		optimization: {
-			minimize: true,
+			minimize: isProduction,
 			runtimeChunk: "single",
+			splitChunks: {
+				cacheGroups: {
+					vendor: {
+						test: /[\\/]node_modules[\\/]/,
+						name: "vendors",
+						chunks: "all",
+					},
+				},
+			},
 		},
 		plugins: plugins,
 		module: {
