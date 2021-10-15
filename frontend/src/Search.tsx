@@ -21,7 +21,7 @@ class Search extends React.Component<{}, SearchState> {
 	/**
 	 * Debounced lateinit function called when the search term changes.
 	 */
-	onChange: DebouncedFunc<(term: string) => void>;
+	onChange = _.debounce(this.search, 300);
 
 	constructor(props: {}) {
 		super(props);
@@ -32,20 +32,25 @@ class Search extends React.Component<{}, SearchState> {
 			results: [],
 		};
 
-		// Get default search recommendations from backend
-		this.search("");
-
-		// Create a debounced function for rate limiting searching
-		this.onChange = _.debounce(this.search, 300);
-
-		// Setup event handler for blurring
-		const body = document.querySelector("body") as HTMLBodyElement;
-		body.addEventListener("click", (_) => this.onBlur());
-
 		// Setup binds
 		this.onFocus = this.onFocus.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.setFocus = this.setFocus.bind(this);
+	}
+
+	componentDidMount() {
+		// Setup event handler for blurring
+		const body = document.querySelector("body");
+		body?.addEventListener("click", this.onBlur);
+
+		// Get default search recommendations from backend
+		this.search("");
+	}
+
+	componentWillUnmount() {
+		// Tear down event handler for blurring
+		const body = document.querySelector("body");
+		body?.removeEventListener("click", this.onBlur);
 	}
 
 	render() {
