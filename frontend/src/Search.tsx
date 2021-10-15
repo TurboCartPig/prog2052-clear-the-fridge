@@ -128,28 +128,18 @@ class Search extends React.Component<{}, SearchState> {
 		const backend =
 			"https://4e05fc26-03b8-451a-9ca3-369c57c52186.mock.pstmn.io";
 
-		// Only query if we have a search term
-		// NOTE: this is a workaround for postman mock server
-		if (term !== "") term = "?query=" + term;
+		// Construct the url to GET
+		const url = new URL("/api/v1/ingredients", backend);
+		url.searchParams.append("query", term);
 
 		// Search with term
-		const res = await fetch(backend + "/api/v1/ingredients" + term);
+		const res = await fetch(url.toString());
 
 		// Early return if the search failed
 		if (res.status != 200) return;
 
 		// Deserialize the returned json
-		const data = await res.json();
-
-		console.log(data);
-
-		// Turn the data into an array of ingredients
-		let results: IngredientData[];
-		if (Array.isArray(data)) {
-			results = data;
-		} else {
-			results = [data];
-		}
+		const results = await res.json();
 
 		// Update results
 		this.setState((prev, _) => {
