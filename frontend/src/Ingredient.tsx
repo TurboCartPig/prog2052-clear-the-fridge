@@ -1,4 +1,6 @@
 import React from "react";
+import Edit from "./res/edit.svg";
+import HorRule from "./res/horizontal_rule.svg";
 import "./tailwind.css";
 
 type IngredientProps = {
@@ -50,9 +52,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 
 					<img
 						className="col-start-10 col-span-1"
-						src={require(this.state.isOpen
-							? "../src/res/horizontal_rule.svg"
-							: "../src/res/edit.svg")}
+						src={this.state.isOpen ? HorRule : Edit}
 					></img>
 				</button>
 				{this.state.isOpen && this.modifyIngredient()}
