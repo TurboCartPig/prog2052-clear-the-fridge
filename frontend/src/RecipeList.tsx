@@ -9,7 +9,7 @@ import { RecipeData } from "./test/data";
 class RecipeList extends React.Component {
 	render() {
 		return (
-			<div className="grid grid-cols-2 justify-center m-2">
+			<div className="grid grid-cols-2 w-10/12 lg:w-2/5">
 				{RecipeData.map((data, key) => {
 					return (
 						<Recipe

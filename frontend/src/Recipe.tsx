@@ -32,9 +32,9 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 
 	render() {
 		return (
-			<div className="grid justify-center m-2">
+			<div className="m-5">
 				<button
-					className="modal w-full rounded-lg md:mb-2 lg:mb-24 mb-0"
+					className="modal w-full rounded-lg m-0"
 					onClick={() => {
 						this.setState((prev, _): RecipeState => {
 							return { ...prev, modalOpen: !prev.modalOpen };
