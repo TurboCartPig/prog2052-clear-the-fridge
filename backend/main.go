@@ -22,7 +22,9 @@ func serve() {
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Get("/diag", api.NewDiagHandler())
 		r.Get("/ingredients", api.NewIngredientsHandler())
+		r.Get("/ingredients/search", api.NewIngredientsSearchHandler())
 		r.Get("/recipes", api.NewRecipesHandler())
+		r.Get("/recipes/search", api.NewRecipesSearchHandler())
 	})
 
 	log.Fatal(http.ListenAndServe(":80", r))
