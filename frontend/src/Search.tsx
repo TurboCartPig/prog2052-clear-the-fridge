@@ -129,8 +129,13 @@ class Search extends React.Component<{}, SearchState> {
 			"https://4e05fc26-03b8-451a-9ca3-369c57c52186.mock.pstmn.io";
 
 		// Construct the url to GET
-		const url = new URL("/api/v1/ingredients", backend);
-		url.searchParams.append("query", term);
+		let url;
+		if (term !== "") {
+			url = new URL("/api/v1/ingredients/search", backend);
+			url.searchParams.append("query", term);
+		} else {
+			url = new URL("/api/v1/ingredients", backend);
+		}
 
 		// Search with term
 		const res = await fetch(url.toString());
