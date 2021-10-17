@@ -11,7 +11,17 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-// Get the MongoDB URI from environment
+const (
+	database    = "clearthefridge"
+	ingredients = "ingredients"
+	recipes     = "recipes"
+)
+
+var (
+	client *mongo.Client
+)
+
+// Get the MongoDB URI from environment with fallback
 func getMongoURI() string {
 	scheme := "mongodb://"
 	uri := os.Getenv("MONGODB_URI")
@@ -22,36 +32,57 @@ func getMongoURI() string {
 	return scheme + uri
 }
 
-func SetupMongo() {
+// Setup a connection to the database. Call `DisconnectDatabase` before shutdown.
+func ConnectDatabase() {
 	uri := getMongoURI()
 
-	// Connect to mongodb
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
+	var err error
+	client, err = mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
 	if err != nil {
 		log.Fatal("Failed to connect to mongodb")
 	}
+}
 
-	// Disconnect on shutdown
-	defer func() {
-		if err := client.Disconnect(context.TODO()); err != nil {
-			log.Fatal("Failed to disconnect from mongodb")
-		}
-	}()
+// Disconnect from the database, assumes `ConnectDatabase` was called first.
+func DisconnectDatabase() {
+	if err := client.Disconnect(context.TODO()); err != nil {
+		log.Fatal("Failed to disconnect from mongodb")
+	}
+}
 
-	coll := client.Database("clearthefridge").Collection("ingredients")
+// Search ingredients based on search term and return results as json string
+func SearchIngredients(term string) string {
+	collection := client.
+		Database(database).
+		Collection(ingredients)
 
-	// Find "Gulrot" document
-	var result bson.M
-	err = coll.FindOne(context.TODO(), bson.D{{"name", "Gulrot"}}).Decode(&result)
+	opts := options.Find().
+		SetProjection(bson.D{{"_id", 0}, {"name", 1}, {"unit", 1}}).
+		SetSort(bson.D{{"score", bson.D{{"$meta", "textScore"}}}})
+
+	cursor, err := collection.Find(context.TODO(), bson.D{{"$text", bson.D{{"$search", term}}}}, opts)
+	if err == mongo.ErrNoDocuments {
+		return "[]"
+	} else if err != nil {
+		log.Fatal("Error while querying database ", err)
+	}
+
+	var results []bson.M
+	err = cursor.All(context.TODO(), &results)
 	if err != nil {
-		log.Fatal("What?")
+		log.Fatal("Error while parsing database response", err)
+	}
+
+	// Return empty json array if no documents, instead of null
+	if len(results) == 0 {
+		return "[]"
 	}
 
 	// Convert result into json
-	data, err := json.MarshalIndent(result, "", "  ")
+	data, err := json.MarshalIndent(results, "", "  ")
 	if err != nil {
 		log.Fatal("Failed to marshal bson to json")
 	}
 
-	log.Println(data)
+	return string(data)
 }

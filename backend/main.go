@@ -2,6 +2,7 @@ package main
 
 import (
 	"clearthefridge/api"
+	"clearthefridge/db"
 	"log"
 	"net/http"
 
@@ -40,5 +41,10 @@ func serve() {
 func main() {
 	log.Print("Starting")
 
+	db.ConnectDatabase()
+
+	// FIXME: serve() never returns, database does not disconnect
 	serve()
+
+	db.DisconnectDatabase()
 }
