@@ -34,7 +34,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 		return (
 			<div className="grid justify-center m-2">
 				<button
-					className="modal w-full rounded-lg md:mb-24 mb-0"
+					className="modal w-full rounded-lg md:mb-2 lg:mb-24 mb-0"
 					onClick={() => {
 						this.setState((prev, _): RecipeState => {
 							return { ...prev, modalOpen: !prev.modalOpen };
@@ -43,7 +43,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 				>
 					<img
 						className="rounded-lg"
-						src={require("./img/img_01.png")}
+						src={this.props.imgPath}
 						alt=""
 					/>
 				</button>
@@ -84,7 +84,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 					</h1>
 					<img
 						className="float-right rounded-lg mb-5"
-						src={require("./img/img_01.png")}
+						src={this.props.imgPath}
 						alt=""
 					/>
 				</div>
