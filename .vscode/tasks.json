@@ -1,0 +1,73 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "frontend/",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "Frontend: Build for Production",
+			"detail": "webpack --mode production"
+		},
+		{
+			"type": "npm",
+			"script": "serve",
+			"path": "frontend/",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "Frontend: Start Dev Server",
+			"detail": "webpack serve --open --mode development",
+		},
+		{
+			"type": "shell",
+			"command": "go",
+			"args": [
+				"build",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/backend"
+			},
+			"group": "build",
+			"label": "Backend: Build Server",
+			"detail": "go build"
+		},
+		{
+			"type": "shell",
+			"command": "go",
+			"args": [
+				"run",
+				"main.go"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/backend"
+			},
+			"group": "build",
+			"label": "Backend: Run Server",
+			"detail": "go run main.go"
+		},
+		{
+			"type": "shell",
+			"command": "docker",
+			"args": [
+				"compose",
+				"up"
+			],
+			"group": "none",
+			"label": "Docker: Compose Up",
+			"detail": "docker compose up",
+		},
+		{
+			"type": "shell",
+			"command": "docker",
+			"args": [
+				"compose",
+				"up",
+				"mongo"
+			],
+			"group": "none",
+			"label": "Docker: Run MongoDB",
+			"detail": "docker compose up mongo",
+		},
+	]
+}
