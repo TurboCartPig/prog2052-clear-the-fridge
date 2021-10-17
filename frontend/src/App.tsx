@@ -24,7 +24,7 @@ function App() {
 				]}
 			/>
 			<Recipe
-				name="Oppskrift 1"
+				name="Oppskrift 2"
 				imgPath="123"
 				ingredients={["ingrediens 1", "ingrediens 2"]}
 				instructions={[
