@@ -41,6 +41,7 @@ export default (env, argv) => {
 		entry: "./src/main.tsx",
 		output: {
 			filename: "[name].bundle.js",
+			assetModuleFilename: "[hash][ext][query]",
 			path: path.resolve(
 				path.dirname(url.fileURLToPath(import.meta.url)),
 				"./dist"
@@ -84,8 +85,18 @@ export default (env, argv) => {
 					],
 				},
 				{
-					test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+					test: /\.(eot|ttf|woff|woff2)$/i,
 					type: "asset/resource",
+					generator: {
+						filename: "res/[hash][ext][query]",
+					},
+				},
+				{
+					test: /\.(svg|png|jpg)$/i,
+					type: "asset/resource",
+					generator: {
+						filename: "images/[name][ext]",
+					},
 				},
 			],
 		},

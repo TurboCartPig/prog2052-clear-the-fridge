@@ -11,8 +11,8 @@ export type IngredientData = {
 	name: string;
 	// Unit of measurement
 	unit: string;
-	// Path to the preview image, on the server
-	imgPath: string;
+	// Path to the preview image on the server
+	img: string;
 };
 
 /**
