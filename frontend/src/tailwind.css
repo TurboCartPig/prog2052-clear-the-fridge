@@ -10,15 +10,3 @@
 		@apply mx-auto rounded-lg shadow-lg transform hover:scale-105 duration-100 bg-gray-200 active:bg-gray-200 focus:outline-none;
 	}
 }
-
-.w-95\/100 {
-	width: 95%;
-}
-
-.w-98\/100 {
-	width: 98%;
-}
-
-.w-99\/100 {
-	width: 99%;
-}

@@ -17,8 +17,17 @@ class IngredientList extends React.Component<
 	}
 
 	render() {
+		// Render help tip if the list is empty
+		if (this.props.ingredients.length === 0) {
+			return (
+				<div className="py-8 w-10/12 lg:w-8/12 text-center text-sm opacity-60">
+					Ingredients added from search will appear here
+				</div>
+			);
+		}
+
 		return (
-			<div className="grid w-10/12 lg:w-2/5">
+			<div className="grid w-10/12 lg:w-8/12">
 				{this.props.ingredients.map((data, key) => {
 					const unit = Unit[data.unit as keyof typeof Unit];
 					const img =

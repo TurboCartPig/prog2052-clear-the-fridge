@@ -64,13 +64,18 @@ class Search extends React.Component<SearchProps, SearchState> {
 				<div
 					className={`${
 						this.state.focused ? "" : "h-12"
-					}  w-10/12 lg:w-2/5 rounded-lg bg-search-bar`}
+					}  w-10/12 lg:w-8/12 rounded-lg bg-search-bar`}
 					// Stop propagation of click event bubbling up to the body.
 					// Prevents the search component from closing immediately
 					onClick={(e) => e.stopPropagation()}
 				>
 					<div className="flex flex-row">
-						<img className="flex-initial m-2" src={SearchIcon} />
+						<img
+							className="m-2"
+							width="24px"
+							height="24px"
+							src={SearchIcon}
+						/>
 						<input
 							type="text"
 							placeholder="Search"
@@ -82,7 +87,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 					{this.state.focused && (
 						<div>
 							<hr></hr>
-							<h6 className="my-1 px-3 w-98/100">Results:</h6>
+							<h6 className="my-1 px-3">Results:</h6>
 							<ul>
 								{this.state.results.slice(0, 4).map((item) => (
 									<li key={item.name}>

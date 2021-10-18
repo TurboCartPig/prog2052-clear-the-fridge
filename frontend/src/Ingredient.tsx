@@ -34,23 +34,32 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					}}
 				>
 					<img
-						className="col-span-1 w-3/5"
+						className="col-start-1 col-span-1"
+						width="24px"
+						height="24px"
 						src={this.props.imgPath}
 					></img>
-					<div className="col-span-1">{this.props.name}</div>
+
+					<div className="col-start-2 col-span-2">
+						{this.props.name}
+					</div>
 
 					{!this.state.isOpen && (
-						<div className="col-start-8 md:col-start-9 col-span-2 md:col-span-1">
+						<div className="col-start-8 col-span-2">
 							{this.currentAmount()}
 						</div>
 					)}
 
 					<img
 						className="col-start-10 col-span-1"
+						width="24px"
+						height="24px"
 						src={this.state.isOpen ? HorRule : Edit}
 					></img>
 				</button>
+
 				{this.state.isOpen && this.modifyIngredient()}
+
 			</div>
 		);
 	}
@@ -61,9 +70,8 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 
 	ingredientStyling() {
 		return (
-			"grid grid-cols-10 justify-items-center items-center bg-ingredient-bar w-full h-12 " +
-			(this.state.isOpen ? "rounded-t-lg" : "rounded-lg") +
-			" text-xs"
+			"grid grid-cols-10 justify-items-center items-center bg-ingredient-bar w-full h-12 text-sm " +
+			(this.state.isOpen ? "rounded-t-lg" : "rounded-lg")
 		);
 	}
 
