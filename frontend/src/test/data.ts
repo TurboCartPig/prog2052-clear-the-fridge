@@ -34,7 +34,7 @@ export const RecipeData = [
 		name: "Recipe name 4",
 		imgPath: Image,
 		ingredients: ["Ingredient 1", "Ingredient 2"],
-		instructions: ["Instruction 1", "Instruction 2"],
+		instructions: ["Instruction 1", "Instruction 2", "Instruction 3", "Instruction 4", "Instruction 5", "Instruction 6", "Instruction 7", "Instruction 8"],
 	},
 ];
 

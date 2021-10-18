@@ -19,11 +19,11 @@ class LandingPage extends React.Component {
 				</div>
 				<Search />
 				<div className="grid justify-items-center divide-solid divide-gray-100 divide-y-2">
-					<h2 className="mt-20 mb-3">Ingredients</h2>
+					<h2 className="md:mt-20 mt-5 mb-3">Ingredients</h2>
 					<IngredientList />
 				</div>
 				<div className="grid justify-items-center divide-solid divide-gray-100 divide-y-2">
-					<h2 className="mt-20 mb-3">Results</h2>
+					<h2 className="md:mt-20 mt-5 mb-3">Results</h2>
 					<RecipeList />
 				</div>
 			</div>
