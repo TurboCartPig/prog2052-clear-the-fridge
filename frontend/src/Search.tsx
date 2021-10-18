@@ -1,6 +1,7 @@
 import _, { DebouncedFunc } from "lodash";
 import React from "react";
 import IngredientResult from "./IngredientResult";
+import SearchIcon from "./res/search.svg";
 import { IngredientData } from "./types";
 import "./tailwind.css";
 
@@ -59,18 +60,21 @@ class Search extends React.Component<{}, SearchState> {
 				<div
 					className={`${
 						this.state.focused ? "" : "h-12"
-					} w-10/12 lg:w-2/5 rounded-lg bg-green-100`}
+					}  w-10/12 lg:w-2/5 rounded-lg bg-search-bar`}
 					// Stop propagation of click event bubbling up to the body.
 					// Prevents the search component from closing immediately
 					onClick={(e) => e.stopPropagation()}
 				>
+					<div className="flex flex-row">
+					<img className="flex-initial m-2" src={SearchIcon} />
 					<input
 						type="text"
 						placeholder="Search"
 						onFocus={this.onFocus}
 						onChange={(e) => this.onChange(e.target.value)}
-						className="px-3 py-3 w-full h-12 rounded-lg bg-transparent"
+						className="flex px-3 py-3 w-full h-12 rounded-lg bg-transparent outline-none"
 					></input>
+					</div>
 					{this.state.focused && (
 						<div>
 							<hr></hr>
