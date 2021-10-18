@@ -1,17 +1,30 @@
 import React from "react";
-import Ingredient, { Unit } from "./Ingredient";
-import { IngredientData } from "./test/data";
+import Ingredient from "./Ingredient";
+import { IngredientData, Unit } from "./types";
 
-class IngredientList extends React.Component {
+type IngredientListProps = {
+	ingredients: IngredientData[];
+};
+
+type IngredientListState = {};
+
+class IngredientList extends React.Component<
+	IngredientListProps,
+	IngredientListState
+> {
+	constructor(props: IngredientListProps) {
+		super(props);
+	}
+
 	render() {
 		return (
 			<div className="grid w-10/12 lg:w-2/5">
-				{IngredientData.map((data, key) => {
+				{this.props.ingredients.map((data, key) => {
 					return (
 						<Ingredient
 							key={key}
 							name={data.name}
-							unit={data.unit}
+							unit={Unit[data.unit as keyof typeof Unit]}
 							imgPath={data.imgPath}
 						/>
 					);

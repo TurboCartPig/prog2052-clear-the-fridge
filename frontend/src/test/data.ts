@@ -2,7 +2,7 @@ import Carrot from "../res/carrot.svg";
 import Milk from "../res/milk.svg";
 import Beef from "../res/beef.svg";
 import Image from "../res/img_01.png";
-import { Unit } from "../Ingredient";
+import { Unit } from "../types";
 
 /**
  * Test module for recipe and ingredient objects

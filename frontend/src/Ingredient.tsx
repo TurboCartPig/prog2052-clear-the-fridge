@@ -1,6 +1,7 @@
 import React from "react";
 import Edit from "./res/edit.svg";
 import HorRule from "./res/horizontal_rule.svg";
+import { Unit, printUnit } from "./types";
 import "./tailwind.css";
 
 type IngredientProps = {
@@ -13,12 +14,6 @@ type IngredientState = {
 	amount: number;
 	isOpen: boolean;
 };
-
-export enum Unit {
-	pcs,
-	g,
-	ml,
-}
 
 class Ingredient extends React.Component<IngredientProps, IngredientState> {
 	constructor(props: IngredientProps) {
@@ -61,18 +56,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 	}
 
 	currentAmount() {
-		return this.printUnit(this.state.amount);
-	}
-
-	printUnit(amount: number) {
-		switch (this.props.unit) {
-			case Unit.pcs:
-				return amount + " pcs";
-			case Unit.g:
-				return amount * 100 + " g";
-			case Unit.ml:
-				return amount * 100 + " ml";
-		}
+		return printUnit(this.props.unit, this.state.amount);
 	}
 
 	ingredientStyling() {
@@ -94,7 +78,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						});
 					}}
 				>
-					-{this.printUnit(1)}
+					-{printUnit(this.props.unit, 1)}
 				</button>
 				<button className="bg-gray-100 col-span-2 my-2 place-self-stretch cursor-default">
 					{this.currentAmount()}
@@ -107,7 +91,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						});
 					}}
 				>
-					+{this.printUnit(1)}
+					+{printUnit(this.props.unit, 1)}
 				</button>
 			</div>
 		);
