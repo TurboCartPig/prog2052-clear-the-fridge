@@ -3,15 +3,19 @@ module.exports = {
 	purge: ["./src/**/*.js", "./src/**/*.html"],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
+		fontFamily: {
+			sans: ["Nunito Regular", "sans-serif"],
+			serif: ["serif"],
+		},
 		extend: {
 			transitionProperty: {
-				height: 'height'
+				height: "height",
 			},
 			colors: {
-				'clearthefridge' : '#FCFFFB',
-				'search-bar' : '#E7F1E1',
-				'ingredient-bar' : '#E8CECE',
-			}
+				clearthefridge: "#FCFFFB",
+				"search-bar": "#E7F1E1",
+				"ingredient-bar": "#E8CECE",
+			},
 		},
 	},
 	variants: {

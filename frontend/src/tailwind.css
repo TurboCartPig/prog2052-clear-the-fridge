@@ -10,3 +10,8 @@
 		@apply mx-auto rounded-lg shadow-lg transform hover:scale-105 duration-100 bg-gray-200 active:bg-gray-200 focus:outline-none;
 	}
 }
+
+@font-face {
+	font-family: Nunito Regular;
+	src: url("./res/fonts/Nunito-Regular.ttf");
+}
