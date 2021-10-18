@@ -62,10 +62,10 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 		}
 
 		return this.createModal(
-			<div className="m-5 bg-white grid col-auto items-center relative rounded-lg shadow-lg p-4 w-auto h-screen md:h-auto overflow-scroll md:overflow-auto">
+			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen md:h-auto overflow-scroll md:overflow-auto">
 				<div>
 					<button
-						className="float-right pr-2 mb-5"
+						className="float-right pr-2 md:mb-5 mb-2"
 						onClick={() => {
 							this.setState((prev, _): RecipeState => {
 								return {
@@ -78,8 +78,8 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 						X
 					</button>
 				</div>
-				<div>
-					<h1 className="float-left mb-5 font-bold">
+				<div className="grid">
+					<h1 className="float-left md:mb-5 mb-2 font-bold text-2xl">
 						{this.props.name}
 					</h1>
 					<img
@@ -88,12 +88,14 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 						alt=""
 					/>
 				</div>
-				<div>
-					<h3 className="mb-5 font-semibold">Ingredienser:</h3>
+				<div className="grid">
+					<h3 className="mb-5 font-semibold text-lg">Ingredients:</h3>
 					{this.print(this.props.ingredients)}
 				</div>
-				<div>
-					<h3 className="mb-5 font-semibold">Instruksjoner:</h3>
+				<div className="grid">
+					<h3 className="mb-5 font-semibold text-lg">
+						Instructions:
+					</h3>
 					{this.print(this.props.instructions)}
 				</div>
 			</div>
@@ -108,7 +110,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 	createModal(content: React.ReactNode) {
 		return ReactDOM.createPortal(
 			<div
-				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full flex items-center justify-center"
+				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full grid items-center justify-center"
 				onClick={() => {
 					this.setState((prev, _): RecipeState => {
 						return { ...prev, modalOpen: !prev.modalOpen };

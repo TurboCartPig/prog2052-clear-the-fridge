@@ -1,6 +1,5 @@
 import React from "react";
 import Recipe from "./Recipe";
-import img from "./res/img_01.png";
 import { RecipeData } from "./test/data";
 
 /**
@@ -15,7 +14,7 @@ class RecipeList extends React.Component {
 						<Recipe
 							key={key}
 							name={data.name}
-							imgPath={img}
+							imgPath={data.imgPath}
 							ingredients={data.ingredients}
 							instructions={data.instructions}
 						/>

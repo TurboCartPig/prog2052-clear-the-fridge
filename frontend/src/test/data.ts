@@ -1,6 +1,7 @@
 import Carrot from "../res/carrot.svg";
 import Milk from "../res/milk.svg";
 import Beef from "../res/beef.svg";
+import Image from "../res/img_01.png";
 import { Unit } from "../Ingredient";
 
 /**
@@ -12,28 +13,28 @@ import { Unit } from "../Ingredient";
  */
 export const RecipeData = [
 	{
-		name: "Oppskrift 1",
-		imgPath: "./img/img_01.png",
-		ingredients: ["Ingrediens 1", "Ingrediens 2"],
-		instructions: ["Instruksjon 1", "Instruksjon 2"],
+		name: "Recipe name 1",
+		imgPath: Image,
+		ingredients: ["Ingredient 1", "Ingredient 2"],
+		instructions: ["Instruction 1", "Instruction 2"],
 	},
 	{
-		name: "Oppskrift 2",
-		imgPath: "./img/img_01.png",
-		ingredients: ["Ingrediens 1", "Ingrediens 2"],
-		instructions: ["Instruksjon 1", "Instruksjon 2"],
+		name: "Recipe name 2",
+		imgPath: Image,
+		ingredients: ["Ingredient 1", "Ingredient 2"],
+		instructions: ["Instruction 1", "Instruction 2"],
 	},
 	{
-		name: "Oppskrift 3",
-		imgPath: "./img/img_01.png",
-		ingredients: ["Ingrediens 1", "Ingrediens 2"],
-		instructions: ["Instruksjon 1", "Instruksjon 2"],
+		name: "Recipe name 3",
+		imgPath: Image,
+		ingredients: ["Ingredient 1", "Ingredient 2"],
+		instructions: ["Instruction 1", "Instruction 2"],
 	},
 	{
-		name: "Oppskrift 4",
-		imgPath: "./img/img_01.png",
-		ingredients: ["Ingrediens 1", "Ingrediens 2"],
-		instructions: ["Instruksjon 1", "Instruksjon 2"],
+		name: "Recipe name 4",
+		imgPath: Image,
+		ingredients: ["Ingredient 1", "Ingredient 2"],
+		instructions: ["Instruction 1", "Instruction 2"],
 	},
 ];
 
