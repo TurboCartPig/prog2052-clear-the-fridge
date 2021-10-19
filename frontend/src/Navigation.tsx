@@ -1,10 +1,12 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import "./tailwind.css";
 
 type navProps = {};
 
 type navState = {
 	menuToggled: boolean;
+	loginToggled: boolean;
 };
 
 class Navigation extends React.Component<navProps, navState> {
@@ -12,8 +14,10 @@ class Navigation extends React.Component<navProps, navState> {
 		super(props);
 		this.state = {
 			menuToggled: false,
+			loginToggled: false,
 		};
 		this.toggleMenu = this.toggleMenu.bind(this);
+		this.toggleLogin = this.toggleLogin.bind(this);
 	}
 
 	render() {
@@ -38,16 +42,16 @@ class Navigation extends React.Component<navProps, navState> {
 						/>
 					</svg>
 				</button>
-				<ul>
-					<button
-						className={
-							(this.state.menuToggled ? "" : "invisible ") +
-							"md:visible float-right m-4 hover:underline"
-						}
-					>
-						Login
-					</button>
-				</ul>
+				<button
+					onClick={this.toggleLogin}
+					className={
+						(this.state.menuToggled ? "" : "invisible ") +
+						"md:visible float-right m-4 hover:underline"
+					}
+				>
+					Login
+				</button>
+				{this.state.loginToggled && this.renderModal()}
 			</nav>
 		);
 	}
@@ -56,6 +60,33 @@ class Navigation extends React.Component<navProps, navState> {
 		this.setState((prevState) => ({
 			menuToggled: !prevState.menuToggled,
 		}));
+	}
+
+	toggleLogin() {
+		this.setState((prevstate) => ({
+			loginToggled: !prevstate.loginToggled,
+		}));
+	}
+
+	renderModal() {
+		return this.createModal(<div>Hello</div>);
+	}
+
+	/**
+	 * Function to create the modal window using the createPortal function
+	 * @param content - React node used in the createPortal function
+	 * @returns createPortal()
+	 */
+	createModal(content: React.ReactNode) {
+		return ReactDOM.createPortal(
+			<div
+				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full grid items-center justify-center"
+				onClick={this.toggleLogin}
+			>
+				<div onClick={(e) => e.stopPropagation()}>{content}</div>
+			</div>,
+			document.getElementById("modal-root")!
+		);
 	}
 }
 
