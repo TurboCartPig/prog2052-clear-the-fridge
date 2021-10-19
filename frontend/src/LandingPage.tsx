@@ -54,7 +54,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	addIngredient(ingredient: IngredientData) {
 		console.log(ingredient);
 		this.setState((prev, _) => {
-			return { ...prev, ingredients: [...prev.ingredients, ingredient] };
+			return { ingredients: [...prev.ingredients, ingredient] };
 		});
 	}
 }

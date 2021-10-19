@@ -127,7 +127,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 	setFocus(focused: boolean) {
 		// Update the state of the component by only changing the `focused` field
 		this.setState((prev, _) => {
-			return { ...prev, focused: focused };
+			return { focused: focused };
 		});
 	}
 
@@ -165,7 +165,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 
 		// Update results
 		this.setState((prev, _) => {
-			return { ...prev, results: results };
+			return { results: results };
 		});
 	}
 }
