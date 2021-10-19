@@ -1,14 +1,31 @@
 import React from "react";
 import "./tailwind.css";
 
-class Navigation extends React.Component {
+type navProps = {};
+
+type navState = {
+	menuToggled: boolean;
+};
+
+class Navigation extends React.Component<navProps, navState> {
+	constructor(props: navProps) {
+		super(props);
+		this.state = {
+			menuToggled: false,
+		};
+		this.toggleMenu = this.toggleMenu.bind(this);
+	}
+
 	render() {
 		return (
 			<nav>
-				<button className="md:hidden float-right m-4">
+				<button
+					className="md:hidden float-right m-4"
+					onClick={this.toggleMenu}
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						className="h-9 w-9"
+						className="h-7 w-7"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
@@ -22,12 +39,23 @@ class Navigation extends React.Component {
 					</svg>
 				</button>
 				<ul>
-					<button className="invisible md:visible float-right p-6">
+					<button
+						className={
+							(this.state.menuToggled ? "" : "invisible ") +
+							"md:visible float-right m-4 hover:underline"
+						}
+					>
 						Login
 					</button>
 				</ul>
 			</nav>
 		);
+	}
+
+	toggleMenu() {
+		this.setState((prevState) => ({
+			menuToggled: !prevState.menuToggled,
+		}));
 	}
 }
 
