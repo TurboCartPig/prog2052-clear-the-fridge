@@ -37,7 +37,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 					className="modal w-full rounded-lg m-0"
 					onClick={() => {
 						this.setState((prev, _): RecipeState => {
-							return { ...prev, modalOpen: !prev.modalOpen };
+							return { modalOpen: !prev.modalOpen };
 						});
 					}}
 				>
@@ -69,7 +69,6 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 						onClick={() => {
 							this.setState((prev, _): RecipeState => {
 								return {
-									...prev,
 									modalOpen: !prev.modalOpen,
 								};
 							});
@@ -113,7 +112,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full grid items-center justify-center"
 				onClick={() => {
 					this.setState((prev, _): RecipeState => {
-						return { ...prev, modalOpen: !prev.modalOpen };
+						return { modalOpen: !prev.modalOpen };
 					});
 				}}
 			>

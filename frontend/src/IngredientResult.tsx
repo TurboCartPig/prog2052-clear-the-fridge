@@ -1,6 +1,5 @@
 import React from "react";
-import Edit from "./res/edit.svg";
-import Plus from "./res/plus.svg"
+import Plus from "./res/plus.svg";
 import { IngredientData } from "./types";
 import "./tailwind.css";
 
@@ -42,16 +41,23 @@ class IngredientResult extends React.Component<
 	render() {
 		return (
 			<div
-				className={`grid justify-items-center py-3 mx-2 my-2 rounded-lg bg-white ${
-					this.state.added && "opacity-50"
+				className={`grid py-3 mx-2 my-2 rounded-lg bg-white ${
+					this.state.added && "opacity-60"
 				}`}
 			>
-				<div className="col-span-1">{this.props.data.name}</div>
-				<img
-					className="col-span-1 col-start-10"
-					src={this.state.added ? undefined : Plus} // TODO: Replace the icon with a plus sign
-					onClick={this.onAdd}
-				></img>
+				<div className="col-start-1 col-span-1 mx-3">
+					{this.props.data.name}
+				</div>
+
+				{this.state.added || (
+					<img
+						className="col-start-10 col-span-1 mx-3 my-auto justify-self-end"
+						width="24px"
+						height="24px"
+						src={Plus}
+						onClick={this.onAdd}
+					></img>
+				)}
 			</div>
 		);
 	}

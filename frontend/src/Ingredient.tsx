@@ -1,6 +1,7 @@
 import React from "react";
 import Edit from "./res/edit.svg";
 import HorRule from "./res/horizontal_rule.svg";
+import { Unit, printUnit } from "./types";
 import "./tailwind.css";
 
 type IngredientProps = {
@@ -13,12 +14,6 @@ type IngredientState = {
 	amount: number;
 	isOpen: boolean;
 };
-
-export enum Unit {
-	pcs,
-	g,
-	ml,
-}
 
 class Ingredient extends React.Component<IngredientProps, IngredientState> {
 	constructor(props: IngredientProps) {
@@ -39,47 +34,43 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					}}
 				>
 					<img
-						className="col-span-1 w-3/5"
+						className="col-start-1 col-span-1"
+						width="24px"
+						height="24px"
 						src={this.props.imgPath}
 					></img>
-					<div className="col-span-1">{this.props.name}</div>
+
+					<div className="col-start-2 col-span-2">
+						{this.props.name}
+					</div>
 
 					{!this.state.isOpen && (
-						<div className="col-start-8 md:col-start-9 col-span-2 md:col-span-1">
+						<div className="col-start-8 col-span-2">
 							{this.currentAmount()}
 						</div>
 					)}
 
 					<img
 						className="col-start-10 col-span-1"
+						width="24px"
+						height="24px"
 						src={this.state.isOpen ? HorRule : Edit}
 					></img>
 				</button>
+
 				{this.state.isOpen && this.modifyIngredient()}
 			</div>
 		);
 	}
 
 	currentAmount() {
-		return this.printUnit(this.state.amount);
-	}
-
-	printUnit(amount: number) {
-		switch (this.props.unit) {
-			case Unit.pcs:
-				return amount + " pcs";
-			case Unit.g:
-				return amount * 100 + " g";
-			case Unit.ml:
-				return amount * 100 + " ml";
-		}
+		return printUnit(this.props.unit, this.state.amount);
 	}
 
 	ingredientStyling() {
 		return (
-			"grid grid-cols-10 justify-items-center items-center bg-ingredient-bar w-full h-12 " +
-			(this.state.isOpen ? "rounded-t-lg" : "rounded-lg") +
-			" text-xs"
+			"grid grid-cols-10 justify-items-center items-center bg-ingredient-bar w-full h-12 text-sm " +
+			(this.state.isOpen ? "rounded-t-lg" : "rounded-lg")
 		);
 	}
 
@@ -90,11 +81,11 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					className="bg-gray-300 col-span-4 m-2"
 					onClick={() => {
 						this.setState((prev, _) => {
-							return { ...prev, amount: prev.amount - 1 };
+							return { amount: prev.amount - 1 };
 						});
 					}}
 				>
-					-{this.printUnit(1)}
+					-{printUnit(this.props.unit, 1)}
 				</button>
 				<button className="bg-gray-100 col-span-2 my-2 place-self-stretch cursor-default">
 					{this.currentAmount()}
@@ -103,11 +94,11 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					className="bg-gray-300 col-span-4 m-2"
 					onClick={() => {
 						this.setState((prev, _) => {
-							return { ...prev, amount: prev.amount + 1 };
+							return { amount: prev.amount + 1 };
 						});
 					}}
 				>
-					+{this.printUnit(1)}
+					+{printUnit(this.props.unit, 1)}
 				</button>
 			</div>
 		);

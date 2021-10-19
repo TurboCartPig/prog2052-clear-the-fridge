@@ -8,7 +8,7 @@ import { RecipeData } from "./test/data";
 class RecipeList extends React.Component {
 	render() {
 		return (
-			<div className="grid grid-cols-2 w-10/12 lg:w-2/5">
+			<div className="grid grid-cols-2 w-10/12 lg:w-8/12">
 				{RecipeData.map((data, key) => {
 					return (
 						<Recipe

@@ -11,14 +11,7 @@
 	}
 }
 
-.w-95\/100 {
-	width: 95%;
-}
-
-.w-98\/100 {
-	width: 98%;
-}
-
-.w-99\/100 {
-	width: 99%;
+@font-face {
+	font-family: Nunito Regular;
+	src: url("./res/fonts/Nunito-Regular.ttf");
 }
