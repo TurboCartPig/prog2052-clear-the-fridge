@@ -56,20 +56,53 @@ class Navigation extends React.Component<navProps, navState> {
 		);
 	}
 
+	/**
+	 * Toggles the menu state
+	 */
 	toggleMenu() {
 		this.setState((prevState) => ({
 			menuToggled: !prevState.menuToggled,
 		}));
 	}
 
+	/**
+	 * Toggles the login state
+	 */
 	toggleLogin() {
 		this.setState((prevstate) => ({
 			loginToggled: !prevstate.loginToggled,
 		}));
 	}
 
+	/**
+	 * Renders the login window
+	 */
 	renderModal() {
-		return this.createModal(<div>Hello</div>);
+		return this.createModal(
+			<div className="grid grid-rows-2 content-between justify-between bg-white h-3/6">
+				<div className="bg-white h-1/4 self-stretch">
+					<div className="m-1 row-start-1">
+						<label htmlFor="username">Username</label>
+						<input
+							className="focus:bg-gray-200 m-1"
+							type="text"
+							id="username"
+						></input>
+					</div>
+					<div className="m-1 row-start-3 bg-green">
+						<label htmlFor="password">Password</label>
+						<input
+							className="focus:bg-gray-200 m-1"
+							type="password"
+							id="password"
+						></input>
+					</div>
+				</div>
+				<button className="bg-gray-300 hover:bg-gray-400 m-2 rounded-md">
+					Login
+				</button>
+			</div>
+		);
 	}
 
 	/**
