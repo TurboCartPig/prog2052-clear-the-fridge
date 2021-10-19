@@ -63,10 +63,6 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 	 * @returns createModal()
 	 */
 	modalContent() {
-		if (!this.state.modalOpen) {
-			return null;
-		}
-
 		return this.createModal(
 			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen md:h-auto overflow-scroll md:overflow-auto">
 				<div>
