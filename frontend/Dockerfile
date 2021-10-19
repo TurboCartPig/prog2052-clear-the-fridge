@@ -19,3 +19,6 @@ FROM nginx:1.21-alpine AS runtime
 
 # Copy build artifacts into public hosted folder
 COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Copy in the custom config
+COPY nginx.conf /etc/nginx/nginx.conf
