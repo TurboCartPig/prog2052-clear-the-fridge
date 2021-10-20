@@ -1,5 +1,6 @@
 import React from "react";
 import Search from "./Search";
+import Navigation from "./Navigation";
 import Logo from "./res/logo.svg";
 import RecipeList from "./RecipeList";
 import IngredientList from "./IngredientList";
@@ -26,6 +27,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	render() {
 		return (
 			<div className="grid justify-center bg-clearthefridge">
+				<Navigation />
 				<div className="mx-auto my-auto">
 					<img
 						className="m-12"

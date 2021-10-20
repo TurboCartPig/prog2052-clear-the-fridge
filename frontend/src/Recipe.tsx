@@ -28,6 +28,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 		this.state = {
 			modalOpen: false,
 		};
+		this.toggleModal = this.toggleModal.bind(this);
 	}
 
 	render() {
@@ -35,11 +36,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 			<div className="m-5">
 				<button
 					className="modal w-full rounded-lg m-0"
-					onClick={() => {
-						this.setState((prev, _): RecipeState => {
-							return { modalOpen: !prev.modalOpen };
-						});
-					}}
+					onClick={this.toggleModal}
 				>
 					<img
 						className="rounded-lg"
@@ -53,26 +50,25 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 	}
 
 	/**
+	 * Toggles the state of the modal window
+	 */
+	toggleModal() {
+		this.setState((prevState) => ({
+			modalOpen: !prevState.modalOpen,
+		}));
+	}
+
+	/**
 	 * Function to get the content of the modal window
 	 * @returns createModal()
 	 */
 	modalContent() {
-		if (!this.state.modalOpen) {
-			return null;
-		}
-
 		return this.createModal(
 			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen md:h-auto overflow-scroll md:overflow-auto">
 				<div>
 					<button
 						className="float-right pr-2 md:mb-5 mb-2"
-						onClick={() => {
-							this.setState((prev, _): RecipeState => {
-								return {
-									modalOpen: !prev.modalOpen,
-								};
-							});
-						}}
+						onClick={this.toggleModal}
 					>
 						X
 					</button>
@@ -110,11 +106,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 		return ReactDOM.createPortal(
 			<div
 				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full grid items-center justify-center"
-				onClick={() => {
-					this.setState((prev, _): RecipeState => {
-						return { modalOpen: !prev.modalOpen };
-					});
-				}}
+				onClick={this.toggleModal}
 			>
 				<div onClick={(e) => e.stopPropagation()}>{content}</div>
 			</div>,
