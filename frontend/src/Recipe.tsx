@@ -64,7 +64,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 	 */
 	modalContent() {
 		return this.createModal(
-			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen md:h-screen overflow-scroll">
+			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen overflow-scroll">
 				<div>
 					<button
 						className="float-right pr-2 md:mb-5 mb-2"
