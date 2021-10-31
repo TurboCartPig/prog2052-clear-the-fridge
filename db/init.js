@@ -11,4 +11,25 @@ db.ingredients.insertMany([
     name: "Løk",
     unit: "Stykk",
   },
+  {
+    name: "Tomat",
+    unit: "kg",
+  }
+]);
+
+db.recipes.insertMany([
+  {
+    name: "Recipe 1",
+    ingredients: [
+      {
+      name: "Tomat",
+      amount: "2 stk",
+      }
+    ],
+    instructions: [
+      {
+        instruction: "Gjør dette"
+      }
+    ]
+  }
 ]);
