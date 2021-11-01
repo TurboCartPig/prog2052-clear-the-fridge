@@ -4,7 +4,7 @@ import IngredientResult from "./IngredientResult";
 import { IngredientData } from "./types";
 import SearchIcon from "./res/search.svg";
 import "./tailwind.css";
-import { searchIngredients } from "./apiSearchIngredients";
+import { searchIngredients } from "./api";
 
 type SearchProps = {
 	onAdd: (ingredient: IngredientData) => void;
