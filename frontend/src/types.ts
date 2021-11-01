@@ -19,8 +19,10 @@ export type IngredientData = {
  * Unit of measurement for ingredients
  */
 export enum Unit {
-	pcs,
-	g,
+	stk, // Stykk
+	gram,
+	ss, // Spiseskje
+	ts, // Teskje
 	l, // Liter
 	dl, // Deciliter
 	ml, // Milliliter
@@ -28,15 +30,19 @@ export enum Unit {
 
 export function printUnit(unit: Unit, amount: number) {
 	switch (unit) {
-		case Unit.pcs:
-			return amount + " pcs";
-		case Unit.g:
-			return amount * 100 + " g";
+		case Unit.stk:
+			return amount + " stk";
+		case Unit.gram:
+			return amount + " g";
+		case Unit.ss:
+			return amount + " ss";
+		case Unit.ts:
+			return amount + " ts";
 		case Unit.l:
-			return amount * 100 + " l";
+			return amount + " l";
 		case Unit.dl:
-			return amount * 100 + " dl";
+			return amount + " dl";
 		case Unit.ml:
-			return amount * 100 + " ml";
+			return amount + " ml";
 	}
 }
