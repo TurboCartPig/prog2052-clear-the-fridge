@@ -2,6 +2,7 @@
 
 const db = connect("localhost:27017/clearthefridge");
 
+// Insert all ingredients
 db.ingredients.insertMany([
   {
     id: 0,
@@ -375,6 +376,8 @@ db.ingredients.insertMany([
   },
 ]);
 
+// Insert all recipes
+// NOTE: Needs to be after `insert all ingredients`
 db.recipes.insertMany([
   {
     id: 0,
@@ -1110,3 +1113,7 @@ db.recipes.insertMany([
     ]
   },
 ]);
+
+// Create text search indices
+db.ingredients.createIndex({ name: "text" });
+db.recipes.createIndex({name: "text"})
