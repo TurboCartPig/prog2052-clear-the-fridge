@@ -57,7 +57,7 @@ func SearchIngredients(term string) string {
 		Collection(ingredients)
 
 	opts := options.Find().
-		SetProjection(bson.D{{"_id", 0}, {"name", 1}, {"unit", 1}}).
+		SetProjection(bson.D{{"_id", 0}, {"id", 1}, {"name", 1}, {"unit", 1}}).
 		SetSort(bson.D{{"score", bson.D{{"$meta", "textScore"}}}})
 
 	cursor, err := collection.Find(context.TODO(), bson.D{{"$text", bson.D{{"$search", term}}}}, opts)
