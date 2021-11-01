@@ -27,7 +27,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 	/**
 	 * Debounced lateinit function called when the search term changes.
 	 */
-	onChange = _.debounce(this.search, 300);
+	onChange = _.debounce(this.search, 150);
 
 	constructor(props: SearchProps) {
 		super(props);
