@@ -137,8 +137,8 @@ class Search extends React.Component<SearchProps, SearchState> {
 	 */
 	async search(term: string) {
 		const backend =
-			"https://4e05fc26-03b8-451a-9ca3-369c57c52186.mock.pstmn.io";
-		// "http://localhost:3080";
+			// "https://4e05fc26-03b8-451a-9ca3-369c57c52186.mock.pstmn.io";
+			"http://localhost:3080";
 
 		// Construct the url to GET
 		let url;

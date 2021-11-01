@@ -13,8 +13,8 @@ services:
     build: ./backend
     restart: unless-stopped
     ports:
-      - 3080:80
-      - 3443:443
+      - 3080:3080
+      - 3443:3443
     environment:
       - MONGODB_URI=mongo:27017
 
@@ -22,5 +22,5 @@ services:
     build: ./frontend
     restart: unless-stopped
     ports:
-      - 4080:80
-      - 4443:443
+      - 4080:4080
+      - 4443:4443

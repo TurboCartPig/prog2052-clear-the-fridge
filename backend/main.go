@@ -20,7 +20,7 @@ func serve() {
 	r.Use(middleware.Logger)
 	r.Use(api.ReturnJSON)
 	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:80", "http://localhost:8080", "http://localhost:4080"},
+		AllowedOrigins:   []string{"http://clearthefridge.com", "https://clearthefridge.com","http://localhost:4080", "https://localhost:4080"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Content-Type"},
 		AllowCredentials: false,
@@ -35,7 +35,7 @@ func serve() {
 		r.Get("/recipes/search", api.NewRecipesSearchHandler())
 	})
 
-	log.Fatal(http.ListenAndServe(":80", r))
+	log.Fatal(http.ListenAndServe(":3080", r))
 }
 
 func main() {
