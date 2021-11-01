@@ -7,10 +7,13 @@ import (
 	"net/http"
 )
 
+const RecommendedIngredients = "Tomat Løk Gulrot -\"boks tomat\""
+
 // Creates a new HTTP Handler that returns a selection of ingredients the user might be interested in adding to their search.
 func NewIngredientsHandler() http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		res.WriteHeader(http.StatusNotImplemented)
+		data := db.SearchIngredients(RecommendedIngredients)
+		fmt.Fprint(res, data)
 	}
 }
 
