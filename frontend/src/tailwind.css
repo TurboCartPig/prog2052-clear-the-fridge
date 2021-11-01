@@ -4,14 +4,19 @@
 
 @layer components {
 	.btn {
-		@apply px-3 py-3 mx-auto rounded-md shadow-lg transform hover:scale-110 duration-300 font-semibold bg-red-500 active:bg-red-900 focus:outline-none;
+		@apply px-3 py-3
+			mx-auto rounded-md shadow-lg transform hover:scale-110 duration-300
+			font-semibold bg-red-500 active:bg-red-900 focus:outline-none;
 	}
+
 	.modal {
-		@apply mx-auto rounded-lg shadow-lg transform hover:scale-105 duration-100 bg-gray-200 active:bg-gray-200 focus:outline-none;
+		@apply mx-auto
+			rounded-lg shadow-lg transform hover:scale-105 duration-100
+			bg-gray-200 active:bg-gray-200 focus:outline-none;
 	}
 }
 
 @font-face {
-	font-family: Nunito Regular;
+	font-family: "Nunito Regular";
 	src: url("./res/fonts/Nunito-Regular.ttf");
 }

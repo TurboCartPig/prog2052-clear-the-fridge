@@ -26,6 +26,8 @@
 		"postcss-loader": "^6.1.1",
 		"prettier": "^2.4.1",
 		"style-loader": "^3.2.1",
+		"stylelint": "^14.0.1",
+		"stylelint-config-standard": "^23.0.0",
 		"tailwindcss": "^2.2.15",
 		"ts-loader": "^9.2.6",
 		"types-registry": "^0.1.559",
@@ -39,5 +41,12 @@
 		"useTabs": true,
 		"tabWidth": 4,
 		"semi": true
+	},
+	"stylelint": {
+		"extends": "stylelint-config-standard",
+		"rules": {
+			"indentation": null,
+			"at-rule-no-unknown": null
+		}
 	}
 }
