@@ -20,7 +20,7 @@ func serve() {
 	r.Use(middleware.Logger)
 	r.Use(api.ReturnJSON)
 	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:80", "http://localhost:8080"},
+		AllowedOrigins:   []string{"http://localhost:80", "http://localhost:8080", "http://localhost:4080"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Content-Type"},
 		AllowCredentials: false,
