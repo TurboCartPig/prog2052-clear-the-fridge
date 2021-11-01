@@ -90,7 +90,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 							<h6 className="my-1 px-3">Results:</h6>
 							<ul>
 								{this.state.results.slice(0, 4).map((item) => (
-									<li key={item.name}>
+									<li key={item.id}>
 										<IngredientResult
 											data={item}
 											onAdd={this.props.onAdd}

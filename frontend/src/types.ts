@@ -7,6 +7,7 @@
  * NOTE: Directly JSON deserialized from backend.
  */
 export type IngredientData = {
+	id: number;
 	// Name of the ingredient
 	name: string;
 	// Unit of measurement
