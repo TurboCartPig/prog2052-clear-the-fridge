@@ -358,10 +358,26 @@ db.ingredients.insertMany([
     name: "Kjøttbuljongterning",
     unit: "stk"
   },
+  {
+    id: 71,
+    name: "Persille",
+    unit: "ts"
+  },
+  {
+    id: 72,
+    name: "Blandet salat",
+    unit: "gram"
+  },
+  {
+    id: 73,
+    name: "valnøttdressing",
+    unit: "dl"
+  },
 ]);
 
 db.recipes.insertMany([
   {
+    id: 0,
     name: "Løksuppe",
     ingredients: [
       {
@@ -410,6 +426,7 @@ db.recipes.insertMany([
     ]
   },
   {
+    id: 1,
     name: "Tomatsuppe",
     ingredients: [
       {
@@ -471,6 +488,7 @@ db.recipes.insertMany([
     ]
   },
   {
+    id: 2,
     name: "Potet-purresuppe",
     ingredients: [
       {
@@ -543,6 +561,7 @@ db.recipes.insertMany([
     ]
   },
   {
+    id: 3,
     name: "Spinatsuppe",
     ingredients: [
       {
@@ -615,6 +634,7 @@ db.recipes.insertMany([
     ]
   },
   {
+    id: 4,
     name: "Barbecue spareribs",
     ingredients: [
       {
@@ -688,6 +708,7 @@ db.recipes.insertMany([
     ]
   },
   {
+    id: 5,
     name: "Pølselapskaus",
     ingredients: [
       {
@@ -744,59 +765,348 @@ db.recipes.insertMany([
     ]
   },
   {
+    id: 6,
     name: "Spaghetti Bolognese",
     ingredients: [
+      {
+        name: db.ingredients.findOne({"id":43}),
+        amount: 400,
+      },
+      {
+        name: db.ingredients.findOne({"id":0}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":2}),
+        amount: 2,
+      },
       {
         name: db.ingredients.findOne({"id":39}),
         amount: 2,
       },
       {
-        name: db.ingredients.findOne({"id":40}),
-        amount: 1,
+        name: db.ingredients.findOne({"id":44}),
+        amount: 2,
       },
       {
-        name: db.ingredients.findOne({"id":41}),
-        amount: 1,
-      },
-      {
-        name: db.ingredients.findOne({"id":16}),
-        amount: 1,
-      },
-      {
-        name: db.ingredients.findOne({"id":17}),
+        name: db.ingredients.findOne({"id":12}),
         amount: 4,
       },
       {
-        name: db.ingredients.findOne({"id":70}),
+        name: db.ingredients.findOne({"id":45}),
+        amount: 400,
+      },
+      {
+        name: db.ingredients.findOne({"id":11}),
+        amount: 4,
+      },
+      {
+        name: db.ingredients.findOne({"id":10}),
         amount: 1,
       },
       {
-        name: db.ingredients.findOne({"id":42}),
-        amount: 300,
-      }, 
+        name: db.ingredients.findOne({"id":21}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":4}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":18}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":50}),
+        amount: 100,
+      },
+      {
+        name: db.ingredients.findOne({"id":24}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":52}),
+        amount: 1,
+      },
+      
     ],
     instructions: [
       {
-        instruction: "Del opp kålroten i 4, vi skal bare bruke 1/4. Pølsen kan være for eksempel vossakorv eller kjøttpølse."
+        instruction: "Varm opp olje i en gryte og stek kjøttet brunt."
       },
       {
-        instruction: "Alle grønnsaker skrelles og kuttes i terninger."
+        instruction: "Knus og del opp kjøttet med en tresleiv, eller liknende, så det deler seg i små biter."
       },
       {
-        instruction: "Ha gulrot og kålrot i en kjele og dekk med vann."
+        instruction: "Tilsett løk og de andre grønnsakene og fres det blankt/gyllent."
       },
       {
-        instruction: "Kok i 20 minutter, ha så poteter, purre, persillerot og buljong. Kok videre."
+        instruction: "Tilsett tomatpuréen og la den frese litt med."
       },
       {
-        instruction: "Mot slutten, når alt er mørt, har du i pølsene."
+        instruction: "Slå over tomat, hvitvin og kraft, kok opp."
+      },
+      {
+        instruction: "Ha i laurbærblad og kok inntil en hod tjukk konsistens, ca en halvtime. Kan fint gjøres lenger etter ønske."
+      },
+      {
+        instruction: "Smak til med salt, pepper og gjerne timian/basilikum."
+      },
+      {
+        instruction: "Spaghettien kokes som pakken sier. Serveres med kjøttsausen."
+      },
+      {
+        instruction: "Riv sjenerøst med parmesan over, litt olivenolje og godt med pepper."
+      },
+    ]
+  },
+  {
+    id: 7,
+    name: "Spaghetti Carbonara",
+    ingredients: [
+      {
+        name: db.ingredients.findOne({"id":43}),
+        amount: 400,
+      },
+      {
+        name: db.ingredients.findOne({"id":58}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":48}),
+        amount: 100,
+      },
+      {
+        name: db.ingredients.findOne({"id":2}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":49}),
+        amount: 3,
+      },
+      {
+        name: db.ingredients.findOne({"id":19}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":50}),
+        amount: 50,
+      }, 
+      {
+        name: db.ingredients.findOne({"id":12}),
+        amount: 3,
+      },
+      {
+        name: db.ingredients.findOne({"id":68}),
+        amount: 5,
+      },
+      {
+        name: db.ingredients.findOne({"id":24}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":14}),
+        amount: 1,
+      }, 
+      {
+        name: db.ingredients.findOne({"id":71}),
+        amount: 1,
+      },
+    ],
+    instructions: [
+      {
+        instruction: "Sett over vann til pasta med salt."
+      },
+      {
+        instruction: "Strimler med bacon stekes på middels temperatur i sitt eget fett til de er sprø og gylne."
+      },
+      {
+        instruction: "Helt på slutten av steketid tilsetter du et par knuste hvitløksfedd som skal smaksette fettet og kjøttet."
+      },
+      {
+        instruction: "Sett til side."
+      },
+      {
+        instruction: "Slå egg i en bolle, pisk inn fløten og bland i revet ost."
+      },
+      {
+        instruction: "Bland sammen og ha i oljen, masse pepper og eventuelt finhakkede urter, som timian og persille."
+      },
+      {
+        instruction: "Når pastaen er kokt, siler du den i et dørslag og har den i en stor, kald panne."
+      },
+      {
+        instruction: "Hell litt olje over."
+      },
+      {
+        instruction: "Vent et minutt, løft litt på pastaen innimellom."
+      },
+      {
+        instruction: "Hell over eggeblandingen og baconet, la det renne gjennom pastaen før du løfter og blander den inn."
+      },
+      {
+        instruction: "Server umiddelbart med ekstra svart pepper, parmesan og litt olje til dem som trenger det."
+      },
+    ]
+  },
+  {
+    id: 8,
+    name: "Capresesalat",
+    ingredients: [
+      {
+        name: db.ingredients.findOne({"id":9}),
+        amount: 4,
+      },
+      {
+        name: db.ingredients.findOne({"id":53}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":15}),
+        amount: 10,
+      },
+      {
+        name: db.ingredients.findOne({"id":24}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":12}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":55}),
+        amount: 2,
+      },
+    ],
+    instructions: [
+      {
+        instruction: "Skjær mozzarella i skiver og anrett tomat og mozzarella i taksteinsmønster på et fat."
+      },
+      {
+        instruction: "Riv eller grovhakk basilikum og ha på."
+      },
+      {
+        instruction: "Dryss over salt og olivenolje."
+      },
+      {
+        instruction: "Ha eventuelt på noen dråper balsamico eller annen syre."
+      },
+    ]
+  },
+  {
+    id: 9,
+    name: "Cæsarsalat",
+    ingredients: [
+      {
+        name: db.ingredients.findOne({"id":56}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":49}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":59}),
+        amount: 2,
+      },
+      {
+        name: db.ingredients.findOne({"id":57}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":2}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":33}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":60}),
+        amount: 4,
+      },
+      {
+        name: db.ingredients.findOne({"id":50}),
+        amount: 100,
+      },
+      {
+        name: db.ingredients.findOne({"id":61}),
+        amount: 100,
+      },
+    ],
+    instructions: [
+      {
+        instruction: "Fjern eventulle stygge blader på salaten, vask resten godt og tørk i en salatslynge eller på et håndle."
+      },
+      {
+        instruction: "Visp sammen eggeplommene, sitrosaften, worcestersaus og hvitløk."
+      },
+      {
+        instruction: "Ha i ansjosen og halvparten av parmesanen, og spe med olje i en tynn stråle under pisking."
+      },
+      {
+        instruction: "Det er smart om ingrediensene i majonesen har lik temperatur, ellers kan den skille seg."
       },
       {
         instruction: "Smakes til med salt og pepper."
       },
       {
-        instruction: "Server med flatbrød og smør."
+        instruction: "Hvis dressingen blir for tjukk, kan du spe med litt vann."
+      },
+      {
+        instruction: "Brødet kuttes i terninger eller staver som stekes sprø i litt smør."
+      },
+      {
+        instruction: "Vend salaten i dressing, server i dype boller, legg krutongene over og dryss parmesan på toppen."
       },
     ]
-  }
+  },
+  {
+    id: 10,
+    name: "Salat med feta, valnøtt og pærer",
+    ingredients: [
+      {
+        name: db.ingredients.findOne({"id":72}),
+        amount: 200,
+      },
+      {
+        name: db.ingredients.findOne({"id":63}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":64}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":65}),
+        amount: 1,
+      },
+      {
+        name: db.ingredients.findOne({"id":66}),
+        amount: 50,
+      },
+      {
+        name: db.ingredients.findOne({"id":67}),
+        amount: 200,
+      },
+      {
+        name: db.ingredients.findOne({"id":73}),
+        amount: 1,
+      },
+    ],
+    instructions: [
+      {
+        instruction: "Epler og pærer skrelles og skjæres i tynne strimler."
+      },
+      {
+        instruction: "Anrett blandet salat med endive i skåler."
+      },
+      {
+        instruction: "Fordel eple og pære, legg over valnøtter og fetaost som er smuldret opp."
+      },
+      {
+        instruction: "Lag dressing og hell over."
+      },
+    ]
+  },
 ]);
