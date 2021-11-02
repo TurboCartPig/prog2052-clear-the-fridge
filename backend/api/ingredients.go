@@ -9,7 +9,7 @@ import (
 	"unicode"
 )
 
-const RecommendedIngredients = "Tomat Løk Gulrot -\"boks tomat\""
+const RecommendedIngredients = "tomat løk gulrot"
 
 // Creates a new HTTP Handler that returns a selection of ingredients the user might be interested in adding to their search.
 func NewIngredientsHandler() http.HandlerFunc {
@@ -45,7 +45,7 @@ func sanitizeSearchTerm(term string) string {
 	// Only return runes that are unicode letters
 	for _, sym := range term {
 		if unicode.IsLetter(sym) {
-			res.WriteRune(sym)
+			res.WriteRune(unicode.ToLower(sym))
 		}
 	}
 

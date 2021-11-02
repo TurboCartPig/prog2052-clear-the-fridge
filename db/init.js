@@ -376,6 +376,10 @@ db.ingredients.insertMany([
   },
 ]);
 
+db.ingredients.find().forEach((i) => {
+	db.ingredients.updateOne({ _id: i._id }, { $set: { ngrams: ngrams(i.name, 2) } });
+});
+
 // Insert all recipes
 // NOTE: Needs to be after `insert all ingredients`
 db.recipes.insertMany([
@@ -1115,5 +1119,20 @@ db.recipes.insertMany([
 ]);
 
 // Create text search indices
-db.ingredients.createIndex({ name: "text" });
-db.recipes.createIndex({name: "text"})
+db.ingredients.createIndex({ ngrams: "text" });
+db.recipes.createIndex({ name: "text" });
+
+/**
+ * Generate ngrams of length `n` from `text`.
+ * @param {string} text Text to generate ngrams from
+ * @param {number} n Length of ngram
+ * @returns String of ngrams
+ */
+function ngrams(text, n) {
+	let ret = "";
+	for (let i = 0; i < text.length - n + 1; i++) {
+		ret += text.slice(i, i + n);
+		ret += " ";
+	}
+	return ret;
+}
