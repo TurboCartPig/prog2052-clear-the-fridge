@@ -5,12 +5,17 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
+	"unicode"
 )
+
+const RecommendedIngredients = "tomat løk gulrot"
 
 // Creates a new HTTP Handler that returns a selection of ingredients the user might be interested in adding to their search.
 func NewIngredientsHandler() http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		res.WriteHeader(http.StatusNotImplemented)
+		data := db.SearchIngredients(RecommendedIngredients)
+		fmt.Fprint(res, data)
 	}
 }
 
@@ -25,9 +30,24 @@ func NewIngredientsSearchHandler() http.HandlerFunc {
 			http.Error(res, "Incorrect request schema", http.StatusBadRequest)
 		}
 
-		// TODO: Validate query is a valid search term
+		query = sanitizeSearchTerm(query)
 
 		data := db.SearchIngredients(query)
 		fmt.Fprint(res, data)
 	}
+}
+
+// Sanitize the search term and return a string that is safe to pass to mongo.
+// Here we simply trim any illegal symbols.
+func sanitizeSearchTerm(term string) string {
+	var res strings.Builder
+
+	// Only return runes that are unicode letters
+	for _, sym := range term {
+		if unicode.IsLetter(sym) {
+			res.WriteRune(unicode.ToLower(sym))
+		}
+	}
+
+	return res.String()
 }

@@ -4,6 +4,7 @@ import IngredientResult from "./IngredientResult";
 import { IngredientData } from "./types";
 import SearchIcon from "./res/search.svg";
 import "./tailwind.css";
+import { searchIngredients } from "./api";
 
 type SearchProps = {
 	onAdd: (ingredient: IngredientData) => void;
@@ -26,7 +27,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 	/**
 	 * Debounced lateinit function called when the search term changes.
 	 */
-	onChange = _.debounce(this.search, 300);
+	onChange = _.debounce(this.search, 150);
 
 	constructor(props: SearchProps) {
 		super(props);
@@ -90,7 +91,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 							<h6 className="my-1 px-3">Results:</h6>
 							<ul>
 								{this.state.results.slice(0, 4).map((item) => (
-									<li key={item.name}>
+									<li key={item.id}>
 										<IngredientResult
 											data={item}
 											onAdd={this.props.onAdd}
@@ -126,9 +127,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 	 */
 	setFocus(focused: boolean) {
 		// Update the state of the component by only changing the `focused` field
-		this.setState((prev, _) => {
-			return { focused: focused };
-		});
+		this.setState({ focused: focused });
 	}
 
 	/**
@@ -136,37 +135,15 @@ class Search extends React.Component<SearchProps, SearchState> {
 	 * @param term Search term
 	 */
 	async search(term: string) {
-		const backend =
-			"https://4e05fc26-03b8-451a-9ca3-369c57c52186.mock.pstmn.io";
-		// "http://localhost:3080";
-
-		// Construct the url to GET
-		let url;
-		if (term !== "") {
-			url = new URL("/api/v1/ingredients/search", backend);
-			url.searchParams.append("query", term);
-		} else {
-			url = new URL("/api/v1/ingredients", backend);
-		}
-
-		// Search with term
-		let res;
 		try {
-			res = await fetch(url.toString());
-			if (!res.ok) throw Error();
+			const results = await searchIngredients(term);
+
+			// Update results and rerender
+			this.setState({ results: results });
 		} catch {
-			// Cancel search on network error
-			console.log("Search canceled");
+			// Fail silently
 			return;
 		}
-
-		// Deserialize the returned json
-		const results = await res.json();
-
-		// Update results
-		this.setState((prev, _) => {
-			return { results: results };
-		});
 	}
 }
 

@@ -53,6 +53,7 @@ export default (env, argv) => {
 		devtool: isProduction ? undefined : "inline-source-map",
 		devServer: {
 			static: "./dist",
+			port: 4080,
 		},
 		target: ["web", "es6"],
 		optimization: {
