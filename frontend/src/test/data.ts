@@ -45,7 +45,7 @@ export const RecipeData = [
 export const IngredientData = [
 	{
 		name: "Carrot",
-		unit: Unit.pcs,
+		unit: Unit.stk,
 		imgPath: Carrot,
 	},
 	{
@@ -55,7 +55,7 @@ export const IngredientData = [
 	},
 	{
 		name: "Beef",
-		unit: Unit.g,
+		unit: Unit.gram,
 		imgPath: Beef,
 	},
 ];
