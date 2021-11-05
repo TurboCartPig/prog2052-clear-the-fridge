@@ -5,8 +5,6 @@ import (
 	"encoding/json"
 	"log"
 	"os"
-	"strconv"
-	"strings"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -91,22 +89,12 @@ func SearchIngredients(term string) string {
 	return string(data)
 }
 
-func SearchRecipes(query string) string {
+func SearchRecipes(ingredientIDs []int) string {
 	collection := client.
 		Database(database).
 		Collection(recipes)
 
-	ids := strings.Split(query, ",")
-	var ingredientIDs = []int{}
-	for _, id := range ids {
-		i, err := strconv.Atoi(id)
-		if err != nil {
-			log.Fatal(err)
-		}
-		ingredientIDs = append(ingredientIDs, i)
-	}
-
-	dbFilter := bson.D{{"ingredients.id", bson.D{{"$all",ingredientIDs}}}}
+	dbFilter := bson.D{{"ingredients.id", bson.D{{"$all", ingredientIDs}}}}
 
 	cursor, err := collection.Find(context.TODO(), dbFilter)
 

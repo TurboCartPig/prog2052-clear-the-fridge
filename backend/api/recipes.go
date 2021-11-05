@@ -27,7 +27,8 @@ func NewRecipesSearchHandler() http.HandlerFunc {
 			http.Error(res, "Incorrect request schema", http.StatusBadRequest)
 		}
 
-		recipes := db.SearchRecipes(ingredients)
+		ids := ParseIDsQuery(ingredients)
+		recipes := db.SearchRecipes(ids)
         fmt.Fprint(res, recipes)
 	}
 }
