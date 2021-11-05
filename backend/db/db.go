@@ -51,6 +51,8 @@ func DisconnectDatabase() {
 }
 
 // Search ingredients based on search term and return results as json string
+// @param term - The term that is going to be used in the search 
+// @return the results of the search 
 func SearchIngredients(term string) string {
 	collection := client.
 		Database(database).
