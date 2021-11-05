@@ -89,6 +89,9 @@ func SearchIngredients(term string) string {
 	return string(data)
 }
 
+// Queries the database for recipes that matches the slice of ingredientIDs
+// @param ingredientIDs - The slice of ingredientIDs to be searched for 
+// @return All recipes that contains all the ingredientIDs provided
 func SearchRecipes(ingredientIDs []int) string {
 	collection := client.
 		Database(database).
