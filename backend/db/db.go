@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"log"
 	"os"
+	"strconv"
+	"strings"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -78,6 +80,45 @@ func SearchIngredients(term string) string {
 	// Return empty json array if no documents, instead of null
 	if len(results) == 0 {
 		return "[]"
+	}
+
+	// Convert result into json
+	data, err := json.MarshalIndent(results, "", "  ")
+	if err != nil {
+		log.Fatal("Failed to marshal bson to json")
+	}
+
+	return string(data)
+}
+
+func SearchRecipes(query string) string {
+	collection := client.
+		Database(database).
+		Collection(recipes)
+
+	ids := strings.Split(query, ",")
+	var ingredientIDs = []int{}
+	for _, id := range ids {
+		i, err := strconv.Atoi(id)
+		if err != nil {
+			log.Fatal(err)
+		}
+		ingredientIDs = append(ingredientIDs, i)
+	}
+
+	dbFilter := bson.D{{"ingredients.id", bson.D{{"$all",ingredientIDs}}}}
+
+	cursor, err := collection.Find(context.TODO(), dbFilter)
+
+	if err != nil {
+		log.Fatal("Db error")
+	}
+
+	var results []bson.M
+	err = cursor.All(context.TODO(), &results)
+
+	if err != nil {
+		log.Fatal("Error while parsing database response", err)
 	}
 
 	// Convert result into json

@@ -388,31 +388,31 @@ db.recipes.insertMany([
 		name: "Løksuppe",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 0 }),
+				id: 0,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 2 }),
+				id: 2,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 3 }),
+				id: 3,
 				amount: 25,
 			},
 			{
-				name: db.ingredients.findOne({ id: 4 }),
+				id: 4,
 				amount: 3,
 			},
 			{
-				name: db.ingredients.findOne({ id: 6 }),
+				id: 6 ,
 				amount: 7,
 			},
 			{
-				name: db.ingredients.findOne({ id: 8 }),
+				id: 8 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 68 }),
+				id: 68 ,
 				amount: 1,
 			},
 		],
@@ -436,35 +436,35 @@ db.recipes.insertMany([
 		name: "Tomatsuppe",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 10 }),
+				id: 10 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 0 }),
+				id: 0 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 11 }),
+				id: 11 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 12 }),
+				id: 12 ,
 				amount: 3,
 			},
 			{
-				name: db.ingredients.findOne({ id: 13 }),
+				id: 13 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 7 }),
+				id: 7 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 14 }),
+				id: 14 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 15 }),
+				id: 15 ,
 				amount: 1,
 			},
 		],
@@ -501,43 +501,43 @@ db.recipes.insertMany([
 		name: "Potet-purresuppe",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 16 }),
+				id: 16 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 17 }),
+				id: 17 ,
 				amount: 250,
 			},
 			{
-				name: db.ingredients.findOne({ id: 3 }),
+				id: 3 ,
 				amount: 50,
 			},
 			{
-				name: db.ingredients.findOne({ id: 18 }),
+				id: 18 ,
 				amount: 13,
 			},
 			{
-				name: db.ingredients.findOne({ id: 19 }),
+				id: 19 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 20 }),
+				id: 20 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 21 }),
+				id: 21 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 22 }),
+				id: 22 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 23 }),
+				id: 23 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 24 }),
+				id: 24 ,
 				amount: 1,
 			},
 		],
@@ -575,43 +575,43 @@ db.recipes.insertMany([
 		name: "Spinatsuppe",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 0 }),
+				id: 0 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 2 }),
+				id: 2 ,
 				amount: 250,
 			},
 			{
-				name: db.ingredients.findOne({ id: 3 }),
+				id: 3 ,
 				amount: 50,
 			},
 			{
-				name: db.ingredients.findOne({ id: 26 }),
+				id: 26 ,
 				amount: 25,
 			},
 			{
-				name: db.ingredients.findOne({ id: 27 }),
+				id: 27 ,
 				amount: 500,
 			},
 			{
-				name: db.ingredients.findOne({ id: 6 }),
+				id: 6 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 28 }),
+				id: 28 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 19 }),
+				id: 19 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 29 }),
+				id: 29 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 24 }),
+				id: 24 ,
 				amount: 1,
 			},
 		],
@@ -647,47 +647,47 @@ db.recipes.insertMany([
 		name: "Barbecue spareribs",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 30 }),
+				id: 30 ,
 				amount: 1000,
 			},
 			{
-				name: db.ingredients.findOne({ id: 31 }),
+				id: 31 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 32 }),
+				id: 32 ,
 				amount: 6,
 			},
 			{
-				name: db.ingredients.findOne({ id: 8 }),
+				id: 8 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 33 }),
+				id: 33 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 34 }),
+				id: 34 ,
 				amount: 3,
 			},
 			{
-				name: db.ingredients.findOne({ id: 35 }),
+				id: 35 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 2 }),
+				id: 2 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 37 }),
+				id: 37 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 38 }),
+				id: 38 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 24 }),
+				id: 24 ,
 				amount: 1,
 			},
 		],
@@ -721,31 +721,31 @@ db.recipes.insertMany([
 		name: "Pølselapskaus",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 39 }),
+				id: 39 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 40 }),
+				id: 40 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 41 }),
+				id: 41 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 16 }),
+				id: 16 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 17 }),
+				id: 17 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 70 }),
+				id: 70 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 42 }),
+				id: 42 ,
 				amount: 300,
 			},
 		],
@@ -780,63 +780,63 @@ db.recipes.insertMany([
 		name: "Spaghetti Bolognese",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 43 }),
+				id: 43 ,
 				amount: 400,
 			},
 			{
-				name: db.ingredients.findOne({ id: 0 }),
+				id: 0 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 2 }),
+				id: 2 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 39 }),
+				id: 39 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 44 }),
+				id: 44 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 12 }),
+				id: 12 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 45 }),
+				id: 45 ,
 				amount: 400,
 			},
 			{
-				name: db.ingredients.findOne({ id: 11 }),
+				id: 11 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 10 }),
+				id: 10 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 21 }),
+				id: 21 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 4 }),
+				id: 4 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 18 }),
+				id: 18 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 50 }),
+				id: 50 ,
 				amount: 100,
 			},
 			{
-				name: db.ingredients.findOne({ id: 24 }),
+				id: 24 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 52 }),
+				id: 52 ,
 				amount: 1,
 			},
 		],
@@ -877,51 +877,51 @@ db.recipes.insertMany([
 		name: "Spaghetti Carbonara",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 43 }),
+				id: 43 ,
 				amount: 400,
 			},
 			{
-				name: db.ingredients.findOne({ id: 58 }),
+				id: 58 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 48 }),
+				id: 48 ,
 				amount: 100,
 			},
 			{
-				name: db.ingredients.findOne({ id: 2 }),
+				id: 2 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 49 }),
+				id: 49 ,
 				amount: 3,
 			},
 			{
-				name: db.ingredients.findOne({ id: 19 }),
+				id: 19 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 50 }),
+				id: 50 ,
 				amount: 50,
 			},
 			{
-				name: db.ingredients.findOne({ id: 12 }),
+				id: 12 ,
 				amount: 3,
 			},
 			{
-				name: db.ingredients.findOne({ id: 68 }),
+				id: 68 ,
 				amount: 5,
 			},
 			{
-				name: db.ingredients.findOne({ id: 24 }),
+				id: 24 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 14 }),
+				id: 14 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 71 }),
+				id: 71 ,
 				amount: 1,
 			},
 		],
@@ -972,27 +972,27 @@ db.recipes.insertMany([
 		name: "Capresesalat",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 9 }),
+				id: 9 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 53 }),
+				id: 53 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 15 }),
+				id: 15 ,
 				amount: 10,
 			},
 			{
-				name: db.ingredients.findOne({ id: 24 }),
+				id: 24 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 12 }),
+				id: 12 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 55 }),
+				id: 55 ,
 				amount: 2,
 			},
 		],
@@ -1017,39 +1017,39 @@ db.recipes.insertMany([
 		name: "Cæsarsalat",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 56 }),
+				id: 56 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 49 }),
+				id: 49 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 59 }),
+				id: 59 ,
 				amount: 2,
 			},
 			{
-				name: db.ingredients.findOne({ id: 57 }),
+				id: 57 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 2 }),
+				id: 2 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 33 }),
+				id: 33 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 60 }),
+				id: 60 ,
 				amount: 4,
 			},
 			{
-				name: db.ingredients.findOne({ id: 50 }),
+				id: 50 ,
 				amount: 100,
 			},
 			{
-				name: db.ingredients.findOne({ id: 61 }),
+				id: 61 ,
 				amount: 100,
 			},
 		],
@@ -1089,31 +1089,31 @@ db.recipes.insertMany([
 		name: "Salat med feta, valnøtt og pærer",
 		ingredients: [
 			{
-				name: db.ingredients.findOne({ id: 72 }),
+				id: 72 ,
 				amount: 200,
 			},
 			{
-				name: db.ingredients.findOne({ id: 63 }),
+				id: 63 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 64 }),
+				id: 64 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 65 }),
+				id: 65 ,
 				amount: 1,
 			},
 			{
-				name: db.ingredients.findOne({ id: 66 }),
+				id: 66 ,
 				amount: 50,
 			},
 			{
-				name: db.ingredients.findOne({ id: 67 }),
+				id: 67 ,
 				amount: 200,
 			},
 			{
-				name: db.ingredients.findOne({ id: 73 }),
+				id: 73 ,
 				amount: 1,
 			},
 		],

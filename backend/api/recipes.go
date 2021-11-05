@@ -1,6 +1,8 @@
 package api
 
 import (
+	"clearthefridge/db"
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -25,9 +27,7 @@ func NewRecipesSearchHandler() http.HandlerFunc {
 			http.Error(res, "Incorrect request schema", http.StatusBadRequest)
 		}
 
-		print(ingredients);
-
-		res.WriteHeader(http.StatusOK);
-		res.Write([]byte(ingredients));
+		recipes := db.SearchRecipes(ingredients)
+        fmt.Fprint(res, recipes)
 	}
 }
