@@ -78,9 +78,10 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 
 			// Convert to 'real' recipe
 			for (var recipe of res) {
+				const ing = await getIngredientsInfo(recipe.ingredients);
 				recipes.push({
 					id: recipe.id,
-					ingredients: await getIngredientsInfo(recipe.ingredients),
+					ingredients: ing,
 					instructions: recipe.instructions,
 					name: recipe.name,
 				});

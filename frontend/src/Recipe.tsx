@@ -31,6 +31,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 			modalOpen: false,
 		};
 		this.toggleModal = this.toggleModal.bind(this);
+		this.ingredientsToString = this.ingredientsToString.bind(this);
 	}
 
 	render() {
@@ -97,6 +98,10 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 
 	ingredientsToString(): string[] {
 		var ingredientsAsStrings: string[] = [];
+		for (var ing of this.props.ingredients) {
+			ingredientsAsStrings.push(ing.ingredient.name + " " + ing.amount);
+		}
+		console.log(ingredientsAsStrings);
 		return ingredientsAsStrings;
 	}
 

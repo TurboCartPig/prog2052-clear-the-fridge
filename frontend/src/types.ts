@@ -18,9 +18,14 @@ export type IngredientData = {
 
 export interface RecipeData {
 	id: number
-	ingredients: IngredientData[]
+	ingredients: IngredientWithAmount[]
 	instructions: string[]
 	name: string
+}
+
+export type IngredientWithAmount = {
+	ingredient: IngredientData;
+	amount: number;
 }
 
 export interface TempRecipeData {

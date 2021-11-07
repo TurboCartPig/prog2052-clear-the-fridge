@@ -1,5 +1,5 @@
 import { debouncedFetch } from "./debouncedFetch";
-import { IngredientData, IngredientInRecipe, TempRecipeData } from "./types";
+import { IngredientData, IngredientInRecipe, IngredientWithAmount, TempRecipeData } from "./types";
 
 // URL for the backend
 const backend =
@@ -67,7 +67,7 @@ export async function searchRecipes(ingredients: IngredientData[]): Promise<Temp
 	return results;
 }
 
-export async function getIngredientsInfo(ingredients: IngredientInRecipe[]): Promise<IngredientData[]> {
+export async function getIngredientsInfo(ingredients: IngredientInRecipe[]): Promise<IngredientWithAmount[]> {
 	let base_url = api_version + "/ingredients/search/id"
 
 	if (ingredients.length > 0) {
@@ -86,6 +86,12 @@ export async function getIngredientsInfo(ingredients: IngredientInRecipe[]): Pro
 		return Promise.reject("Recipe search cancelled")
 	}
 
-	const results = await res.json();
+	const ingredientResults = await res.json();
+	var results: IngredientWithAmount[] = []
+	for (var i = 0; i < ingredients.length; i++) {
+		results.push({
+			ingredient: ingredientResults[i],
+			amount: ingredients[i].id})
+	}
 	return results;
 }
