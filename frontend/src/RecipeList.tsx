@@ -4,7 +4,7 @@ import Recipe, { RecipeData } from "./Recipe";
 type RecipeListProps = {};
 
 type RecipeListState = {
-	recipeData: RecipeData;
+	recipeData: RecipeData[];
 };
 
 /**
@@ -13,12 +13,15 @@ type RecipeListState = {
 class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
 	constructor(props: RecipeListProps) {
 		super(props);
+		this.state = {
+			recipeData: [],
+		};
 	}
 
 	render() {
 		return (
 			<div className="grid grid-cols-2 w-10/12 lg:w-8/12">
-				{RecipeData.map((data, key) => {
+				{this.state.recipeData.map((data, key) => {
 					return (
 						<Recipe
 							key={key}
