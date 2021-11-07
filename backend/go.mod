@@ -3,12 +3,12 @@ module clearthefridge
 go 1.17
 
 require (
-	github.com/go-chi/chi/v5 v5.0.4
+	github.com/go-chi/chi/v5 v5.0.5
+	github.com/go-chi/cors v1.2.0
 	go.mongodb.org/mongo-driver v1.7.3
 )
 
 require (
-	github.com/go-chi/cors v1.2.0 // indirect
 	github.com/go-stack/stack v1.8.1 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
