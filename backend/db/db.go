@@ -127,5 +127,30 @@ func SearchRecipes(ingredientIDs []int) string {
 // @param ingredientIDs - Array of the id's to fetch
 // @return The ingredients in json format
 func SearchIngredientsByIDs(ingredientIDs []int) string {
-	return ""
+	collection := client.
+		Database(database).
+		Collection(ingredients)
+
+	dbFilter := bson.D{{"id", bson.D{{"$in", ingredientIDs}}}}
+
+	cursor, err := collection.Find(context.TODO(), dbFilter)
+
+	if err != nil {
+		log.Fatal("Db error")
+	}
+
+	var results []bson.M
+	err = cursor.All(context.TODO(), &results)
+
+	if err != nil {
+		log.Fatal("Error while parsing database response", err)
+	}
+
+	// Convert result into json
+	data, err := json.MarshalIndent(results, "", "  ")
+	if err != nil {
+		log.Fatal("Failed to marshal bson to json")
+	}
+
+	return string(data)
 }
