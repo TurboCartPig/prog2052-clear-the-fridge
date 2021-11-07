@@ -1,11 +1,20 @@
 import React from "react";
-import Recipe from "./Recipe";
-import { RecipeData } from "./test/data";
+import Recipe, { RecipeData } from "./Recipe";
+
+type RecipeListProps = {};
+
+type RecipeListState = {
+	recipeData: RecipeData;
+};
 
 /**
  * Recipe list component for viewing a list of recipes.
  */
-class RecipeList extends React.Component {
+class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
+	constructor(props: RecipeListProps) {
+		super(props);
+	}
+
 	render() {
 		return (
 			<div className="grid grid-cols-2 w-10/12 lg:w-8/12">

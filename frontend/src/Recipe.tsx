@@ -5,7 +5,7 @@ import "./tailwind.css";
 /**
  * The properties of the Recipe component
  */
-type RecipeProps = {
+export type RecipeData = {
 	name: string;
 	imgPath: string;
 	ingredients: string[];
@@ -22,8 +22,8 @@ type RecipeState = {
 /**
  * Recipe component for view a recipe as a modal window.
  */
-class Recipe extends React.Component<RecipeProps, RecipeState> {
-	constructor(props: RecipeProps) {
+class Recipe extends React.Component<RecipeData, RecipeState> {
+	constructor(props: RecipeData) {
 		super(props);
 		this.state = {
 			modalOpen: false,

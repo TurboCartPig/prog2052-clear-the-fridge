@@ -11,7 +11,7 @@ import { Unit } from "../types";
 /**
  * Recipes
  */
-export const RecipeData = [
+export const OldRecipeData = [
 	{
 		name: "Recipe name 1",
 		imgPath: Image,
@@ -42,7 +42,7 @@ export const RecipeData = [
  * Ingredients
  */
 
-export const IngredientData = [
+export const OldIngredientData = [
 	{
 		name: "Carrot",
 		unit: Unit.stk,
