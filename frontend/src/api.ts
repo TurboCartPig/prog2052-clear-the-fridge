@@ -54,7 +54,6 @@ export async function searchRecipes(ingredients: IngredientData[]): Promise<Temp
 			ingredientIDs.push(ingredient.id);
 	    }
 		base_url += "?ingredients=" + ingredientIDs.toString();
-	    console.log(base_url);
 	}
 	let url = new URL(base_url,backend);
 	let res;
@@ -69,6 +68,25 @@ export async function searchRecipes(ingredients: IngredientData[]): Promise<Temp
 	return results;
 }
 
-export async function getIngredientsInfo(ingredients: IngredientInRecipe[]) {
-	
+export async function getIngredientsInfo(ingredients: IngredientInRecipe[]): Promise<IngredientData[]> {
+	let base_url = api_version + "/ingredients/search/id"
+
+	if (ingredients.length > 0) {
+		let ingredientIDs: number[] = [];
+		for (var ingredient of ingredients) {
+			ingredientIDs.push(ingredient.id);
+	    }
+		base_url += "?values=" + ingredientIDs.toString();
+	}
+	let url = new URL(base_url,backend);
+	let res;
+	try {
+		res = await debouncedFetch(url);
+		if (!res.ok) throw Error()
+	} catch {
+		return Promise.reject("Recipe search cancelled")
+	}
+
+	const results = await res.json();
+	return results;
 }
