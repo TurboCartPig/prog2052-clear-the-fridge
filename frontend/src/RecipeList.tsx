@@ -1,11 +1,11 @@
 import React from "react";
 import Recipe, { RecipeData } from "./Recipe";
 
-type RecipeListProps = {};
-
-type RecipeListState = {
+type RecipeListProps = {
 	recipeData: RecipeData[];
 };
+
+type RecipeListState = {};
 
 /**
  * Recipe list component for viewing a list of recipes.
@@ -13,15 +13,12 @@ type RecipeListState = {
 class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
 	constructor(props: RecipeListProps) {
 		super(props);
-		this.state = {
-			recipeData: [],
-		};
 	}
 
 	render() {
 		return (
 			<div className="grid grid-cols-2 w-10/12 lg:w-8/12">
-				{this.state.recipeData.map((data, key) => {
+				{this.props.recipeData.map((data, key) => {
 					return (
 						<Recipe
 							key={key}
