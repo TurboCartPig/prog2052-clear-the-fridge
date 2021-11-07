@@ -1,5 +1,6 @@
 import React from "react";
-import Recipe, { RecipeData } from "./Recipe";
+import Recipe from "./Recipe";
+import { RecipeData } from "./types";
 
 type RecipeListProps = {
 	recipeData: RecipeData[];
@@ -22,8 +23,8 @@ class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
 					return (
 						<Recipe
 							key={key}
+							id={data.id}
 							name={data.name}
-							imgPath={data.imgPath}
 							ingredients={data.ingredients}
 							instructions={data.instructions}
 						/>

@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./tailwind.css";
 import { RecipeData } from "./types";
-import Image from "../res/img_01.png";
-import { getIngredientsByIDs } from "./api";
+import Image from "../src/res/img_01.png";
+
 /*
  *  The properties of the Recipe component
  *
@@ -83,7 +83,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 				</div>
 				<div className="grid">
 					<h3 className="mb-5 font-semibold text-lg">Ingredients:</h3>
-					{this.print(this.props.ingredients)}
+					{this.print(this.ingredientsToString())}
 				</div>
 				<div className="grid">
 					<h3 className="mb-5 font-semibold text-lg">
@@ -95,13 +95,9 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 		);
 	}
 
-	async getIngredientsAsStrings(): Promise<string[]> {
-		try {
-			const res = await getIngredientsByIDs(this.props.ingredients);
-			return [];
-		} catch {
-			return [];
-		}
+	ingredientsToString(): string[] {
+		var ingredientsAsStrings: string[] = [];
+		return ingredientsAsStrings;
 	}
 
 	/**

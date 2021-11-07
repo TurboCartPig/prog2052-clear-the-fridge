@@ -1,5 +1,4 @@
 import { debouncedFetch } from "./debouncedFetch";
-import { RecipeData } from "./Recipe";
 import { IngredientData, IngredientInRecipe, TempRecipeData } from "./types";
 
 // URL for the backend

@@ -6,7 +6,7 @@ import RecipeList from "./RecipeList";
 import IngredientList from "./IngredientList";
 import { IngredientData, RecipeData } from "./types";
 import "./tailwind.css";
-import { getIngredientsByIDs, searchRecipes } from "./api";
+import { getIngredientsInfo, searchRecipes } from "./api";
 import _ from "lodash";
 
 type LandingPageProps = {};
@@ -86,7 +86,6 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 				});
 			}
 
-			// convert to 'real' recipe
 			this.setState({ recipes: recipes }, () => {
 				console.log(this.state.recipes);
 			});
