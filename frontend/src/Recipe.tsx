@@ -76,7 +76,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 					</h1>
 					<img
 						className="float-right rounded-lg mb-5"
-						src={this.props.imgPath}
+						src={Image}
 						alt=""
 					/>
 				</div>

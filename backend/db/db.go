@@ -122,3 +122,10 @@ func SearchRecipes(ingredientIDs []int) string {
 
 	return string(data)
 }
+
+// Fetches all ingredients that matches the provided id
+// @param ingredientIDs - Array of the id's to fetch
+// @return The ingredients in json format
+func SearchIngredientsByIDs(ingredientIDs []int) string {
+	return ""
+}

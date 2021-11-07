@@ -31,6 +31,7 @@ func serve() {
 		r.Get("/diag", api.NewDiagHandler())
 		r.Get("/ingredients", api.NewIngredientsHandler())
 		r.Get("/ingredients/search", api.NewIngredientsSearchHandler())
+		r.Get("/ingredients/search/id", api.NewIngredientSearchByIDs())
 		r.Get("/recipes", api.NewRecipesHandler())
 		r.Get("/recipes/search", api.NewRecipesSearchHandler())
 	})

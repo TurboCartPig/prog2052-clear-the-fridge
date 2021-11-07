@@ -68,3 +68,7 @@ export async function searchRecipes(ingredients: IngredientData[]): Promise<Reci
 	const results = await res.json();
 	return results;
 }
+
+export async function getIngredientsByID(ingredientIDs: number[]) {
+	// Implement functionality for fetching ingredients by id 
+}
