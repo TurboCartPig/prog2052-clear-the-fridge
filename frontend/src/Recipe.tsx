@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./tailwind.css";
 import { RecipeData } from "./types";
 import Image from "../res/img_01.png";
+import { getIngredientsByIDs } from "./api";
 /*
  *  The properties of the Recipe component
  *
@@ -59,7 +60,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 	 * Function to get the content of the modal window
 	 * @returns createModal()
 	 */
-	modalContent() {
+	async modalContent() {
 		return this.createModal(
 			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen overflow-scroll">
 				<div>
@@ -92,6 +93,15 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 				</div>
 			</div>
 		);
+	}
+
+	async getIngredientsAsStrings(): Promise<string[]> {
+		try {
+			const res = await getIngredientsByIDs(this.props.ingredients);
+			return [];
+		} catch {
+			return [];
+		}
 	}
 
 	/**

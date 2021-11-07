@@ -17,10 +17,17 @@ export type IngredientData = {
 };
 
 export interface RecipeData {
+	id: number
+	ingredients: IngredientData[]
+	instructions: string[]
+	name: string
+}
+
+export interface TempRecipeData {
   _id: string
   id: number
   ingredients: IngredientInRecipe[]
-  instructions: Instruction[]
+  instructions: string[]
   name: string
 }
 
@@ -28,11 +35,6 @@ export interface IngredientInRecipe {
   amount: number
   id: number
 }
-
-export interface Instruction {
-  instruction: string
-}
-
 
 /**
  * Unit of measurement for ingredients

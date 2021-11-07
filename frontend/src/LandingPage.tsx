@@ -6,7 +6,7 @@ import RecipeList from "./RecipeList";
 import IngredientList from "./IngredientList";
 import { IngredientData, RecipeData } from "./types";
 import "./tailwind.css";
-import { searchRecipes } from "./api";
+import { getIngredientsByIDs, searchRecipes } from "./api";
 import _ from "lodash";
 
 type LandingPageProps = {};
@@ -61,7 +61,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 * @param ingredient Ingredient to add
 	 */
 	addIngredient(ingredient: IngredientData) {
-		console.log(ingredient);
+		/* console.log(ingredient); */
 		this.setState(
 			(prev, _) => {
 				return { ingredients: [...prev.ingredients, ingredient] };
@@ -73,8 +73,21 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	async recipeSearch() {
 		try {
 			const res = await searchRecipes(this.state.ingredients);
-			console.log(res);
-			this.setState({ recipes: res }, () => {
+
+			var recipes: RecipeData[] = [];
+
+			// Convert to 'real' recipe
+			for (var recipe of res) {
+				recipes.push({
+					id: recipe.id,
+					ingredients: await getIngredientsInfo(recipe.ingredients),
+					instructions: recipe.instructions,
+					name: recipe.name,
+				});
+			}
+
+			// convert to 'real' recipe
+			this.setState({ recipes: recipes }, () => {
 				console.log(this.state.recipes);
 			});
 		} catch {
