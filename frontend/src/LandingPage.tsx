@@ -4,9 +4,8 @@ import Navigation from "./Navigation";
 import Logo from "./res/logo.svg";
 import RecipeList from "./RecipeList";
 import IngredientList from "./IngredientList";
-import { IngredientData } from "./types";
+import { IngredientData, RecipeData } from "./types";
 import "./tailwind.css";
-import { RecipeData } from "./Recipe";
 import { searchRecipes } from "./api";
 import _ from "lodash";
 

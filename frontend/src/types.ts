@@ -16,6 +16,24 @@ export type IngredientData = {
 	img: string;
 };
 
+export interface RecipeData {
+  _id: string
+  id: number
+  ingredients: IngredientData[]
+  instructions: InstructionData[]
+  name: string
+}
+
+export interface IngredientData {
+  amount: number
+  id: number
+}
+
+export interface InstructionData {
+  instruction: string
+}
+
+
 /**
  * Unit of measurement for ingredients
  */
