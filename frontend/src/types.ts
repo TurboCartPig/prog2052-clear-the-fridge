@@ -19,17 +19,17 @@ export type IngredientData = {
 export interface RecipeData {
   _id: string
   id: number
-  ingredients: IngredientData[]
-  instructions: InstructionData[]
+  ingredients: IngredientInRecipe[]
+  instructions: Instruction[]
   name: string
 }
 
-export interface IngredientData {
+export interface IngredientInRecipe {
   amount: number
   id: number
 }
 
-export interface InstructionData {
+export interface Instruction {
   instruction: string
 }
 

@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./tailwind.css";
-
-/**
- * The properties of the Recipe component
- */
-export type RecipeData = {
-	name: string;
-	imgPath: string;
-	ingredients: string[];
-	instructions: string[];
-};
+import { RecipeData } from "./types";
+import Image from "../res/img_01.png";
+/*
+ *  The properties of the Recipe component
+ *
+ * export type RecipeData = {
+ * 	name: string;
+ * 	imgPath: string;
+ * 	ingredients: string[];
+ * 	instructions: string[];
+ * }; */
 
 /**
  * The state of the Recipe component
@@ -38,11 +39,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 					className="modal w-full rounded-lg m-0"
 					onClick={this.toggleModal}
 				>
-					<img
-						className="rounded-lg"
-						src={this.props.imgPath}
-						alt=""
-					/>
+					<img className="rounded-lg" src={Image} alt="" />
 				</button>
 				{this.state.modalOpen && this.modalContent()}
 			</div>

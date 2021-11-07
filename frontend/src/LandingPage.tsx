@@ -74,7 +74,9 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 		try {
 			const res = await searchRecipes(this.state.ingredients);
 			console.log(res);
-			this.setState({ recipes: res });
+			this.setState({ recipes: res }, () => {
+				console.log(this.state.recipes);
+			});
 		} catch {
 			return;
 		}
