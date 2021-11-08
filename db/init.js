@@ -417,18 +417,10 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction: "Løk, hvitløk, timian og bacon freses i smøret.",
-			},
-			{
-				instruction: "Ha på hvitvin, kyllingbuljong og soyasaus.",
-			},
-			{
-				instruction: "Kok opp, la putre i 20-30 minutter",
-			},
-			{
-				instruction: "Smak til med nykvernet svart pepper før servering.",
-			},
+			"Løk, hvitløk, timian og bacon freses i smøret.",
+			"Ha på hvitvin, kyllingbuljong og soyasaus.",
+			"Kok opp, la putre i 20-30 minutter",
+			"Smak til med nykvernet svart pepper før servering.",
 		],
 	},
 	{
@@ -469,31 +461,13 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction:
-					"Begynn med å sette over vann til egg og/eller makaroni hvis du ønsker det som tilbehør, disse koker mens du gjør suppa ferdig.",
-			},
-			{
-				instruction: "Fres løk og hvitløk i oljen.",
-			},
-			{
-				instruction: "Tilsett tomatpuréen og la den frese et knapt minutt",
-			},
-			{
-				instruction: "Ha i vann og kyllingbuljongterningen, kok opp.",
-			},
-			{
-				instruction:
-					"Samtidig kjører du tomatene fra boksene med en stavmikser eller i en blender til en ganske fin puré.",
-			},
-			{
-				instruction:
-					"Ha tomatene over i kjelen og kok opp, la det hele småputre i 5 minutter.",
-			},
-			{
-				instruction:
-					"Smak til med salt, pepper og ha finhakkede urter før servering, hvis dette er tilgjengelig.",
-			},
+			"Begynn med å sette over vann til egg og/eller makaroni hvis du ønsker det som tilbehør, disse koker mens du gjør suppa ferdig.",
+			"Fres løk og hvitløk i oljen.",
+			"Tilsett tomatpuréen og la den frese et knapt minutt",
+			"Ha i vann og kyllingbuljongterningen, kok opp.",
+			"Samtidig kjører du tomatene fra boksene med en stavmikser eller i en blender til en ganske fin puré.",
+			"Ha tomatene over i kjelen og kok opp, la det hele småputre i 5 minutter.",
+			"Smak til med salt, pepper og ha finhakkede urter før servering, hvis dette er tilgjengelig.",
 		],
 	},
 	{
@@ -542,32 +516,14 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction:
-					"Hakk opp det hvite av purren, det grønne snittes fint og spares til senere.",
-			},
-			{
-				instruction: "Fres det hvite fra purren en stund i smøret.",
-			},
-			{
-				instruction: "Tilsett poteter, timian og laurbær.",
-			},
-			{
-				instruction:
-					"Hell over kaldt vann, kok opp og skum av, kok videre til alt er helt mørt, tar vanligvis mellom 30 og 40 minutter.",
-			},
-			{
-				instruction: "Tilsett fløten og kok opp.",
-			},
-			{
-				instruction: "Fjern krydderene og kjør alt glatt i en mikser.",
-			},
-			{
-				instruction: "Lag en sellerisalat, hvis det er ønsker.",
-			},
-			{
-				instruction: "Smak til med litt tabasco og litt salt.",
-			},
+			"Hakk opp det hvite av purren, det grønne snittes fint og spares til senere.",
+			"Fres det hvite fra purren en stund i smøret.",
+			"Tilsett poteter, timian og laurbær.",
+			"Hell over kaldt vann, kok opp og skum av, kok videre til alt er helt mørt, tar vanligvis mellom 30 og 40 minutter.",
+			"Tilsett fløten og kok opp.",
+			"Fjern krydderene og kjør alt glatt i en mikser.",
+			"Lag en sellerisalat, hvis det er ønsker.",
+			"Smak til med litt tabasco og litt salt.",
 		],
 	},
 	{
@@ -616,30 +572,14 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction: "Del muskattnøtten i 2, bruker kun halve.",
-			},
-			{
-				instruction: "Fres løk og hvitløk i smøret, ha i spinaten.",
-			},
-			{
-				instruction: "Når spinaten faller sammen, løfter du den ut.",
-			},
-			{
-				instruction: "Dryss melet i kjelen, spe med kraft og fløte.",
-			},
-			{
-				instruction: "Kok opp og la småkoke i 10 minutter.",
-			},
-			{
-				instruction: "Kjør spinaten til en fin puré sammen med litt av suppa.",
-			},
-			{
-				instruction: "Ha den tilbake i kjelen.",
-			},
-			{
-				instruction: "Kok opp og smak til.",
-			},
+				 "Del muskattnøtten i 2, bruker kun halve.",
+				 "Fres løk og hvitløk i smøret, ha i spinaten.",
+				 "Når spinaten faller sammen, løfter du den ut.",
+				 "Dryss melet i kjelen, spe med kraft og fløte.",
+				 "Kok opp og la småkoke i 10 minutter.",
+				 "Kjør spinaten til en fin puré sammen med litt av suppa.",
+				 "Ha den tilbake i kjelen.",
+				 "Kok opp og smak til.",
 		],
 	},
 	{
@@ -692,28 +632,13 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction: "Ribbebeina kokes i en time i bare vann til de er møre.",
-			},
-			{
-				instruction: "Ta ut og avkjøl.",
-			},
-			{
-				instruction: "Rør sammen resten av ingrediensene og legg de kokte beina i.",
-			},
-			{
-				instruction: "La marinere natten over.",
-			},
-			{
-				instruction: "Spre de marinerte beina på stekebrettet.",
-			},
-			{
-				instruction: "Stek på 200 grader i ca 30 til 40 minutter.",
-			},
-			{
-				instruction:
-					"Bruk en pensel eller skje og pensle marinaden over flere ganger underveis til beina blir glasert.",
-			},
+			"Ribbebeina kokes i en time i bare vann til de er møre.",
+			"Ta ut og avkjøl.",
+			"Rør sammen resten av ingrediensene og legg de kokte beina i.",
+			"La marinere natten over.",
+			"Spre de marinerte beina på stekebrettet.",
+			"Stek på 200 grader i ca 30 til 40 minutter.",
+			"Bruk en pensel eller skje og pensle marinaden over flere ganger underveis til beina blir glasert.",
 		],
 	},
 	{
@@ -750,29 +675,13 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction:
-					"Del opp kålroten i 4, vi skal bare bruke 1/4. Pølsen kan være for eksempel vossakorv eller kjøttpølse.",
-			},
-			{
-				instruction: "Alle grønnsaker skrelles og kuttes i terninger.",
-			},
-			{
-				instruction: "Ha gulrot og kålrot i en kjele og dekk med vann.",
-			},
-			{
-				instruction:
-					"Kok i 20 minutter, ha så poteter, purre, persillerot og buljong. Kok videre.",
-			},
-			{
-				instruction: "Mot slutten, når alt er mørt, har du i pølsene.",
-			},
-			{
-				instruction: "Smakes til med salt og pepper.",
-			},
-			{
-				instruction: "Server med flatbrød og smør.",
-			},
+			"Del opp kålroten i 4, vi skal bare bruke 1/4. Pølsen kan være for eksempel vossakorv eller kjøttpølse.",
+			"Alle grønnsaker skrelles og kuttes i terninger.",
+			"Ha gulrot og kålrot i en kjele og dekk med vann.",
+			"Kok i 20 minutter, ha så poteter, purre, persillerot og buljong. Kok videre.",
+			"Mot slutten, når alt er mørt, har du i pølsene.",
+			"Smakes til med salt og pepper.",
+			"Server med flatbrød og smør.",
 		],
 	},
 	{
@@ -841,35 +750,15 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction: "Varm opp olje i en gryte og stek kjøttet brunt.",
-			},
-			{
-				instruction:
-					"Knus og del opp kjøttet med en tresleiv, eller liknende, så det deler seg i små biter.",
-			},
-			{
-				instruction: "Tilsett løk og de andre grønnsakene og fres det blankt/gyllent.",
-			},
-			{
-				instruction: "Tilsett tomatpuréen og la den frese litt med.",
-			},
-			{
-				instruction: "Slå over tomat, hvitvin og kraft, kok opp.",
-			},
-			{
-				instruction:
-					"Ha i laurbærblad og kok inntil en hod tjukk konsistens, ca en halvtime. Kan fint gjøres lenger etter ønske.",
-			},
-			{
-				instruction: "Smak til med salt, pepper og gjerne timian/basilikum.",
-			},
-			{
-				instruction: "Spaghettien kokes som pakken sier. Serveres med kjøttsausen.",
-			},
-			{
-				instruction: "Riv sjenerøst med parmesan over, litt olivenolje og godt med pepper.",
-			},
+			"Varm opp olje i en gryte og stek kjøttet brunt.",
+			"Knus og del opp kjøttet med en tresleiv, eller liknende, så det deler seg i små biter.",
+			"Tilsett løk og de andre grønnsakene og fres det blankt/gyllent.",
+			"Tilsett tomatpuréen og la den frese litt med.",
+			"Slå over tomat, hvitvin og kraft, kok opp.",
+			"Ha i laurbærblad og kok inntil en hod tjukk konsistens, ca en halvtime. Kan fint gjøres lenger etter ønske.",
+			"Smak til med salt, pepper og gjerne timian/basilikum.",
+			"Spaghettien kokes som pakken sier. Serveres med kjøttsausen.",
+			"Riv sjenerøst med parmesan over, litt olivenolje og godt med pepper.",
 		],
 	},
 	{
@@ -926,45 +815,17 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction: "Sett over vann til pasta med salt.",
-			},
-			{
-				instruction:
-					"Strimler med bacon stekes på middels temperatur i sitt eget fett til de er sprø og gylne.",
-			},
-			{
-				instruction:
-					"Helt på slutten av steketid tilsetter du et par knuste hvitløksfedd som skal smaksette fettet og kjøttet.",
-			},
-			{
-				instruction: "Sett til side.",
-			},
-			{
-				instruction: "Slå egg i en bolle, pisk inn fløten og bland i revet ost.",
-			},
-			{
-				instruction:
-					"Bland sammen og ha i oljen, masse pepper og eventuelt finhakkede urter, som timian og persille.",
-			},
-			{
-				instruction:
-					"Når pastaen er kokt, siler du den i et dørslag og har den i en stor, kald panne.",
-			},
-			{
-				instruction: "Hell litt olje over.",
-			},
-			{
-				instruction: "Vent et minutt, løft litt på pastaen innimellom.",
-			},
-			{
-				instruction:
-					"Hell over eggeblandingen og baconet, la det renne gjennom pastaen før du løfter og blander den inn.",
-			},
-			{
-				instruction:
-					"Server umiddelbart med ekstra svart pepper, parmesan og litt olje til dem som trenger det.",
-			},
+			"Sett over vann til pasta med salt.",
+			"Strimler med bacon stekes på middels temperatur i sitt eget fett til de er sprø og gylne.",
+			"Helt på slutten av steketid tilsetter du et par knuste hvitløksfedd som skal smaksette fettet og kjøttet.",
+			"Sett til side.",
+			"Slå egg i en bolle, pisk inn fløten og bland i revet ost.",
+			"Bland sammen og ha i oljen, masse pepper og eventuelt finhakkede urter, som timian og persille.",
+			"Når pastaen er kokt, siler du den i et dørslag og har den i en stor, kald panne.",
+			"Hell litt olje over.",
+			"Vent et minutt, løft litt på pastaen innimellom.",
+			"Hell over eggeblandingen og baconet, la det renne gjennom pastaen før du løfter og blander den inn.",
+			"Server umiddelbart med ekstra svart pepper, parmesan og litt olje til dem som trenger det.",
 		],
 	},
 	{
@@ -997,19 +858,10 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction:
-					"Skjær mozzarella i skiver og anrett tomat og mozzarella i taksteinsmønster på et fat.",
-			},
-			{
-				instruction: "Riv eller grovhakk basilikum og ha på.",
-			},
-			{
-				instruction: "Dryss over salt og olivenolje.",
-			},
-			{
-				instruction: "Ha eventuelt på noen dråper balsamico eller annen syre.",
-			},
+			"Skjær mozzarella i skiver og anrett tomat og mozzarella i taksteinsmønster på et fat.",
+			"Riv eller grovhakk basilikum og ha på.",
+			"Dryss over salt og olivenolje.",
+			"Ha eventuelt på noen dråper balsamico eller annen syre.",
 		],
 	},
 	{
@@ -1054,34 +906,14 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction:
-					"Fjern eventulle stygge blader på salaten, vask resten godt og tørk i en salatslynge eller på et håndle.",
-			},
-			{
-				instruction: "Visp sammen eggeplommene, sitrosaften, worcestersaus og hvitløk.",
-			},
-			{
-				instruction:
-					"Ha i ansjosen og halvparten av parmesanen, og spe med olje i en tynn stråle under pisking.",
-			},
-			{
-				instruction:
-					"Det er smart om ingrediensene i majonesen har lik temperatur, ellers kan den skille seg.",
-			},
-			{
-				instruction: "Smakes til med salt og pepper.",
-			},
-			{
-				instruction: "Hvis dressingen blir for tjukk, kan du spe med litt vann.",
-			},
-			{
-				instruction: "Brødet kuttes i terninger eller staver som stekes sprø i litt smør.",
-			},
-			{
-				instruction:
-					"Vend salaten i dressing, server i dype boller, legg krutongene over og dryss parmesan på toppen.",
-			},
+			"Fjern eventulle stygge blader på salaten, vask resten godt og tørk i en salatslynge eller på et håndle.",
+			"Visp sammen eggeplommene, sitrosaften, worcestersaus og hvitløk.",
+			"Ha i ansjosen og halvparten av parmesanen, og spe med olje i en tynn stråle under pisking.",
+			"Det er smart om ingrediensene i majonesen har lik temperatur, ellers kan den skille seg.",
+			"Smakes til med salt og pepper.",
+			"Hvis dressingen blir for tjukk, kan du spe med litt vann.",
+			"Brødet kuttes i terninger eller staver som stekes sprø i litt smør.",
+			"Vend salaten i dressing, server i dype boller, legg krutongene over og dryss parmesan på toppen.",
 		],
 	},
 	{
@@ -1118,19 +950,10 @@ db.recipes.insertMany([
 			},
 		],
 		instructions: [
-			{
-				instruction: "Epler og pærer skrelles og skjæres i tynne strimler.",
-			},
-			{
-				instruction: "Anrett blandet salat med endive i skåler.",
-			},
-			{
-				instruction:
-					"Fordel eple og pære, legg over valnøtter og fetaost som er smuldret opp.",
-			},
-			{
-				instruction: "Lag dressing og hell over.",
-			},
+			"Epler og pærer skrelles og skjæres i tynne strimler.",
+			"Anrett blandet salat med endive i skåler.",
+			"Fordel eple og pære, legg over valnøtter og fetaost som er smuldret opp.",
+			"Lag dressing og hell over.",
 		],
 	},
 ]);
