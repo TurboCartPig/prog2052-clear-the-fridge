@@ -70,6 +70,7 @@ export default (env, argv) => {
 			},
 		},
 		plugins: plugins,
+		mode: 'development',
 		module: {
 			rules: [
 				{

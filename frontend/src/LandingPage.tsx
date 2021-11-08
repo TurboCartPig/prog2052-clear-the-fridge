@@ -17,8 +17,6 @@ type LandingPageState = {
 };
 
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
-	onChange = _.debounce(this.recipeSearch, 150);
-
 	constructor(props: LandingPageProps) {
 		super(props);
 
@@ -76,7 +74,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 
 			var recipes: RecipeData[] = [];
 
-			// Convert to 'real' recipe
+			//Convert to 'real' recipe
 			for (var recipe of res) {
 				const ing = await getIngredientsInfo(recipe.ingredients);
 				recipes.push({

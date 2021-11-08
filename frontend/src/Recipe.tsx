@@ -61,7 +61,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 	 * Function to get the content of the modal window
 	 * @returns createModal()
 	 */
-	async modalContent() {
+	modalContent() {
 		return this.createModal(
 			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen overflow-scroll">
 				<div>
@@ -101,7 +101,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 		for (var ing of this.props.ingredients) {
 			ingredientsAsStrings.push(ing.ingredient.name + " " + ing.amount);
 		}
-		console.log(ingredientsAsStrings);
+		console.log("Ingredienser: " + ingredientsAsStrings);
 		return ingredientsAsStrings;
 	}
 
