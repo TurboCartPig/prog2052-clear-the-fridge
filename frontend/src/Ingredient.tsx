@@ -69,14 +69,14 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 
 	ingredientStyling() {
 		return (
-			"grid grid-cols-10 justify-items-center items-center bg-ingredient-bar w-full h-12 text-sm " +
-			(this.state.isOpen ? "rounded-t-lg" : "rounded-lg")
+			"grid grid-cols-10 justify-items-center items-center bg-ingredient-bar w-full h-12 text-sm border " +
+			(this.state.isOpen ? "rounded-t-lg border-b-0" : "rounded-lg")
 		);
 	}
 
 	modifyIngredient() {
 		return (
-			<div className="grid grid-cols-10 bg-ingredient-bar h-12 w-full rounded-b-lg text-xs">
+			<div className="grid grid-cols-10 bg-ingredient-bar border border-t-0 h-12 w-full rounded-b-lg text-xs">
 				<button
 					className="bg-gray-300 col-span-4 m-2"
 					onClick={() => {
