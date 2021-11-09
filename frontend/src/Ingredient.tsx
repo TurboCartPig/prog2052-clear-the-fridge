@@ -40,12 +40,12 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						src={this.props.imgPath}
 					></img>
 
-					<div className="col-start-2 col-span-2">
+					<div className="col-start-2 col-span-2 justify-self-start">
 						{this.props.name}
 					</div>
 
 					{!this.state.isOpen && (
-						<div className="col-start-8 col-span-2">
+						<div className="col-start-8 col-span-2 justify-self-end">
 							{this.currentAmount()}
 						</div>
 					)}
