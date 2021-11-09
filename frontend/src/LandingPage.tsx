@@ -85,7 +85,9 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 				});
 			}
 
-			this.setState({ recipes: recipes });
+			this.setState({ recipes: recipes }, () =>
+				console.log(this.state.ingredients)
+			);
 		} catch {
 			return;
 		}
