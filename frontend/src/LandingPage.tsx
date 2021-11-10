@@ -31,9 +31,11 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 
 	render() {
 		return (
-			<div className="grid justify-center bg-clearthefridge">
-				<Navigation />
-				<div className="mx-auto my-auto">
+			<div className="grid grid-cols-8 justify-center bg-clearthefridge">
+				<div className="col-start-2 col-end-8">
+					<Navigation />
+				</div>
+				<div className="col-start-2 col-end-8 mx-auto my-auto">
 					<img
 						className="m-12"
 						width="100px"
@@ -41,12 +43,14 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 						src={Logo}
 					/>
 				</div>
-				<Search onAdd={this.addIngredient} />
-				<div className="grid justify-items-center divide-solid divide-gray-100 divide-y-2">
+				<div className="col-start-2 col-end-8">
+					<Search onAdd={this.addIngredient} />
+				</div>
+				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Ingredients</h2>
 					<IngredientList ingredients={this.state.ingredients} />
 				</div>
-				<div className="grid justify-items-center divide-solid divide-gray-100 divide-y-2">
+				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Results</h2>
 					<RecipeList recipeData={this.state.recipes} />
 				</div>
