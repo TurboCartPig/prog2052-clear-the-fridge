@@ -1,20 +1,30 @@
 import React from "react";
 import Recipe from "./Recipe";
-import { RecipeData } from "./test/data";
+import { RecipeData } from "./types";
+
+type RecipeListProps = {
+	recipeData: RecipeData[];
+};
+
+type RecipeListState = {};
 
 /**
  * Recipe list component for viewing a list of recipes.
  */
-class RecipeList extends React.Component {
+class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
+	constructor(props: RecipeListProps) {
+		super(props);
+	}
+
 	render() {
 		return (
 			<div className="grid grid-cols-2 w-10/12 lg:w-8/12">
-				{RecipeData.map((data, key) => {
+				{this.props.recipeData.map((data, key) => {
 					return (
 						<Recipe
 							key={key}
+							id={data.id}
 							name={data.name}
-							imgPath={data.imgPath}
 							ingredients={data.ingredients}
 							instructions={data.instructions}
 						/>

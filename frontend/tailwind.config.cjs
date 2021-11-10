@@ -14,7 +14,7 @@ module.exports = {
 			colors: {
 				clearthefridge: "#FCFFFB",
 				"search-bar": "#E7F1E1",
-				"ingredient-bar": "#E8CECE",
+				"ingredient-bar": "#FCFFFB",
 			},
 		},
 	},

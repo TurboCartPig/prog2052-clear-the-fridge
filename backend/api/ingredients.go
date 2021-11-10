@@ -37,6 +37,22 @@ func NewIngredientsSearchHandler() http.HandlerFunc {
 	}
 }
 
+// Creates a new HTTP handler that fetches id's based on a list of ids 
+func NewIngredientSearchByIDs() http.HandlerFunc {
+	return func (res http.ResponseWriter, req *http.Request) {
+		ingredientIDs := req.URL.Query().Get("values")
+
+		if ingredientIDs == "" {
+			log.Println("Ingredient search with no provided id's")
+			http.Error(res, "Incorrect query parameters", http.StatusBadRequest)
+		}
+
+		ids := ParseIDsQuery(ingredientIDs)
+		data := db.SearchIngredientsByIDs(ids)
+		fmt.Fprint(res, data)
+	}
+}
+
 // Sanitize the search term and return a string that is safe to pass to mongo.
 // Here we simply trim any illegal symbols.
 func sanitizeSearchTerm(term string) string {

@@ -1,16 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./tailwind.css";
+import { RecipeData } from "./types";
+import Image from "../src/res/img_01.png";
 
-/**
- * The properties of the Recipe component
- */
-type RecipeProps = {
-	name: string;
-	imgPath: string;
-	ingredients: string[];
-	instructions: string[];
-};
+/*
+ *  The properties of the Recipe component
+ *
+ * export type RecipeData = {
+ * 	name: string;
+ * 	imgPath: string;
+ * 	ingredients: string[];
+ * 	instructions: string[];
+ * }; */
 
 /**
  * The state of the Recipe component
@@ -22,13 +24,14 @@ type RecipeState = {
 /**
  * Recipe component for view a recipe as a modal window.
  */
-class Recipe extends React.Component<RecipeProps, RecipeState> {
-	constructor(props: RecipeProps) {
+class Recipe extends React.Component<RecipeData, RecipeState> {
+	constructor(props: RecipeData) {
 		super(props);
 		this.state = {
 			modalOpen: false,
 		};
 		this.toggleModal = this.toggleModal.bind(this);
+		this.ingredientsToString = this.ingredientsToString.bind(this);
 	}
 
 	render() {
@@ -38,11 +41,7 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 					className="modal w-full rounded-lg m-0"
 					onClick={this.toggleModal}
 				>
-					<img
-						className="rounded-lg"
-						src={this.props.imgPath}
-						alt=""
-					/>
+					<img className="rounded-lg" src={Image} alt="" />
 				</button>
 				{this.state.modalOpen && this.modalContent()}
 			</div>
@@ -79,13 +78,13 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 					</h1>
 					<img
 						className="float-right rounded-lg mb-5"
-						src={this.props.imgPath}
+						src={Image}
 						alt=""
 					/>
 				</div>
 				<div className="grid">
 					<h3 className="mb-5 font-semibold text-lg">Ingredients:</h3>
-					{this.print(this.props.ingredients)}
+					{this.print(this.ingredientsToString())}
 				</div>
 				<div className="grid">
 					<h3 className="mb-5 font-semibold text-lg">
@@ -95,6 +94,15 @@ class Recipe extends React.Component<RecipeProps, RecipeState> {
 				</div>
 			</div>
 		);
+	}
+
+	ingredientsToString(): string[] {
+		var ingredientsAsStrings: string[] = [];
+		for (var ing of this.props.ingredients) {
+			ingredientsAsStrings.push(ing.ingredient.name + " " + ing.amount);
+		}
+		console.log("Ingredienser: " + ingredientsAsStrings);
+		return ingredientsAsStrings;
 	}
 
 	/**
