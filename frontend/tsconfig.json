@@ -9,10 +9,7 @@
 		"allowJs": true,
 		"strict": true,
 		"noImplicitReturns": true,
-		"allowSyntheticDefaultImports": true,
-		"types": [
-			"webpack-env",
-		]
+		"allowSyntheticDefaultImports": true
 	},
 	"include": [
 		"src/**/*",

@@ -30,8 +30,6 @@ class IngredientList extends React.Component<
 		return (
 			<div className="grid w-10/12 lg:w-8/12">
 				{this.props.ingredients.map((data, key) => {
-					console.log(data.img);
-					console.log(svgs[data.img]);
 					const unit = Unit[data.unit as keyof typeof Unit];
 					return (
 						<Ingredient

@@ -1,13 +1,24 @@
 {
-	"name": "tailwind-test",
+	"name": "clear-the-fridge",
 	"version": "1.0.0",
 	"description": "",
-	"scripts": {
-		"build": "webpack --mode production",
-		"serve": "webpack serve --open --mode development"
-	},
-	"author": "",
 	"license": "MIT",
+	"authors": [
+		"Dennis Kristiansen <denniskr@stud.ntnu.no> (https://denniskristiansen.com)",
+		"Salvador Bascunan <sobascun@stud.ntnu.no",
+		"Sebastian Lindtvedt <sebaskl@stud.ntnu.no>"
+	],
+	"type": "module",
+	"engines": {
+		"node": ">=15 <17",
+		"npm": ">=7"
+	},
+	"scripts": {
+		"build": "webpack --mode production && echo 'Consider using `npm run prepare` instead'",
+		"serve": "webpack serve --open --mode development && echo 'Consider using `npm start` instead'",
+		"start": "webpack serve --open --mode development",
+		"prepare": "webpack --mode production"
+	},
 	"dependencies": {
 		"lodash": "^4.17.21",
 		"react": "^17.0.2",
