@@ -14,10 +14,9 @@
 		"npm": ">=7"
 	},
 	"scripts": {
-		"build": "webpack --mode production && echo 'Consider using `npm run prepare` instead'",
 		"serve": "webpack serve --open --mode development && echo 'Consider using `npm start` instead'",
 		"start": "webpack serve --open --mode development",
-		"prepare": "webpack --mode production"
+		"build": "webpack --mode production"
 	},
 	"dependencies": {
 		"lodash": "^4.17.21",
