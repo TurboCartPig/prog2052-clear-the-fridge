@@ -12,12 +12,21 @@
 		},
 		{
 			"type": "npm",
-			"script": "serve",
+			"script": "start",
 			"path": "frontend/",
 			"group": "build",
 			"problemMatcher": [],
 			"label": "Frontend: Start Dev Server",
 			"detail": "webpack serve --open --mode development"
+		},
+		{
+			"type": "npm",
+			"script": "test",
+			"path": "frontend/",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "Frontend: Run test suite",
+			"detail": "npm test"
 		},
 		{
 			"type": "shell",
