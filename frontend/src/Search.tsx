@@ -76,10 +76,11 @@ class Search extends React.Component<SearchProps, SearchState> {
 							width="24px"
 							height="24px"
 							src={SearchIcon}
+							aria-hidden
 						/>
 						<input
 							type="text"
-							placeholder="Search"
+							placeholder="Search for ingredients"
 							onFocus={this.onFocus}
 							onChange={(e) => this.onChange(e.target.value)}
 							className="flex px-3 py-3 w-full h-12 rounded-lg bg-transparent outline-none"

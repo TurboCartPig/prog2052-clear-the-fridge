@@ -38,6 +38,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						width="24px"
 						height="24px"
 						src={this.props.imgPath}
+						aria-hidden
 					></img>
 
 					<div className="col-start-2 col-span-2 justify-self-start">
@@ -55,6 +56,8 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						width="24px"
 						height="24px"
 						src={this.state.isOpen ? HorRule : Edit}
+						alt="Edit ingredient"
+						tabIndex={0}
 					></img>
 				</div>
 
@@ -72,6 +75,8 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 			<div className="grid grid-cols-10 h-12 text-xs">
 				<button
 					className="bg-gray-300 col-span-4 m-2 rounded-lg"
+					type="button"
+					aria-label="Decrement ingredient count"
 					onClick={(e) => {
 						// Stop the click event from bubbeling up to parent div
 						e.stopPropagation();
@@ -92,6 +97,8 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 
 				<button
 					className="bg-gray-300 col-span-4 m-2 rounded-lg"
+					type="button"
+					aria-label="Increment ingredient count"
 					onClick={(e) => {
 						// Stop the click event from bubbeling up to parent div
 						e.stopPropagation();

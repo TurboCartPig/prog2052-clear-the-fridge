@@ -52,9 +52,16 @@ class IngredientResult extends React.Component<
 				{this.state.added || (
 					<button
 						className="col-start-10 col-span-1 mx-3 my-auto justify-self-end"
+						type="button"
+						aria-label="Add ingredient"
 						onClick={this.onAdd}
 					>
-						<img width="24px" height="24px" src={Plus}></img>
+						<img
+							width="24px"
+							height="24px"
+							src={Plus}
+							aria-hidden
+						></img>
 					</button>
 				)}
 			</div>

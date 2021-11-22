@@ -4,16 +4,6 @@ import "./tailwind.css";
 import { RecipeData } from "./types";
 import Image from "../src/res/img_01.png";
 
-/*
- *  The properties of the Recipe component
- *
- * export type RecipeData = {
- * 	name: string;
- * 	imgPath: string;
- * 	ingredients: string[];
- * 	instructions: string[];
- * }; */
-
 /**
  * The state of the Recipe component
  */
@@ -27,9 +17,11 @@ type RecipeState = {
 class Recipe extends React.Component<RecipeData, RecipeState> {
 	constructor(props: RecipeData) {
 		super(props);
+
 		this.state = {
 			modalOpen: false,
 		};
+
 		this.toggleModal = this.toggleModal.bind(this);
 		this.ingredientsToString = this.ingredientsToString.bind(this);
 	}
@@ -40,8 +32,9 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 				<button
 					className="modal w-full rounded-lg m-0"
 					onClick={this.toggleModal}
+					aria-label={`Open ${this.props.name} recipe modal`}
 				>
-					<img className="rounded-lg" src={Image} alt="" />
+					<img className="rounded-lg" src={Image} aria-hidden />
 				</button>
 				{this.state.modalOpen && this.modalContent()}
 			</div>
@@ -68,6 +61,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 					<button
 						className="float-right pr-2 md:mb-5 mb-2"
 						onClick={this.toggleModal}
+						aria-label="Close modal"
 					>
 						X
 					</button>
@@ -79,7 +73,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 					<img
 						className="float-right rounded-lg mb-5"
 						src={Image}
-						alt=""
+						alt={this.props.name}
 					/>
 				</div>
 				<div className="grid">
