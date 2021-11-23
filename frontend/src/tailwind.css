@@ -12,7 +12,7 @@
 	.modal {
 		@apply mx-auto
 			rounded-lg shadow-lg transform hover:scale-105 duration-100
-			bg-gray-200 active:bg-gray-200 focus:outline-none;
+			bg-gray-200 active:bg-gray-200;
 	}
 }
 

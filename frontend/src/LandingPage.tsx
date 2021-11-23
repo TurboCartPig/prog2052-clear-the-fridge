@@ -41,6 +41,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 						width="100px"
 						height="100px"
 						src={Logo}
+						aria-hidden
 					/>
 				</div>
 				<div className="col-start-2 col-end-8">

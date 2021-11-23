@@ -26,18 +26,19 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 
 	render() {
 		return (
-			<div className="grid justify-items-center mt-3">
-				<button
-					className={this.ingredientStyling()}
-					onClick={() => {
-						this.setState({ isOpen: !this.state.isOpen });
-					}}
-				>
+			<button
+				className="mt-3 bg-ingredient-bar w-full text-sm rounded-lg border"
+				onClick={() => {
+					this.setState({ isOpen: !this.state.isOpen });
+				}}
+			>
+				<div className="grid grid-cols-10 justify-items-center items-center h-12">
 					<img
 						className="col-start-1 col-span-1"
 						width="24px"
 						height="24px"
 						src={this.props.imgPath}
+						aria-hidden
 					></img>
 
 					<div className="col-start-2 col-span-2 justify-self-start">
@@ -55,11 +56,13 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						width="24px"
 						height="24px"
 						src={this.state.isOpen ? HorRule : Edit}
+						alt="Edit ingredient"
+						tabIndex={0}
 					></img>
-				</button>
+				</div>
 
 				{this.state.isOpen && this.modifyIngredient()}
-			</div>
+			</button>
 		);
 	}
 
@@ -67,19 +70,16 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 		return printUnit(this.props.unit, this.state.amount);
 	}
 
-	ingredientStyling() {
-		return (
-			"grid grid-cols-10 justify-items-center items-center bg-ingredient-bar w-full h-12 text-sm border " +
-			(this.state.isOpen ? "rounded-t-lg border-b-0" : "rounded-lg")
-		);
-	}
-
 	modifyIngredient() {
 		return (
-			<div className="grid grid-cols-10 bg-ingredient-bar border border-t-0 h-12 w-full rounded-b-lg text-xs">
+			<div className="grid grid-cols-10 h-12 text-xs">
 				<button
-					className="bg-gray-300 col-span-4 m-2"
-					onClick={() => {
+					className="bg-gray-300 col-span-4 m-2 rounded-lg"
+					type="button"
+					aria-label="Decrement ingredient count"
+					onClick={(e) => {
+						// Stop the click event from bubbeling up to parent div
+						e.stopPropagation();
 						this.setState((prev, _) => {
 							return { amount: prev.amount - 1 };
 						});
@@ -87,12 +87,21 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 				>
 					-{printUnit(this.props.unit, 1)}
 				</button>
-				<button className="bg-gray-100 col-span-2 my-2 place-self-stretch cursor-default">
+
+				<button
+					className="bg-gray-100 col-span-2 my-2 cursor-default"
+					disabled={true} // Disable so that keyboard navigation skips it
+				>
 					{this.currentAmount()}
 				</button>
+
 				<button
-					className="bg-gray-300 col-span-4 m-2"
-					onClick={() => {
+					className="bg-gray-300 col-span-4 m-2 rounded-lg"
+					type="button"
+					aria-label="Increment ingredient count"
+					onClick={(e) => {
+						// Stop the click event from bubbeling up to parent div
+						e.stopPropagation();
 						this.setState((prev, _) => {
 							return { amount: prev.amount + 1 };
 						});
