@@ -1,6 +1,7 @@
 import React from "react";
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import IngredientResult from "./IngredientResult";
 import { IngredientData } from "./types";
 
@@ -11,16 +12,23 @@ const mockData: IngredientData = {
 	img: "carrot.svg",
 };
 
-test("Displays result", () => {
-	function mockOnAdd(ingredient: IngredientData) {
-		expect(ingredient).toBe(mockData);
-	}
+describe("the ingredient-result component", () => {
+	test("displays a result", () => {
+		render(<IngredientResult data={mockData} onAdd={() => {}} />);
 
-	render(<IngredientResult data={mockData} onAdd={mockOnAdd} />);
+		// Find the `Gulrot` ingredient name, proving it was rendered from data
+		screen.getByText("Gulrot");
+	});
 
-	// Find the `Gulrot` ingredient name, proving it was rendered from data
-	const component = screen.getByText(/Gulrot/);
-	expect(component).toBeTruthy();
+	test("can add ingredient", () => {
+		const onAdd = jest.fn();
 
-	// TODO: When accessibility is merged, add onAdd test here.
+		render(<IngredientResult data={mockData} onAdd={onAdd} />);
+
+		const add = screen.getByRole("button");
+		userEvent.click(add);
+
+		expect(onAdd).toHaveBeenCalledTimes(1);
+		expect(onAdd).toHaveBeenCalledWith(mockData);
+	});
 });

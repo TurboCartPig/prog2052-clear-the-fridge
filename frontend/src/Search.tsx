@@ -70,7 +70,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 					// Prevents the search component from closing immediately
 					onClick={(e) => e.stopPropagation()}
 				>
-					<div className="flex flex-row">
+					<div className="flex flex-row" role="search">
 						<img
 							className="m-2"
 							width="24px"
@@ -79,7 +79,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 							aria-hidden
 						/>
 						<input
-							type="text"
+							type="search"
 							placeholder="Search for ingredients"
 							onFocus={this.onFocus}
 							onChange={(e) => this.onChange(e.target.value)}
