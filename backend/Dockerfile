@@ -22,7 +22,10 @@ FROM alpine:3.14 AS runtime
 
 # Metadata
 LABEL maintainer="denniskr@stud.ntnu.no"
-EXPOSE 80
+
+# Emulate PORT variable from heroku
+ENV PORT 80
+EXPOSE $PORT
 
 # Copy final binariy from build image,
 # and run it by default when the container starts
