@@ -1,7 +1,0 @@
-build:
-  docker:
-   web: frontend/Dockerfile
-   worker: backend/Dockerfile
-  config:
-    FRONTEND_URL: "http://localhost:4080"
-    BACKEND_URL: "http://localhost:3080"
