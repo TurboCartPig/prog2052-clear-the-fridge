@@ -25,8 +25,10 @@
 		"react-dom": "^17.0.2"
 	},
 	"devDependencies": {
+		"@testing-library/dom": "^8.11.1",
 		"@testing-library/jest-dom": "^5.15.0",
 		"@testing-library/react": "^12.1.2",
+		"@testing-library/user-event": "^13.5.0",
 		"@types/jest": "^27.0.3",
 		"@types/lodash": "^4.14.175",
 		"@types/react": "^17.0.24",
@@ -38,6 +40,7 @@
 		"html-webpack-plugin": "^5.3.2",
 		"jest": "^27.3.1",
 		"mini-css-extract-plugin": "^2.3.0",
+		"msw": "^0.35.0",
 		"postcss": "^8.3.6",
 		"postcss-loader": "^6.1.1",
 		"prettier": "^2.4.1",
@@ -51,7 +54,8 @@
 		"typescript": "^4.4.3",
 		"webpack": "^5.53.0",
 		"webpack-cli": "^4.8.0",
-		"webpack-dev-server": "^4.2.1"
+		"webpack-dev-server": "^4.2.1",
+		"whatwg-fetch": "^3.6.2"
 	},
 	"prettier": {
 		"trailingComma": "es5",
@@ -67,12 +71,15 @@
 		}
 	},
 	"jest": {
+		"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
+		"testEnvironment": "jest-environment-jsdom",
 		"transform": {
 			".(ts|tsx)$": "ts-jest",
-			".(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileTransformer.js"
+			".(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/fileTransformer.js"
 		},
-		"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-		"testEnvironment": "jest-environment-jsdom",
+		"setupFiles": [
+			"<rootDir>/jest/setupJest.js"
+		],
 		"moduleFileExtensions": [
 			"js",
 			"jsx",
@@ -80,7 +87,7 @@
 			"tsx"
 		],
 		"moduleNameMapper": {
-			"\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+			"\\.(css|less)$": "<rootDir>/jest/styleMock.js"
 		}
 	}
 }
