@@ -10,30 +10,76 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-test("Displays recommendations", async () => {
-	const onAdd = jest.fn();
-	render(<Search onAdd={onAdd} />);
+describe("the search component", () => {
+	test("has a searchbox", () => {
+		// Setup component
+		const onAdd = jest.fn();
+		render(<Search onAdd={onAdd} />);
 
-	// Check to see if the search box can be found by label
-	const searchbox = screen.getByRole("searchbox");
+		// Check to see if the search box can be found by label
+		screen.getByRole("searchbox");
+	});
 
-	// Check to see if the search results are hidden by default
-	let results = screen.queryByText("Results:");
-	expect(results).toBeNull();
+	test("is closed by default", () => {
+		// Setup component
+		const onAdd = jest.fn();
+		render(<Search onAdd={onAdd} />);
 
-	// Check to see if the search results are show when the search bar is clicked
-	userEvent.click(searchbox);
-	results = screen.getByText("Results:");
+		// Check to see if the search results are hidden by default
+		const results = screen.queryByText("Results:");
+		expect(results).toBeNull();
+	});
 
-	// Check to see if the default recommendations are displayed after the search bar has been clicked
-	await screen.findByText("Gulrot");
+	test("opens when clicked", () => {
+		// Setup component
+		const onAdd = jest.fn();
+		render(<Search onAdd={onAdd} />);
 
-	// Check to see if the search finds the right result
-	userEvent.type(searchbox, "Tomat");
-	await screen.findByText("Tomat");
+		// Check to see if the search results are show when the search bar is clicked
+		const searchbox = screen.getByRole("searchbox");
+		userEvent.click(searchbox);
+		screen.getByText("Results:");
+	});
 
-	// Check to see if the ingredient is added when it is clicked
-	const add = screen.getByRole("button", { name: "Add ingredient" });
-	userEvent.click(add);
-	expect(onAdd).toHaveBeenCalledTimes(1);
+	test("has default recemmendation", async () => {
+		// Setup component
+		const onAdd = jest.fn();
+		render(<Search onAdd={onAdd} />);
+
+		// Click the searchbox
+		const searchbox = screen.getByRole("searchbox");
+		userEvent.click(searchbox);
+
+		// Check that the default recommendation is visible
+		await screen.findByText("Gulrot");
+	});
+
+	test("can search for ingredients", async () => {
+		// Setup component
+		const onAdd = jest.fn();
+		render(<Search onAdd={onAdd} />);
+
+		const searchbox = screen.getByRole("searchbox");
+		userEvent.type(searchbox, "Tomat");
+
+		// Check to see if the search finds the right result
+		await screen.findByText("Tomat");
+	});
+
+	test("can add ingredients", async () => {
+		// Setup component
+		const onAdd = jest.fn();
+		render(<Search onAdd={onAdd} />);
+
+		const searchbox = screen.getByRole("searchbox");
+		userEvent.type(searchbox, "Tomat");
+
+		const add = await screen.findByRole("button", {
+			name: "Add ingredient",
+		});
+		userEvent.click(add);
+
+		// Check to see if the ingredient is added when it is clicked
+		expect(onAdd).toHaveBeenCalledTimes(1);
+	});
 });
