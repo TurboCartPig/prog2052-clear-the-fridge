@@ -21,8 +21,8 @@ RUN npm run build
 FROM nginx:1.21-alpine AS runtime
 
 # Emulate PORT variable from heroku
-ENV PORT 80
-EXPOSE $PORT
+# ENV PORT 80
+# EXPOSE $PORT
 
 # Copy build artifacts into public hosted folder
 COPY --from=builder /app/dist /usr/share/nginx/html
