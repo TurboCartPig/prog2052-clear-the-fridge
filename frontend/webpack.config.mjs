@@ -1,8 +1,9 @@
+import CompressionPlugin from "compression-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import CompressionPlugin from "compression-webpack-plugin";
 import path from "path";
 import url from "url";
+import webpack from "webpack";
 import zlib from "zlib";
 
 export default (env, argv) => {
@@ -14,6 +15,9 @@ export default (env, argv) => {
 			template: "./src/index.html",
 		}),
 		new MiniCssExtractPlugin(),
+		new webpack.DefinePlugin({
+			"process.env.BACKEND_URL": JSON.stringify(process.env.BACKEND_URL),
+		}),
 	];
 
 	// Add compression plugins in production
