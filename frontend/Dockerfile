@@ -29,5 +29,6 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Copy in the custom config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-# And set the correct listen port
-RUN sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf
+
+# And set the correct listen port; and start the server
+CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
