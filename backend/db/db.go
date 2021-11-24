@@ -23,13 +23,12 @@ var (
 
 // Get the MongoDB URI from environment with fallback
 func getMongoURI() string {
-	scheme := "mongodb://"
-	uri := os.Getenv("MONGODB_URI")
-	if uri == "" {
-		log.Print("MONGODB_URI not found, using default")
-		return scheme + "localhost:27017"
+	url := os.Getenv("MONGODB_URL")
+	if url == "" {
+		log.Print("MONGODB_URL not found, using default")
+		return "mongodb://localhost:27017"
 	}
-	return scheme + uri
+	return url
 }
 
 // Setup a connection to the database. Call `DisconnectDatabase` before shutdown.

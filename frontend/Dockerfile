@@ -3,7 +3,7 @@
 FROM node:16-alpine3.14 AS builder
 
 # URL for the REST API backend
-ENV BACKEND_URL http://localhost:3080
+ARG BACKEND_URL http://localhost:3080
 
 WORKDIR /app
 
