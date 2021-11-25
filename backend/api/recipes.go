@@ -29,6 +29,7 @@ func NewRecipesSearchHandler() http.HandlerFunc {
 
 		ids := ParseIDsQuery(ingredients)
 		recipes := db.SearchRecipes(ids)
+		fmt.Print(recipes)
         fmt.Fprint(res, recipes)
 	}
 }
