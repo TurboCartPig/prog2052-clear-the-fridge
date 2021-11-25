@@ -32,3 +32,9 @@ func NewRecipesSearchHandler() http.HandlerFunc {
         fmt.Fprint(res, recipes)
 	}
 }
+
+
+// Process a filter
+func ProcessFilter() {
+	
+}

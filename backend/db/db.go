@@ -99,7 +99,7 @@ func SearchRecipes(ingredientIDs []int) string {
 		Database(database).
 		Collection(recipes)
 
-	dbFilter := bson.D{{"ingredients.id", bson.D{{"$all", ingredientIDs}}}}
+	dbFilter := bson.D{{"ingredients.id", bson.D{{"$in", ingredientIDs}}}}
 
 	cursor, err := collection.Find(context.TODO(), dbFilter)
 
