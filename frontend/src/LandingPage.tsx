@@ -32,9 +32,6 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	render() {
 		return (
 			<div className="grid grid-cols-8 justify-center bg-clearthefridge">
-				<div className="col-start-2 col-end-8">
-					<Navigation />
-				</div>
 				<div className="col-start-2 col-end-8 mx-auto my-auto">
 					<img
 						className="m-12"
