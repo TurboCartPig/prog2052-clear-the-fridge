@@ -87,7 +87,6 @@ export async function getIngredientsInfo(ingredients: IngredientInRecipe[]): Pro
 	}
 
 	const ingredientResults = await res.json();
-	console.log(ingredientResults)
 	var results: IngredientWithAmount[] = []
 	for (var i = 0; i < ingredients.length; i++) {
 		results.push({

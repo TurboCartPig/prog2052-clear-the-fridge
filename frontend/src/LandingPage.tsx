@@ -27,6 +27,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 		};
 
 		this.addIngredient = this.addIngredient.bind(this);
+		this.removeIngredient = this.removeIngredient.bind(this);
 		this.recipeSearch = this.recipeSearch.bind(this);
 		this.ingredientExists = this.ingredientExists.bind(this);
 	}
@@ -54,7 +55,10 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Ingredients</h2>
-					<IngredientList ingredients={this.state.ingredients} />
+					<IngredientList
+						ingredients={this.state.ingredients}
+						remove={this.removeIngredient}
+					/>
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Results</h2>
@@ -77,6 +81,20 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 				() => this.recipeSearch()
 			);
 		}
+	}
+
+	/**
+	 * Removes an ingredient with the provided ID
+	 * @param The ingredient ID to be removed
+	 */
+	removeIngredient(ingredientID: number) {
+		this.setState((prev, _) => {
+			return {
+				ingredients: prev.ingredients.filter(
+					(ing) => ing.id != ingredientID
+				),
+			};
+		});
 	}
 
 	/**
@@ -110,9 +128,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 				});
 			}
 
-			this.setState({ recipes: recipes }, () =>
-				console.log(this.state.ingredients)
-			);
+			this.setState({ recipes: recipes });
 		} catch {
 			return;
 		}

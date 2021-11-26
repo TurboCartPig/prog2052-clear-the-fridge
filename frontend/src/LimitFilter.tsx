@@ -21,7 +21,7 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 
 	render() {
 		return (
-			<button
+			<div
 				className="mt-3 bg-indigo-200 w-full text-sm rounded-lg border"
 				onClick={() => {
 					this.setState({ isOpen: !this.state.isOpen });
@@ -49,7 +49,7 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 				</div>
 
 				{this.state.isOpen && this.modifyIngredient()}
-			</button>
+			</div>
 		);
 	}
 

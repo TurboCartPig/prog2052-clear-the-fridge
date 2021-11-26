@@ -5,9 +5,11 @@ import { Unit, printUnit } from "./types";
 import "./tailwind.css";
 
 type IngredientProps = {
+	id: number;
 	name: string;
 	unit: Unit;
 	imgPath: string;
+	remove: (ingredientID: number) => void;
 };
 
 type IngredientState = {
@@ -26,7 +28,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 
 	render() {
 		return (
-			<button
+			<div
 				className="mt-3 bg-ingredient-bar w-full text-sm rounded-lg border"
 				onClick={() => {
 					this.setState({ isOpen: !this.state.isOpen });
@@ -60,9 +62,8 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						tabIndex={0}
 					></img>
 				</div>
-
 				{this.state.isOpen && this.modifyIngredient()}
-			</button>
+			</div>
 		);
 	}
 
@@ -80,9 +81,12 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					onClick={(e) => {
 						// Stop the click event from bubbeling up to parent div
 						e.stopPropagation();
-						this.setState((prev, _) => {
-							return { amount: prev.amount - 1 };
-						});
+						if (this.state.amount <= 1)
+							this.props.remove(this.props.id);
+						else
+							this.setState((prev, _) => {
+								return { amount: prev.amount - 1 };
+							});
 					}}
 				>
 					-{printUnit(this.props.unit, 1)}
