@@ -8,6 +8,7 @@ import { IngredientData, RecipeData } from "./types";
 import "./tailwind.css";
 import { getIngredientsInfo, searchRecipes } from "./api";
 import _ from "lodash";
+import LimitFilter from "./LimitFilter";
 
 type LandingPageProps = {};
 
@@ -46,7 +47,9 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Filters</h2>
-					<div className="w-8/12"></div>
+					<div className="w-8/12">
+						<LimitFilter />
+					</div>
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Ingredients</h2>
