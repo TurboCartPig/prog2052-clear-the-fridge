@@ -28,6 +28,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 
 		this.addIngredient = this.addIngredient.bind(this);
 		this.recipeSearch = this.recipeSearch.bind(this);
+		this.ingredientExists = this.ingredientExists.bind(this);
 	}
 
 	render() {
@@ -68,13 +69,21 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 * @param ingredient Ingredient to add
 	 */
 	addIngredient(ingredient: IngredientData) {
-		/* console.log(ingredient); */
-		this.setState(
-			(prev, _) => {
-				return { ingredients: [...prev.ingredients, ingredient] };
-			},
-			() => this.recipeSearch()
-		);
+		if (!this.ingredientExists(ingredient)) {
+			this.setState(
+				(prev, _) => {
+					return { ingredients: [...prev.ingredients, ingredient] };
+				},
+				() => this.recipeSearch()
+			);
+		}
+	}
+
+	ingredientExists(ingredient: IngredientData): boolean {
+		return this.state.ingredients.find((ing) => ingredient.id == ing.id) !=
+			undefined
+			? true
+			: false;
 	}
 
 	async recipeSearch() {
