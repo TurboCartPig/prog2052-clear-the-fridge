@@ -79,6 +79,10 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 		}
 	}
 
+	/**
+	 * Check if an ingredient already exists in the ingredientlist
+	 * @param The ingredient to check
+	 */
 	ingredientExists(ingredient: IngredientData): boolean {
 		return this.state.ingredients.find((ing) => ingredient.id == ing.id) !=
 			undefined
@@ -86,6 +90,9 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 			: false;
 	}
 
+	/**
+	 * Searches for recipes based on the provided ingredients
+	 */
 	async recipeSearch() {
 		try {
 			const res = await searchRecipes(this.state.ingredients);
