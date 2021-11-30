@@ -63,9 +63,11 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 					onClick={(e) => {
 						// Stop the click event from bubbeling up to parent div
 						e.stopPropagation();
-						this.setState((prev, _) => {
-							return { amount: prev.amount - 1 };
-						});
+						if (this.state.amount >= 1) {
+							this.setState((prev, _) => {
+								return { amount: prev.amount - 1 };
+							});
+						}
 					}}
 				>
 					-1
