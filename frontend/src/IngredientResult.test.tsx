@@ -10,6 +10,7 @@ const mockData: IngredientData = {
 	name: "Gulrot",
 	unit: "pcs",
 	img: "carrot.svg",
+	amount: 1,
 };
 
 describe("the ingredient-result component", () => {

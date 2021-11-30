@@ -14,6 +14,8 @@ export type IngredientData = {
 	unit: string;
 	// Path to the preview image on the server
 	img: string;
+	// The amount of this ingredient
+	amount: number;
 };
 
 export interface RecipeData {

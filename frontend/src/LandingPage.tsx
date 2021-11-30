@@ -1,6 +1,5 @@
 import React from "react";
 import Search from "./Search";
-import Navigation from "./Navigation";
 import Logo from "./res/logo.svg";
 import RecipeList from "./RecipeList";
 import IngredientList from "./IngredientList";
@@ -8,12 +7,16 @@ import { IngredientData, RecipeData } from "./types";
 import "./tailwind.css";
 import { getIngredientsInfo, searchRecipes } from "./api";
 import _ from "lodash";
+import LimitFilter from "./LimitFilter";
+import AmountFilter from "./AmountFilter";
 
 type LandingPageProps = {};
 
 type LandingPageState = {
 	ingredients: IngredientData[];
 	recipes: RecipeData[];
+	limitFilter: number;
+	amountFilter: boolean;
 };
 
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
@@ -23,18 +26,22 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 		this.state = {
 			ingredients: [],
 			recipes: [],
+			limitFilter: 0,
+			amountFilter: false,
 		};
 
 		this.addIngredient = this.addIngredient.bind(this);
+		this.removeIngredient = this.removeIngredient.bind(this);
 		this.recipeSearch = this.recipeSearch.bind(this);
+		this.ingredientExists = this.ingredientExists.bind(this);
+		this.modifyIngredientAmount = this.modifyIngredientAmount.bind(this);
+		this.modifyLimitFilter = this.modifyLimitFilter.bind(this);
+		this.toggleAmountFilter = this.toggleAmountFilter.bind(this);
 	}
 
 	render() {
 		return (
 			<div className="grid grid-cols-8 justify-center bg-clearthefridge">
-				<div className="col-start-2 col-end-8">
-					<Navigation />
-				</div>
 				<div className="col-start-2 col-end-8 mx-auto my-auto">
 					<img
 						className="m-12"
@@ -48,8 +55,26 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 					<Search onAdd={this.addIngredient} />
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
+					<h2 className="lg:mt-20 mt-5 mb-3">Filters</h2>
+					<div className="w-8/12">
+						<LimitFilter
+							amount={this.state.limitFilter}
+							modifyAmount={this.modifyLimitFilter}
+						/>
+						<AmountFilter
+							enabled={this.state.amountFilter}
+							onChange={this.toggleAmountFilter}
+						/>
+					</div>
+				</div>
+				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Ingredients</h2>
-					<IngredientList ingredients={this.state.ingredients} />
+					<IngredientList
+						ingredients={this.state.ingredients}
+						remove={this.removeIngredient}
+						recipeSearch={this.recipeSearch}
+						modifyIngredient={this.modifyIngredientAmount}
+					/>
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Results</h2>
@@ -64,18 +89,106 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 * @param ingredient Ingredient to add
 	 */
 	addIngredient(ingredient: IngredientData) {
-		/* console.log(ingredient); */
+		if (!this.ingredientExists(ingredient)) {
+			this.setState(
+				(prev, _) => {
+					return { ingredients: [...prev.ingredients, ingredient] };
+				},
+				() => this.recipeSearch()
+			);
+		}
+	}
+
+	/**
+	 * Removes an ingredient with the provided ID
+	 * @param The ingredient ID to be removed
+	 */
+	removeIngredient(ingredientID: number) {
 		this.setState(
 			(prev, _) => {
-				return { ingredients: [...prev.ingredients, ingredient] };
+				return {
+					ingredients: prev.ingredients.filter(
+						(ing) => ing.id != ingredientID
+					),
+				};
 			},
 			() => this.recipeSearch()
 		);
 	}
 
+	/**
+	 * Check if an ingredient already exists in the ingredientlist
+	 * @param The ingredient to check
+	 */
+	ingredientExists(ingredient: IngredientData): boolean {
+		return this.state.ingredients.find((ing) => ingredient.id == ing.id) !=
+			undefined
+			? true
+			: false;
+	}
+
+	/**
+	 * Modifies the limitFilterAmount
+	 */
+	modifyLimitFilter(newAmount: number) {
+		if (newAmount >= 0) {
+			this.setState(
+				(_, __) => ({
+					limitFilter: newAmount,
+				}),
+				() => this.recipeSearch()
+			);
+		}
+	}
+
+	/**
+	 * Toggles the amountFilter on/off
+	 */
+	toggleAmountFilter() {
+		this.setState(
+			(prev, _) => ({
+				amountFilter: !prev.amountFilter,
+			}),
+			() => this.recipeSearch()
+		);
+	}
+
+	/**
+	 * Modifies the amount of a given ingredient
+	 */
+	modifyIngredientAmount(ingredient: IngredientData, newAmount: number) {
+		if (newAmount <= 0) {
+			this.removeIngredient(ingredient.id);
+		} else {
+			const index = this.state.ingredients.indexOf(ingredient);
+			this.setState(
+				(prev, _) => ({
+					ingredients: [
+						...prev.ingredients.slice(0, index),
+						{
+							...prev.ingredients[index],
+							amount: newAmount,
+						},
+						...prev.ingredients.slice(index + 1),
+					],
+				}),
+				() => this.recipeSearch()
+			);
+		}
+	}
+
+	/**
+	 * Searches for recipes based on the provided ingredients
+	 */
 	async recipeSearch() {
 		try {
-			const res = await searchRecipes(this.state.ingredients);
+			if (this.state.ingredients.length <= 0) return;
+
+			const res = await searchRecipes(
+				this.state.ingredients,
+				this.state.amountFilter,
+				this.state.limitFilter
+			);
 
 			var recipes: RecipeData[] = [];
 
@@ -90,9 +203,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 				});
 			}
 
-			this.setState({ recipes: recipes }, () =>
-				console.log(this.state.ingredients)
-			);
+			this.setState({ recipes: recipes });
 		} catch {
 			return;
 		}

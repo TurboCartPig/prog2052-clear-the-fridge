@@ -5,6 +5,9 @@ import { svgs } from "./main";
 
 type IngredientListProps = {
 	ingredients: IngredientData[];
+	remove: (ingredientID: number) => void;
+	recipeSearch: () => void;
+	modifyIngredient: (ingredient: IngredientData, newAmount: number) => void;
 };
 
 type IngredientListState = {};
@@ -29,14 +32,16 @@ class IngredientList extends React.Component<
 
 		return (
 			<div className="grid w-10/12 lg:w-8/12">
-				{this.props.ingredients.map((data, key) => {
+				{this.props.ingredients.map((data, index) => {
 					const unit = Unit[data.unit as keyof typeof Unit];
 					return (
 						<Ingredient
-							key={key}
-							name={data.name}
+							key={index}
+							data={data}
 							unit={unit}
-							imgPath={svgs["./" + data.img]}
+							remove={this.props.remove}
+							updateRecipes={this.props.recipeSearch}
+							modifyIngredient={this.props.modifyIngredient}
 						/>
 					);
 				})}
