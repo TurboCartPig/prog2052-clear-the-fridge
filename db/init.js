@@ -64,7 +64,7 @@ db.ingredients.insertMany([
 		id: 8,
 		name: "Soyasaus",
 		unit: "ss",
-		img: "soy-sauce.svg"
+		img: "soy-sauce.svg",
 		amount: 1,
 	},
 	{
@@ -92,7 +92,7 @@ db.ingredients.insertMany([
 		id: 12,
 		name: "Olivenolje",
 		unit: "ss",
-		img: "olive-oil.svg"
+		img: "olive-oil.svg",
 		amount: 1,
 	},
 	{
@@ -288,7 +288,7 @@ db.ingredients.insertMany([
 		id: 40,
 		name: "Kålrot",
 		unit: "stk",
-		img: "turnip.svg"
+		img: "turnip.svg",
 		amount: 1,
 	},
 	{
