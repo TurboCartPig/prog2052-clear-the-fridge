@@ -20,6 +20,11 @@ func NewRecipesHandler() http.HandlerFunc {
 func NewRecipesSearchHandler() http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
 		ingredients := req.URL.Query().Get("ingredients");
+		amounts := req.URL.Query().Get("amounts");
+		limitFilter := req.URL.Query().Get("limitFilter");
+		amountFilter := req.URL.Query().Get("amountFilter");
+
+		fmt.Println(amounts,limitFilter,amountFilter)
 
 		// Reject requests without query
 		if ingredients == "" {
