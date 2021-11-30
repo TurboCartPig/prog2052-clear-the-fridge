@@ -1,0 +1,5 @@
+build:
+  docker:
+   web: Dockerfile
+  config:
+    FRONTEND_URL: "https://clearthefridge-frontend.herokuapp.com/"
