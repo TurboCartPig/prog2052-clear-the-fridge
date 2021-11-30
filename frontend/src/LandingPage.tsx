@@ -57,8 +57,14 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
 					<h2 className="lg:mt-20 mt-5 mb-3">Filters</h2>
 					<div className="w-8/12">
-						<LimitFilter />
-						<AmountFilter />
+						<LimitFilter
+							amount={this.state.limitFilter}
+							modifyAmount={this.modifyLimitFilter}
+						/>
+						<AmountFilter
+							enabled={this.state.amountFilter}
+							onChange={this.toggleAmountFilter}
+						/>
 					</div>
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
@@ -122,7 +128,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 * Modifies the limitFilterAmount
 	 */
 	modifyLimitFilter(newAmount: number) {
-		if (newAmount >= 1) {
+		if (newAmount >= 0) {
 			this.setState((_, __) => ({
 				limitFilter: newAmount,
 			}));

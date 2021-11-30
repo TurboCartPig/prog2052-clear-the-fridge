@@ -43,15 +43,20 @@ export async function searchIngredients(
 	return results;
 }
 
-export async function searchRecipes(ingredients: IngredientData[]): Promise<TempRecipeData[]> {
+export async function searchRecipes(ingredients: IngredientData[], amountFilter: boolean, limitFilter: number): Promise<TempRecipeData[]> {
 	let base_url = api_version + "/recipes/search";
 
 	if (ingredients.length > 0) {
 		let ingredientIDs: number[] = [];
+		let ingredientAmounts: number[] = [];
 		for (var ingredient of ingredients) {
 			ingredientIDs.push(ingredient.id);
-	    }
+			ingredientAmounts.push(ingredient.amount)
+		}
 		base_url += "?ingredients=" + ingredientIDs.toString();
+		base_url += "&amounts=" + ingredientAmounts.toString();
+		base_url += "&limitFilter=" + limitFilter.toString();
+		base_url += "&amountFilter=" + amountFilter.toString();
 	}
 	let url = new URL(base_url,backend);
 	let res;
