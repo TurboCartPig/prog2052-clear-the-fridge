@@ -3,10 +3,12 @@ import "./tailwind.css";
 import Edit from "./res/edit.svg";
 import HorRule from "./res/horizontal_rule.svg";
 
-type LimitFilterProps = {};
+type LimitFilterProps = {
+	amount: number;
+	modifyAmount: (newAmount: number) => void;
+};
 
 type LimitFilterState = {
-	amount: number;
 	isOpen: boolean;
 };
 
@@ -14,7 +16,6 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 	constructor(props: LimitFilterProps) {
 		super(props);
 		this.state = {
-			amount: 0,
 			isOpen: false,
 		};
 	}
@@ -34,7 +35,7 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 
 					{!this.state.isOpen && (
 						<div className="col-start-8 col-span-2 justify-self-end">
-							{this.state.amount}
+							{this.props.amount}
 						</div>
 					)}
 
@@ -63,11 +64,7 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 					onClick={(e) => {
 						// Stop the click event from bubbeling up to parent div
 						e.stopPropagation();
-						if (this.state.amount >= 1) {
-							this.setState((prev, _) => {
-								return { amount: prev.amount - 1 };
-							});
-						}
+						this.props.modifyAmount(this.props.amount - 1);
 					}}
 				>
 					-1
@@ -77,7 +74,7 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 					className="bg-white col-span-2 my-2 cursor-default rounded-lg"
 					disabled={true} // Disable so that keyboard navigation skips it
 				>
-					{this.state.amount}
+					{this.props.amount}
 				</button>
 
 				<button
@@ -87,9 +84,7 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 					onClick={(e) => {
 						// Stop the click event from bubbeling up to parent div
 						e.stopPropagation();
-						this.setState((prev, _) => {
-							return { amount: prev.amount + 1 };
-						});
+						this.props.modifyAmount(this.props.amount + 1);
 					}}
 				>
 					+1
