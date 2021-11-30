@@ -1,6 +1,5 @@
 import React from "react";
 import Search from "./Search";
-import Navigation from "./Navigation";
 import Logo from "./res/logo.svg";
 import RecipeList from "./RecipeList";
 import IngredientList from "./IngredientList";
@@ -16,6 +15,8 @@ type LandingPageProps = {};
 type LandingPageState = {
 	ingredients: IngredientData[];
 	recipes: RecipeData[];
+	limitFilter: number;
+	amountFilter: boolean;
 };
 
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
@@ -25,6 +26,8 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 		this.state = {
 			ingredients: [],
 			recipes: [],
+			limitFilter: 0,
+			amountFilter: false,
 		};
 
 		this.addIngredient = this.addIngredient.bind(this);
@@ -139,7 +142,11 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 */
 	async recipeSearch() {
 		try {
-			const res = await searchRecipes(this.state.ingredients);
+			const res = await searchRecipes(
+				this.state.ingredients,
+				this.state.amountFilter,
+				this.state.limitFilter
+			);
 
 			var recipes: RecipeData[] = [];
 
