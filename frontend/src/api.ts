@@ -40,7 +40,6 @@ export async function searchIngredients(
 
 	// Deserialize the returned json
 	const results = await res.json();
-
 	return results;
 }
 

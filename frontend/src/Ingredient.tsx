@@ -1,15 +1,16 @@
 import React from "react";
 import Edit from "./res/edit.svg";
 import HorRule from "./res/horizontal_rule.svg";
-import { Unit, printUnit } from "./types";
+import { Unit, printUnit, IngredientData } from "./types";
 import "./tailwind.css";
+import { svgs } from "./main";
 
 type IngredientProps = {
-	id: number;
-	name: string;
+	data: IngredientData;
 	unit: Unit;
-	imgPath: string;
 	remove: (ingredientID: number) => void;
+	updateRecipes: () => void;
+	modifyIngredient: (ingredient: IngredientData, newAmount: number) => void;
 };
 
 type IngredientState = {
@@ -39,17 +40,17 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						className="col-start-1 col-span-1"
 						width="24px"
 						height="24px"
-						src={this.props.imgPath}
+						src={svgs["./" + this.props.data.img]}
 						aria-hidden
 					></img>
 
 					<div className="col-start-2 col-span-2 justify-self-start">
-						{this.props.name}
+						{this.props.data.name}
 					</div>
 
 					{!this.state.isOpen && (
 						<div className="col-start-8 col-span-2 justify-self-end">
-							{this.currentAmount()}
+							{this.props.data.amount}
 						</div>
 					)}
 
@@ -81,12 +82,11 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					onClick={(e) => {
 						// Stop the click event from bubbeling up to parent div
 						e.stopPropagation();
-						if (this.state.amount <= 1)
-							this.props.remove(this.props.id);
-						else
-							this.setState((prev, _) => {
-								return { amount: prev.amount - 1 };
-							});
+						this.props.modifyIngredient(
+							this.props.data,
+							this.props.data.amount - 1
+						);
+						this.render();
 					}}
 				>
 					-{printUnit(this.props.unit, 1)}
@@ -96,7 +96,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					className="bg-gray-100 col-span-2 my-2 cursor-default"
 					disabled={true} // Disable so that keyboard navigation skips it
 				>
-					{this.currentAmount()}
+					{this.props.data.amount}
 				</button>
 
 				<button
@@ -106,9 +106,11 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					onClick={(e) => {
 						// Stop the click event from bubbeling up to parent div
 						e.stopPropagation();
-						this.setState((prev, _) => {
-							return { amount: prev.amount + 1 };
-						});
+						this.props.modifyIngredient(
+							this.props.data,
+							this.props.data.amount + 1
+						);
+						this.render();
 					}}
 				>
 					+{printUnit(this.props.unit, 1)}

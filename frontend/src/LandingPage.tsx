@@ -31,6 +31,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 		this.removeIngredient = this.removeIngredient.bind(this);
 		this.recipeSearch = this.recipeSearch.bind(this);
 		this.ingredientExists = this.ingredientExists.bind(this);
+		this.modifyIngredientAmount = this.modifyIngredientAmount.bind(this);
 	}
 
 	render() {
@@ -60,6 +61,8 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 					<IngredientList
 						ingredients={this.state.ingredients}
 						remove={this.removeIngredient}
+						recipeSearch={this.recipeSearch}
+						modifyIngredient={this.modifyIngredientAmount}
 					/>
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
@@ -108,6 +111,27 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 			undefined
 			? true
 			: false;
+	}
+
+	/**
+	 * Modifies the amount of a given ingredient
+	 */
+	modifyIngredientAmount(ingredient: IngredientData, newAmount: number) {
+		if (newAmount <= 0) {
+			this.removeIngredient(ingredient.id);
+		} else {
+			const index = this.state.ingredients.indexOf(ingredient);
+			this.setState((prev, _) => ({
+				ingredients: [
+					...prev.ingredients.slice(0, index),
+					{
+						...prev.ingredients[index],
+						amount: newAmount,
+					},
+					...prev.ingredients.slice(index + 1),
+				],
+			}));
+		}
 	}
 
 	/**

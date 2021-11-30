@@ -6,6 +6,8 @@ import { svgs } from "./main";
 type IngredientListProps = {
 	ingredients: IngredientData[];
 	remove: (ingredientID: number) => void;
+	recipeSearch: () => void;
+	modifyIngredient: (ingredient: IngredientData, newAmount: number) => void;
 };
 
 type IngredientListState = {};
@@ -35,11 +37,11 @@ class IngredientList extends React.Component<
 					return (
 						<Ingredient
 							key={index}
-							id={data.id}
-							name={data.name}
+							data={data}
 							unit={unit}
-							imgPath={svgs["./" + data.img]}
 							remove={this.props.remove}
+							updateRecipes={this.props.recipeSearch}
+							modifyIngredient={this.props.modifyIngredient}
 						/>
 					);
 				})}
