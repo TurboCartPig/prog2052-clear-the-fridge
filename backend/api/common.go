@@ -50,7 +50,7 @@ func NewRouter() *chi.Mux {
 	r.Use(middleware.Logger)
 	r.Use(ReturnJSON)
 	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"http://clearthefridge.com", "https://clearthefridge.com","http://localhost:4080", "https://localhost:4080"},
+		AllowedOrigins:   []string{"http://clearthefridge.com", "https://clearthefridge.com", "https://clearthefridge-frontend.herokuapp.com", "http://localhost:4080", "https://localhost:4080"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Content-Type"},
 		AllowCredentials: false,

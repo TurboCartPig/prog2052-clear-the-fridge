@@ -2,9 +2,7 @@ import { debouncedFetch } from "./debouncedFetch";
 import { IngredientData, IngredientInRecipe, IngredientWithAmount, TempRecipeData } from "./types";
 
 // URL for the backend
-const backend =
-	// "https://4e05fc26-03b8-451a-9ca3-369c57c52186.mock.pstmn.io";
-	"http://localhost:3080";
+const backend = process.env.BACKEND_URL;
 
 // The api version we are currently using
 const api_version = "/api/v1"
