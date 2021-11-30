@@ -68,7 +68,7 @@ export async function searchRecipes(ingredients: IngredientData[], amountFilter:
 	}
 
 	const results = await res.json();
-	return results;
+		return results;
 }
 
 export async function getIngredientsInfo(ingredients: IngredientInRecipe[]): Promise<IngredientWithAmount[]> {

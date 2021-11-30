@@ -104,13 +104,16 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 * @param The ingredient ID to be removed
 	 */
 	removeIngredient(ingredientID: number) {
-		this.setState((prev, _) => {
-			return {
-				ingredients: prev.ingredients.filter(
-					(ing) => ing.id != ingredientID
-				),
-			};
-		});
+		this.setState(
+			(prev, _) => {
+				return {
+					ingredients: prev.ingredients.filter(
+						(ing) => ing.id != ingredientID
+					),
+				};
+			},
+			() => this.recipeSearch()
+		);
 	}
 
 	/**
@@ -129,9 +132,12 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 */
 	modifyLimitFilter(newAmount: number) {
 		if (newAmount >= 0) {
-			this.setState((_, __) => ({
-				limitFilter: newAmount,
-			}));
+			this.setState(
+				(_, __) => ({
+					limitFilter: newAmount,
+				}),
+				() => this.recipeSearch()
+			);
 		}
 	}
 
@@ -139,9 +145,12 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 * Toggles the amountFilter on/off
 	 */
 	toggleAmountFilter() {
-		this.setState((prev, _) => ({
-			amountFilter: !prev.amountFilter,
-		}));
+		this.setState(
+			(prev, _) => ({
+				amountFilter: !prev.amountFilter,
+			}),
+			() => this.recipeSearch()
+		);
 	}
 
 	/**
@@ -152,16 +161,19 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 			this.removeIngredient(ingredient.id);
 		} else {
 			const index = this.state.ingredients.indexOf(ingredient);
-			this.setState((prev, _) => ({
-				ingredients: [
-					...prev.ingredients.slice(0, index),
-					{
-						...prev.ingredients[index],
-						amount: newAmount,
-					},
-					...prev.ingredients.slice(index + 1),
-				],
-			}));
+			this.setState(
+				(prev, _) => ({
+					ingredients: [
+						...prev.ingredients.slice(0, index),
+						{
+							...prev.ingredients[index],
+							amount: newAmount,
+						},
+						...prev.ingredients.slice(index + 1),
+					],
+				}),
+				() => this.recipeSearch()
+			);
 		}
 	}
 
@@ -170,6 +182,8 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 */
 	async recipeSearch() {
 		try {
+			if (this.state.ingredients.length <= 0) return;
+
 			const res = await searchRecipes(
 				this.state.ingredients,
 				this.state.amountFilter,
