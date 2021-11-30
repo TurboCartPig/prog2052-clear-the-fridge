@@ -41,6 +41,7 @@ func ParseIDsQuery(query string) []int {
 	}
 	return ingredientIDs
 }
+
 // Construct a new router for the API.
 func NewRouter() *chi.Mux {
 	// Setup new chi router
