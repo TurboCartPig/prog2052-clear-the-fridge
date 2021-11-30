@@ -35,6 +35,8 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 		this.recipeSearch = this.recipeSearch.bind(this);
 		this.ingredientExists = this.ingredientExists.bind(this);
 		this.modifyIngredientAmount = this.modifyIngredientAmount.bind(this);
+		this.modifyLimitFilter = this.modifyLimitFilter.bind(this);
+		this.toggleAmountFilter = this.toggleAmountFilter.bind(this);
 	}
 
 	render() {
@@ -114,6 +116,26 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 			undefined
 			? true
 			: false;
+	}
+
+	/**
+	 * Modifies the limitFilterAmount
+	 */
+	modifyLimitFilter(newAmount: number) {
+		if (newAmount >= 1) {
+			this.setState((_, __) => ({
+				limitFilter: newAmount,
+			}));
+		}
+	}
+
+	/**
+	 * Toggles the amountFilter on/off
+	 */
+	toggleAmountFilter() {
+		this.setState((prev, _) => ({
+			amountFilter: !prev.amountFilter,
+		}));
 	}
 
 	/**
