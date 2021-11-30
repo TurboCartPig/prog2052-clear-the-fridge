@@ -61,7 +61,7 @@ func SearchIngredients(term string) string {
 	ngrams := MakeNgrams(term, 2)
 
 	opts := options.Find().
-		SetProjection(bson.D{{"_id", 0}, {"id", 1}, {"name", 1}, {"unit", 1}, {"img",1}, {"score", bson.D{{"$meta", "textScore"}}}}).
+		SetProjection(bson.D{{"_id", 0}, {"id", 1}, {"name", 1}, {"unit", 1}, {"img",1}, {"score", bson.D{{"$meta", "textScore"}}},{"amount",1}}).
 		SetSort(bson.D{{"score", bson.D{{"$meta", "textScore"}}}})
 
 	cursor, err := collection.Find(context.TODO(), bson.D{{"$text", bson.D{{"$search", ngrams}}}}, opts)
