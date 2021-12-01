@@ -35,7 +35,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 					this.setState({ isOpen: !this.state.isOpen });
 				}}
 			>
-				<div className="grid grid-cols-10 justify-items-center items-center h-12">
+				<div className="grid grid-cols-10 justify-items-center items-center h-12 pl-2 pr-2 md:p-0">
 					<img
 						className="col-start-1 col-span-1"
 						width="24px"
@@ -44,12 +44,12 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						aria-hidden
 					></img>
 
-					<div className="col-start-2 col-span-2 justify-self-start">
+					<div className="col-start-2 col-span-2 justify-self-start ml-3 md:m-0">
 						{this.props.data.name}
 					</div>
 
 					{!this.state.isOpen && (
-						<div className="col-start-8 col-span-2 justify-self-end">
+						<div className="col-start-8 col-span-2 justify-self-end mr-3 md:m-0">
 							{this.props.data.amount}
 						</div>
 					)}

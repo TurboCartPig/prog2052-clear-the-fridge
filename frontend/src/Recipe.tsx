@@ -78,7 +78,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 						<h3 className="mb-5 font-semibold text-lg">Ingredienser:</h3>
 						{this.print(this.ingredientsToString())}
 					</div>
-					<div className="grid">
+					<div className="grid invisible md:visible">
 						<img
 							className="rounded-lg mb-5"
 							src={svgs["./" + this.props.img]}
