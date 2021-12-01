@@ -23,6 +23,7 @@ export interface RecipeData {
 	ingredients: IngredientWithAmount[]
 	instructions: string[]
 	name: string
+	img: string
 }
 
 export type IngredientWithAmount = {
@@ -36,6 +37,7 @@ export interface TempRecipeData {
   ingredients: IngredientInRecipe[]
   instructions: string[]
   name: string
+  img: string
 }
 
 export interface IngredientInRecipe {

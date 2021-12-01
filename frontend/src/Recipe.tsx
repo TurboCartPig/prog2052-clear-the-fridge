@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./tailwind.css";
 import { RecipeData } from "./types";
-import Image from "../src/res/img_01.png";
+import { svgs } from "./main";
 
 /**
  * The state of the Recipe component
@@ -29,12 +29,13 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 	render() {
 		return (
 			<div className="m-5">
+				<div className="mb-2 text-center">{this.props.name}</div>
 				<button
 					className="modal w-full rounded-lg m-0"
 					onClick={this.toggleModal}
 					aria-label={`Open ${this.props.name} recipe modal`}
 				>
-					<img className="rounded-lg" src={Image} aria-hidden />
+					<img className="rounded-lg" src={svgs["./" + this.props.img]} aria-hidden />
 				</button>
 				{this.state.modalOpen && this.modalContent()}
 			</div>
@@ -72,7 +73,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 					</h1>
 					<img
 						className="float-right rounded-lg mb-5"
-						src={Image}
+						src={svgs["./" + this.props.img]}
 						alt={this.props.name}
 					/>
 				</div>

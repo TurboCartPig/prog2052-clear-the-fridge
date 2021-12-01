@@ -200,6 +200,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 					ingredients: ing,
 					instructions: recipe.instructions,
 					name: recipe.name,
+					img: recipe.img
 				});
 			}
 

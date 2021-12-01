@@ -570,6 +570,7 @@ db.recipes.insertMany([
 			"Kok opp, la putre i 20-30 minutter",
 			"Smak til med nykvernet svart pepper før servering.",
 		],
+		img: "loeksuppe.svg"
 	},
 	{
 		id: 1,
@@ -617,6 +618,7 @@ db.recipes.insertMany([
 			"Ha tomatene over i kjelen og kok opp, la det hele småputre i 5 minutter.",
 			"Smak til med salt, pepper og ha finhakkede urter før servering, hvis dette er tilgjengelig.",
 		],
+		img: "tomatsuppe.svg"
 	},
 	{
 		id: 2,
@@ -673,6 +675,7 @@ db.recipes.insertMany([
 			"Lag en sellerisalat, hvis det er ønsker.",
 			"Smak til med litt tabasco og litt salt.",
 		],
+		img: "potet-purresuppe.svg"
 	},
 	{
 		id: 3,
@@ -729,6 +732,7 @@ db.recipes.insertMany([
 				 "Ha den tilbake i kjelen.",
 				 "Kok opp og smak til.",
 		],
+		img: "spinatsuppe.svg"
 	},
 	{
 		id: 4,
@@ -788,6 +792,7 @@ db.recipes.insertMany([
 			"Stek på 200 grader i ca 30 til 40 minutter.",
 			"Bruk en pensel eller skje og pensle marinaden over flere ganger underveis til beina blir glasert.",
 		],
+		img: "barbecue_spareribs.svg"
 	},
 	{
 		id: 5,
@@ -831,6 +836,7 @@ db.recipes.insertMany([
 			"Smakes til med salt og pepper.",
 			"Server med flatbrød og smør.",
 		],
+		img: "poelselapskaus.svg"
 	},
 	{
 		id: 6,
@@ -908,6 +914,7 @@ db.recipes.insertMany([
 			"Spaghettien kokes som pakken sier. Serveres med kjøttsausen.",
 			"Riv sjenerøst med parmesan over, litt olivenolje og godt med pepper.",
 		],
+		img: "spaghetti_bolognese.svg"
 	},
 	{
 		id: 7,
@@ -975,6 +982,7 @@ db.recipes.insertMany([
 			"Hell over eggeblandingen og baconet, la det renne gjennom pastaen før du løfter og blander den inn.",
 			"Server umiddelbart med ekstra svart pepper, parmesan og litt olje til dem som trenger det.",
 		],
+		img: "spaghetti_carbonara.svg"
 	},
 	{
 		id: 8,
@@ -1011,6 +1019,7 @@ db.recipes.insertMany([
 			"Dryss over salt og olivenolje.",
 			"Ha eventuelt på noen dråper balsamico eller annen syre.",
 		],
+		img: "capresesalat.svg"
 	},
 	{
 		id: 9,
@@ -1063,6 +1072,7 @@ db.recipes.insertMany([
 			"Brødet kuttes i terninger eller staver som stekes sprø i litt smør.",
 			"Vend salaten i dressing, server i dype boller, legg krutongene over og dryss parmesan på toppen.",
 		],
+		img: "caesarsalat.svg"
 	},
 	{
 		id: 10,
@@ -1103,6 +1113,7 @@ db.recipes.insertMany([
 			"Fordel eple og pære, legg over valnøtter og fetaost som er smuldret opp.",
 			"Lag dressing og hell over.",
 		],
+		img: "salat_med_feta_valnoett_paere.svg"
 	},
 ]);
 

@@ -27,6 +27,7 @@ class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
 							name={data.name}
 							ingredients={data.ingredients}
 							instructions={data.instructions}
+							img={data.img}
 						/>
 					);
 				})}
