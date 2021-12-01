@@ -31,7 +31,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 			<div className="m-5">
 				<div className="mb-2 text-center">{this.props.name}</div>
 				<button
-					className="modal w-full rounded-lg m-0"
+					className="modal w-full h-auto rounded-lg m-0"
 					onClick={this.toggleModal}
 					aria-label={`Open ${this.props.name} recipe modal`}
 				>
@@ -57,7 +57,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 	 */
 	modalContent() {
 		return this.createModal(
-			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen overflow-scroll">
+			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg w-auto h-auto p-4">
 				<div>
 					<button
 						className="float-right pr-2 md:mb-5 mb-2"
@@ -115,7 +115,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full grid items-center justify-center"
 				onClick={this.toggleModal}
 			>
-				<div onClick={(e) => e.stopPropagation()}>{content}</div>
+				<div className="h-screen overflow-auto overscroll-none modal-content-scroll" onClick={(e) => e.stopPropagation()}>{content}</div>
 			</div>,
 			document.getElementById("modal-root")!
 		);
