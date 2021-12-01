@@ -26,10 +26,10 @@ func ReturnMessage(msg string, code int) http.HandlerFunc {
 	})
 }
 
-// Parses a comma separated list of id's in string format to a slice of ints
+// Parses a comma separated list of numbers's in string format to a slice of ints
 // @param query - The string to be parsed
-// @return the new int slice with the ids
-func ParseIDsQuery(query string) []int {
+// @return the new int slice with the numbers
+func ParseNumbersQuery(query string) []int {
 	ids := strings.Split(query, ",")
 	var ingredientIDs = []int{}
 	for _, id := range ids {
@@ -40,6 +40,17 @@ func ParseIDsQuery(query string) []int {
 		ingredientIDs = append(ingredientIDs, i)
 	}
 	return ingredientIDs
+}
+
+// Parses a string into a int
+// @param query - The string to be parsed
+// @return The parsed int
+func ParseNumberQuery(query string) int {
+	i, err := strconv.Atoi(query)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return i
 }
 
 // Construct a new router for the API.

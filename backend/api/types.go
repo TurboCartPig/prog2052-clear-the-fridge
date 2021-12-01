@@ -11,3 +11,10 @@ type Ingredients struct {
 	Amount int `json:"amount"`
 	ID     int `json:"id"`
 }
+
+type SearchObject struct {
+	Ingredients       []int
+	IngredientAmounts []int
+	LimitFilter       int
+	AmountFilter      bool
+}
