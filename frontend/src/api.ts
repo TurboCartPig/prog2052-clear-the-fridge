@@ -73,6 +73,13 @@ export async function getIngredientsInfo(ingredients: IngredientInRecipe[]): Pro
 	let base_url = api_version + "/ingredients/search/id"
 
 	if (ingredients.length > 0) {
+		ingredients.sort((first, second) => {
+			if (first.id < second.id)
+				return -1
+			else
+				return 1
+		})
+
 		let ingredientIDs: number[] = [];
 		for (var ingredient of ingredients) {
 			ingredientIDs.push(ingredient.id);
@@ -93,7 +100,7 @@ export async function getIngredientsInfo(ingredients: IngredientInRecipe[]): Pro
 	for (var i = 0; i < ingredients.length; i++) {
 		results.push({
 			ingredient: ingredientResults[i],
-			amount: ingredients[i].id})
+			amount: ingredients[i].amount})
 	}
 	return results;
 }

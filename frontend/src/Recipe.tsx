@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./tailwind.css";
 import { RecipeData } from "./types";
-import Image from "../src/res/img_01.png";
+import { svgs } from "./main";
 
 /**
  * The state of the Recipe component
@@ -29,12 +29,13 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 	render() {
 		return (
 			<div className="m-5">
+				<div className="mb-2 text-center">{this.props.name}</div>
 				<button
-					className="modal w-full rounded-lg m-0"
+					className="modal w-full h-auto rounded-lg m-0"
 					onClick={this.toggleModal}
 					aria-label={`Open ${this.props.name} recipe modal`}
 				>
-					<img className="rounded-lg" src={Image} aria-hidden />
+					<img className="rounded-lg" src={svgs["./" + this.props.img]} aria-hidden />
 				</button>
 				{this.state.modalOpen && this.modalContent()}
 			</div>
@@ -56,7 +57,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 	 */
 	modalContent() {
 		return this.createModal(
-			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg p-4 w-auto h-screen overflow-scroll">
+			<div className="m-5 bg-white grid col-span-full relative rounded-lg shadow-lg w-auto h-auto p-4">
 				<div>
 					<button
 						className="float-right pr-2 md:mb-5 mb-2"
@@ -67,22 +68,27 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 					</button>
 				</div>
 				<div className="grid">
-					<h1 className="float-left md:mb-5 mb-2 font-bold text-2xl">
+					<h1 className="float-left mb-10 font-bold text-4xl">
 						{this.props.name}
 					</h1>
-					<img
-						className="float-right rounded-lg mb-5"
-						src={Image}
-						alt={this.props.name}
-					/>
+					
 				</div>
-				<div className="grid">
-					<h3 className="mb-5 font-semibold text-lg">Ingredients:</h3>
-					{this.print(this.ingredientsToString())}
+				<div className="grid grid-cols-2">
+					<div className="grid">
+						<h3 className="mb-5 font-semibold text-lg">Ingredienser:</h3>
+						{this.print(this.ingredientsToString())}
+					</div>
+					<div className="grid invisible md:visible">
+						<img
+							className="rounded-lg mb-5"
+							src={svgs["./" + this.props.img]}
+							alt={this.props.name}
+						/>
+					</div>
 				</div>
 				<div className="grid">
 					<h3 className="mb-5 font-semibold text-lg">
-						Instructions:
+						Instruksjoner:
 					</h3>
 					{this.print(this.props.instructions)}
 				</div>
@@ -92,8 +98,9 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 
 	ingredientsToString(): string[] {
 		var ingredientsAsStrings: string[] = [];
+
 		for (var ing of this.props.ingredients) {
-			ingredientsAsStrings.push(ing.ingredient.name + " " + ing.amount);
+			ingredientsAsStrings.push(ing.ingredient.name + " " +  ing.amount + " " + ing.ingredient.unit);
 		}
 		return ingredientsAsStrings;
 	}
@@ -109,7 +116,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 				className="bg-black bg-opacity-75 fixed top-0 left-0 w-full h-full grid items-center justify-center"
 				onClick={this.toggleModal}
 			>
-				<div onClick={(e) => e.stopPropagation()}>{content}</div>
+				<div className="h-screen overflow-auto overscroll-none modal-content-scroll" onClick={(e) => e.stopPropagation()}>{content}</div>
 			</div>,
 			document.getElementById("modal-root")!
 		);
