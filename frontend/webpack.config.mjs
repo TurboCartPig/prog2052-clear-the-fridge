@@ -8,6 +8,10 @@ import zlib from "zlib";
 
 export default (env, argv) => {
 	const isProduction = argv.mode === "production";
+	const BACKEND_URL =
+		process.env.BACKEND_URL == undefined
+			? "http://localhost:3080"
+			: process.env.BACKEND_URL;
 
 	// Webpack plugins
 	let plugins = [
@@ -16,7 +20,7 @@ export default (env, argv) => {
 		}),
 		new MiniCssExtractPlugin(),
 		new webpack.DefinePlugin({
-			"process.env.BACKEND_URL": JSON.stringify(process.env.BACKEND_URL),
+			"process.env.BACKEND_URL": JSON.stringify(BACKEND_URL),
 		}),
 	];
 
