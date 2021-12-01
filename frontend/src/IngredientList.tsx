@@ -1,7 +1,6 @@
 import React from "react";
 import Ingredient from "./Ingredient";
 import { IngredientData, Unit } from "./types";
-import { svgs } from "./main";
 
 type IngredientListProps = {
 	ingredients: IngredientData[];

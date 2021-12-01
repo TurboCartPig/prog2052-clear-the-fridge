@@ -80,7 +80,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 						/>
 						<input
 							type="search"
-							placeholder="Search for ingredients"
+							placeholder="Søk etter ingredienser.."
 							onFocus={this.onFocus}
 							onChange={(e) => this.onChange(e.target.value)}
 							className="flex px-3 py-3 w-full h-12 rounded-lg bg-transparent outline-none"
@@ -89,7 +89,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 					{this.state.focused && (
 						<div>
 							<hr></hr>
-							<h6 className="my-1 px-3">Results:</h6>
+							<h6 className="my-1 px-3">Resultater:</h6>
 							<ul>
 								{this.state.results.slice(0, 4).map((item) => (
 									<li key={item.id}>

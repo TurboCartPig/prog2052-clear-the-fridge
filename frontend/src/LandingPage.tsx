@@ -55,8 +55,8 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 					<Search onAdd={this.addIngredient} />
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
-					<h2 className="lg:mt-20 mt-5 mb-3">Filters</h2>
-					<div className="w-8/12">
+					<h2 className="lg:mt-20 mt-5 mb-3">Filtere</h2>
+					<div className="md:w-8/12 w-10/12">
 						<LimitFilter
 							amount={this.state.limitFilter}
 							modifyAmount={this.modifyLimitFilter}
@@ -68,7 +68,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 					</div>
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
-					<h2 className="lg:mt-20 mt-5 mb-3">Ingredients</h2>
+					<h2 className="lg:mt-20 mt-5 mb-3">Ingredienser</h2>
 					<IngredientList
 						ingredients={this.state.ingredients}
 						remove={this.removeIngredient}
@@ -77,7 +77,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 					/>
 				</div>
 				<div className="grid col-start-2 col-end-8 justify-items-center divide-solid divide-gray-100 divide-y-2">
-					<h2 className="lg:mt-20 mt-5 mb-3">Results</h2>
+					<h2 className="lg:mt-20 mt-5 mb-3">Resultater</h2>
 					<RecipeList recipeData={this.state.recipes} />
 				</div>
 			</div>
@@ -200,10 +200,12 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 					ingredients: ing,
 					instructions: recipe.instructions,
 					name: recipe.name,
+					img: recipe.img
 				});
 			}
 
 			this.setState({ recipes: recipes });
+
 		} catch {
 			return;
 		}

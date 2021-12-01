@@ -30,7 +30,7 @@ db.ingredients.insertMany([
 		name: "Smør",
 		unit: "gram",
 		img: "butter.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 4,
@@ -128,7 +128,7 @@ db.ingredients.insertMany([
 		name: "Poteter",
 		unit: "gram",
 		img: "potato.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 18,
@@ -163,7 +163,7 @@ db.ingredients.insertMany([
 		name: "Selleri",
 		unit: "gram",
 		img: "celery.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 23,
@@ -184,21 +184,21 @@ db.ingredients.insertMany([
 		name: "Sukker",
 		unit: "gram",
 		img: "sugar.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 26,
 		name: "Hvetemel",
 		unit: "gram",
 		img: "flour.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 27,
 		name: "Spinat",
 		unit: "gram",
 		img: "spinach.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 28,
@@ -219,7 +219,7 @@ db.ingredients.insertMany([
 		name: "Spareribs",
 		unit: "gram",
 		img: "ribs.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 31,
@@ -303,14 +303,14 @@ db.ingredients.insertMany([
 		name: "Pølse",
 		unit: "gram",
 		img: "sausage.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 43,
 		name: "Spaghetti",
 		unit: "gram",
 		img: "spagetti.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 44,
@@ -324,14 +324,14 @@ db.ingredients.insertMany([
 		name: "Karbonadedeig",
 		unit: "gram",
 		img: "beef.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 46,
 		name: "Kjøttdeig",
 		unit: "gram",
 		img: "beef.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 47,
@@ -345,7 +345,7 @@ db.ingredients.insertMany([
 		name: "Bacon",
 		unit: "gram",
 		img: "bacon.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 49,
@@ -359,19 +359,19 @@ db.ingredients.insertMany([
 		name: "Parmesan",
 		unit: "gram",
 		img: "cheese.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 51,
 		name: "Ost",
 		unit: "gram",
 		img: "cheese.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 52,
 		name: "Pepper",
-		unit: "ss",
+		unit: "ts",
 		img: "pepper.svg",
 		amount: 1,
 	},
@@ -436,14 +436,14 @@ db.ingredients.insertMany([
 		name: "Brød lyst",
 		unit: "gram",
 		img: "bread.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 62,
 		name: "Brød grov",
 		unit: "gram",
 		img: "bread.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 63,
@@ -471,14 +471,14 @@ db.ingredients.insertMany([
 		name: "Valnøtter",
 		unit: "gram",
 		img: "walnut.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 67,
 		name: "Fetaost",
 		unit: "gram",
 		img: "feta.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 68,
@@ -492,7 +492,7 @@ db.ingredients.insertMany([
 		name: "Makaroni",
 		unit: "gram",
 		img: "macaroni.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 70,
@@ -513,7 +513,7 @@ db.ingredients.insertMany([
 		name: "Blandet salat",
 		unit: "gram",
 		img: "salad.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 73,
@@ -570,6 +570,7 @@ db.recipes.insertMany([
 			"Kok opp, la putre i 20-30 minutter",
 			"Smak til med nykvernet svart pepper før servering.",
 		],
+		img: "loeksuppe.svg"
 	},
 	{
 		id: 1,
@@ -617,6 +618,7 @@ db.recipes.insertMany([
 			"Ha tomatene over i kjelen og kok opp, la det hele småputre i 5 minutter.",
 			"Smak til med salt, pepper og ha finhakkede urter før servering, hvis dette er tilgjengelig.",
 		],
+		img: "tomatsuppe.svg"
 	},
 	{
 		id: 2,
@@ -673,6 +675,7 @@ db.recipes.insertMany([
 			"Lag en sellerisalat, hvis det er ønsker.",
 			"Smak til med litt tabasco og litt salt.",
 		],
+		img: "potet-purresuppe.svg"
 	},
 	{
 		id: 3,
@@ -729,6 +732,7 @@ db.recipes.insertMany([
 				 "Ha den tilbake i kjelen.",
 				 "Kok opp og smak til.",
 		],
+		img: "spinatsuppe.svg"
 	},
 	{
 		id: 4,
@@ -788,6 +792,7 @@ db.recipes.insertMany([
 			"Stek på 200 grader i ca 30 til 40 minutter.",
 			"Bruk en pensel eller skje og pensle marinaden over flere ganger underveis til beina blir glasert.",
 		],
+		img: "barbecue_spareribs.svg"
 	},
 	{
 		id: 5,
@@ -831,13 +836,14 @@ db.recipes.insertMany([
 			"Smakes til med salt og pepper.",
 			"Server med flatbrød og smør.",
 		],
+		img: "poelselapskaus.svg"
 	},
 	{
 		id: 6,
 		name: "Spaghetti Bolognese",
 		ingredients: [
 			{
-				id: 43 ,
+				id: 43,
 				amount: 400,
 			},
 			{
@@ -908,6 +914,7 @@ db.recipes.insertMany([
 			"Spaghettien kokes som pakken sier. Serveres med kjøttsausen.",
 			"Riv sjenerøst med parmesan over, litt olivenolje og godt med pepper.",
 		],
+		img: "spaghetti_bolognese.svg"
 	},
 	{
 		id: 7,
@@ -975,6 +982,7 @@ db.recipes.insertMany([
 			"Hell over eggeblandingen og baconet, la det renne gjennom pastaen før du løfter og blander den inn.",
 			"Server umiddelbart med ekstra svart pepper, parmesan og litt olje til dem som trenger det.",
 		],
+		img: "spaghetti_carbonara.svg"
 	},
 	{
 		id: 8,
@@ -1011,6 +1019,7 @@ db.recipes.insertMany([
 			"Dryss over salt og olivenolje.",
 			"Ha eventuelt på noen dråper balsamico eller annen syre.",
 		],
+		img: "capresesalat.svg"
 	},
 	{
 		id: 9,
@@ -1063,6 +1072,7 @@ db.recipes.insertMany([
 			"Brødet kuttes i terninger eller staver som stekes sprø i litt smør.",
 			"Vend salaten i dressing, server i dype boller, legg krutongene over og dryss parmesan på toppen.",
 		],
+		img: "caesarsalat.svg"
 	},
 	{
 		id: 10,
@@ -1103,6 +1113,7 @@ db.recipes.insertMany([
 			"Fordel eple og pære, legg over valnøtter og fetaost som er smuldret opp.",
 			"Lag dressing og hell over.",
 		],
+		img: "salat_med_feta_valnoett_paere.svg"
 	},
 ]);
 

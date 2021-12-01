@@ -18,7 +18,7 @@ class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
 
 	render() {
 		return (
-			<div className="grid grid-cols-2 w-10/12 lg:w-8/12">
+			<div className="grid md:grid-cols-2 w-10/12 lg:w-8/12">
 				{this.props.recipeData.map((data, key) => {
 					return (
 						<Recipe
@@ -27,6 +27,7 @@ class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
 							name={data.name}
 							ingredients={data.ingredients}
 							instructions={data.instructions}
+							img={data.img}
 						/>
 					);
 				})}

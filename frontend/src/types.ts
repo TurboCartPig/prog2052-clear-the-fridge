@@ -23,6 +23,7 @@ export interface RecipeData {
 	ingredients: IngredientWithAmount[]
 	instructions: string[]
 	name: string
+	img: string
 }
 
 export type IngredientWithAmount = {
@@ -36,6 +37,7 @@ export interface TempRecipeData {
   ingredients: IngredientInRecipe[]
   instructions: string[]
   name: string
+  img: string
 }
 
 export interface IngredientInRecipe {
@@ -72,5 +74,22 @@ export function printUnit(unit: Unit, amount: number) {
 			return amount + " dl";
 		case Unit.ml:
 			return amount + " ml";
+	}
+}
+
+export function calculateUnit(num: number, unit: string) : number {
+	switch (unit) {
+		case "stk":
+			return num;
+		case "gram":
+			return num * 100;
+		case "ss":
+			return num;
+		case "ts":
+			return num;
+		case "dl":
+			return num;
+		default:
+			return num;
 	}
 }
