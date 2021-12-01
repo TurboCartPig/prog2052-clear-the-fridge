@@ -1,7 +1,7 @@
 import React from "react";
 import Edit from "./res/edit.svg";
 import HorRule from "./res/horizontal_rule.svg";
-import { Unit, printUnit, IngredientData } from "./types";
+import { Unit, printUnit, IngredientData, calculateUnit } from "./types";
 import "./tailwind.css";
 import { svgs } from "./main";
 
@@ -50,7 +50,7 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 
 					{!this.state.isOpen && (
 						<div className="col-start-8 col-span-2 justify-self-end mr-3 md:m-0">
-							{this.props.data.amount}
+							{this.printUnit(this.props.data.amount)}
 						</div>
 					)}
 
@@ -68,10 +68,6 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 		);
 	}
 
-	currentAmount() {
-		return printUnit(this.props.unit, this.state.amount);
-	}
-
 	modifyIngredient() {
 		return (
 			<div className="grid grid-cols-10 h-12 text-xs">
@@ -84,19 +80,19 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						e.stopPropagation();
 						this.props.modifyIngredient(
 							this.props.data,
-							this.props.data.amount - 1
+							this.props.data.amount - calculateUnit(1, this.props.data.unit)
 						);
 						this.render();
 					}}
 				>
-					-{printUnit(this.props.unit, 1)}
+					-{this.printUnit(calculateUnit(1, this.props.data.unit))}
 				</button>
 
 				<button
 					className="bg-gray-100 col-span-2 my-2 cursor-default"
 					disabled={true} // Disable so that keyboard navigation skips it
 				>
-					{this.props.data.amount}
+					{this.printUnit(this.props.data.amount)}
 				</button>
 
 				<button
@@ -108,15 +104,19 @@ class Ingredient extends React.Component<IngredientProps, IngredientState> {
 						e.stopPropagation();
 						this.props.modifyIngredient(
 							this.props.data,
-							this.props.data.amount + 1
+							this.props.data.amount + calculateUnit(1, this.props.data.unit)
 						);
 						this.render();
 					}}
 				>
-					+{printUnit(this.props.unit, 1)}
+					+{this.printUnit(calculateUnit(1, this.props.data.unit))}
 				</button>
 			</div>
 		);
+	}
+
+	printUnit(num: number): string {
+		return num + " " + this.props.data.unit
 	}
 }
 

@@ -98,8 +98,9 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 
 	ingredientsToString(): string[] {
 		var ingredientsAsStrings: string[] = [];
+
 		for (var ing of this.props.ingredients) {
-			ingredientsAsStrings.push(ing.ingredient.name + " " + ing.amount + " " + ing.ingredient.unit);
+			ingredientsAsStrings.push(ing.ingredient.name + " " +  ing.amount + " " + ing.ingredient.unit);
 		}
 		return ingredientsAsStrings;
 	}

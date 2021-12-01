@@ -30,7 +30,7 @@ db.ingredients.insertMany([
 		name: "Smør",
 		unit: "gram",
 		img: "butter.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 4,
@@ -128,7 +128,7 @@ db.ingredients.insertMany([
 		name: "Poteter",
 		unit: "gram",
 		img: "potato.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 18,
@@ -163,7 +163,7 @@ db.ingredients.insertMany([
 		name: "Selleri",
 		unit: "gram",
 		img: "celery.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 23,
@@ -184,21 +184,21 @@ db.ingredients.insertMany([
 		name: "Sukker",
 		unit: "gram",
 		img: "sugar.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 26,
 		name: "Hvetemel",
 		unit: "gram",
 		img: "flour.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 27,
 		name: "Spinat",
 		unit: "gram",
 		img: "spinach.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 28,
@@ -219,7 +219,7 @@ db.ingredients.insertMany([
 		name: "Spareribs",
 		unit: "gram",
 		img: "ribs.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 31,
@@ -303,14 +303,14 @@ db.ingredients.insertMany([
 		name: "Pølse",
 		unit: "gram",
 		img: "sausage.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 43,
 		name: "Spaghetti",
 		unit: "gram",
 		img: "spagetti.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 44,
@@ -324,14 +324,14 @@ db.ingredients.insertMany([
 		name: "Karbonadedeig",
 		unit: "gram",
 		img: "beef.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 46,
 		name: "Kjøttdeig",
 		unit: "gram",
 		img: "beef.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 47,
@@ -345,7 +345,7 @@ db.ingredients.insertMany([
 		name: "Bacon",
 		unit: "gram",
 		img: "bacon.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 49,
@@ -359,19 +359,19 @@ db.ingredients.insertMany([
 		name: "Parmesan",
 		unit: "gram",
 		img: "cheese.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 51,
 		name: "Ost",
 		unit: "gram",
 		img: "cheese.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 52,
 		name: "Pepper",
-		unit: "ss",
+		unit: "ts",
 		img: "pepper.svg",
 		amount: 1,
 	},
@@ -436,14 +436,14 @@ db.ingredients.insertMany([
 		name: "Brød lyst",
 		unit: "gram",
 		img: "bread.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 62,
 		name: "Brød grov",
 		unit: "gram",
 		img: "bread.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 63,
@@ -471,14 +471,14 @@ db.ingredients.insertMany([
 		name: "Valnøtter",
 		unit: "gram",
 		img: "walnut.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 67,
 		name: "Fetaost",
 		unit: "gram",
 		img: "feta.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 68,
@@ -492,7 +492,7 @@ db.ingredients.insertMany([
 		name: "Makaroni",
 		unit: "gram",
 		img: "macaroni.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 70,
@@ -513,7 +513,7 @@ db.ingredients.insertMany([
 		name: "Blandet salat",
 		unit: "gram",
 		img: "salad.svg",
-		amount: 1,
+		amount: 100,
 	},
 	{
 		id: 73,
@@ -843,7 +843,7 @@ db.recipes.insertMany([
 		name: "Spaghetti Bolognese",
 		ingredients: [
 			{
-				id: 43 ,
+				id: 43,
 				amount: 400,
 			},
 			{

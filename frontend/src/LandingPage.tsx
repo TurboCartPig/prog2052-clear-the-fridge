@@ -205,6 +205,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 			}
 
 			this.setState({ recipes: recipes });
+
 		} catch {
 			return;
 		}
