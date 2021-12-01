@@ -177,10 +177,10 @@ func FilterRecipeSearch(searchObject types.SearchObject, recipes []types.Recipe)
 	var filterChecks []types.FilterCheck
 
 	for range recipes {
-		filterChecks = append(filterChecks, types.FilterCheck{false,false})
+		filterChecks = append(filterChecks, types.FilterCheck{false, false})
 	}
 
-	// Limit filter 
+	// Limit filter
 	var missingIngredients int
 	for i, recipe := range recipes { // Loops through all recipes
 		missingIngredients = 0
@@ -197,11 +197,32 @@ func FilterRecipeSearch(searchObject types.SearchObject, recipes []types.Recipe)
 		}
 	}
 
-	// Amount filter 
+	// Amount filter
 	if searchObject.AmountFilter { // If the amountFilter is to be used
 		// Only check the ingredients not currently "ignored" due to the limit filter
-		for 
-		
+		for i, recipe := range recipes {
+			for _, ingredient := range recipe.Ingredients {
+				if contains(ingredientsInSearch, ingredient.ID) {
+					for j, searchIngredient := range searchObject.Ingredients {
+						if searchIngredient == ingredient.ID {
+							if searchObject.IngredientAmounts[j] >= ingredient.Amount {
+								filterChecks[i].AmountFilter = true
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	for i, filterCheck := range filterChecks {
+		if filterCheck.LimitFilter {
+			if filterCheck.AmountFilter {
+				filteredRecipes = append(filteredRecipes, recipes[i])
+			} else if !searchObject.AmountFilter {
+				filteredRecipes = append(filteredRecipes, recipes[i])
+			}
+		}
 	}
 
 	return filteredRecipes
@@ -221,13 +242,13 @@ func contains(ingredientIDs []int, ingredientID int) bool {
 }
 
 // Inserts a recipe to the a slice of recipes if, and only if it is unique (does not exists already)
-// @param recipe - The recipe to maybe insert 
-// @param recipes - The slice to maybe insert into 
+// @param recipe - The recipe to maybe insert
+// @param recipes - The slice to maybe insert into
 func insertIfUnique(recipe types.Recipe, recipes []types.Recipe) {
 	exists := false
 	for _, r := range recipes {
 		if r.ID == recipe.ID {
-			exists = true 
+			exists = true
 		}
 	}
 	if !exists {
