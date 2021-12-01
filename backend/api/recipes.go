@@ -32,20 +32,31 @@ func NewRecipesSearchHandler() http.HandlerFunc {
 			http.Error(res, "Incorrect request schema", http.StatusBadRequest)
 		}
 
-		search := ProcessSearch(ingredients, amounts, limitFilter, amountFilter)
+		search, err := ProcessSearch(ingredients, amounts, limitFilter, amountFilter)
+		if err != nil {
+			http.Error(res, err.Error(), http.StatusBadRequest)
+		}
 		recipes := db.SearchRecipes(search.Ingredients)
 		fmt.Print(recipes)
 		fmt.Fprint(res, recipes)
 	}
 }
 
-// Process a search 
-func ProcessSearch(ingredints string, amounts string, limitFilter string, amountFilter string) SearchObject {
+// Process a search
+func ProcessSearch(ingredints string, amounts string, limitFilter string, amountFilter string) (SearchObject, error) {
 	var searchObject SearchObject
-	searchObject.Ingredients = ParseNumbersQuery(ingredints)
-	searchObject.IngredientAmounts = ParseNumbersQuery(amounts)
-	searchObject.LimitFilter = ParseNumberQuery(limitFilter)
-	return searchObject
+	var err error
+	searchObject.Ingredients, err = ParseNumbersQuery(ingredints)
+	if err != nil {
+		return SearchObject{}, err
+	}
+	searchObject.IngredientAmounts, err = ParseNumbersQuery(amounts)
+	if err != nil {
+		return SearchObject{}, err
+	}
+	searchObject.LimitFilter, err = ParseNumberQuery(limitFilter)
+	if err != nil {
+		return SearchObject{}, err
+	}
+	return searchObject, nil
 }
-
-
