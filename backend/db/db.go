@@ -9,6 +9,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+
+	"clearthefridge/types"
 )
 
 const (
@@ -93,12 +95,12 @@ func SearchIngredients(term string) string {
 // Queries the database for recipes that matches the slice of ingredientIDs
 // @param ingredientIDs - The slice of ingredientIDs to be searched for 
 // @return All recipes that contains all the ingredientIDs provided
-func SearchRecipes(ingredientIDs []int) string {
+func SearchRecipes(searchObject types.SearchObject) string {
 	collection := client.
 		Database(database).
 		Collection(recipes)
 
-	dbFilter := bson.D{{"ingredients.id", bson.D{{"$in", ingredientIDs}}}}
+	dbFilter := bson.D{{"ingredients.id", bson.D{{"$in", searchObject.Ingredients}}}}
 
 	cursor, err := collection.Find(context.TODO(), dbFilter)
 

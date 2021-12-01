@@ -1,4 +1,4 @@
-package api
+package types
 
 type Recipe struct {
 	MongoID      string        `json:"_id"`

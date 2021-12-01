@@ -2,6 +2,7 @@ package api
 
 import (
 	"clearthefridge/db"
+	"clearthefridge/types"
 	"fmt"
 	"log"
 	"net/http"
@@ -36,30 +37,36 @@ func NewRecipesSearchHandler() http.HandlerFunc {
 			http.Error(res, err.Error(), http.StatusBadRequest)
 			return
 		}
-		recipes := db.SearchRecipes(search.Ingredients)
+		recipes := db.SearchRecipes(search)
 		fmt.Fprint(res, recipes)
 	}
 }
 
 // Process a search
-func ProcessSearch(ingredients string, amounts string, limitFilter string, amountFilter string) (SearchObject, error) {
-	var searchObject SearchObject
+// @param ingredients - The string to be parsed to ingredients
+// @param amounts - The string to be parsed to amounts
+// @param limitFilter - The string to be parsed to limitFilter
+// @param limitFilter - The string to be parsed to amountFilter
+// @return SearchObject - The parsed searchObject
+// @return error - If any, the error
+func ProcessSearch(ingredients string, amounts string, limitFilter string, amountFilter string) (types.SearchObject, error) {
+	var searchObject types.SearchObject
 	var err error
 	searchObject.Ingredients, err = ParseNumbersQuery(ingredients)
 	if err != nil {
-		return SearchObject{}, err
+		return types.SearchObject{}, err
 	}
 	searchObject.IngredientAmounts, err = ParseNumbersQuery(amounts)
 	if err != nil {
-		return SearchObject{}, err
+		return types.SearchObject{}, err
 	}
 	searchObject.LimitFilter, err = ParseNumberQuery(limitFilter)
 	if err != nil {
-		return SearchObject{}, err
+		return types.SearchObject{}, err
 	}
 	searchObject.AmountFilter, err = ParseBooleanQuery(amountFilter)
 	if err != nil {
-		return SearchObject{}, err
+		return types.SearchObject{}, err
 	}
 	return searchObject, nil
 }
