@@ -1,7 +1,6 @@
 package api
 
 import (
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -53,6 +52,8 @@ func ParseNumberQuery(query string) (int,error) {
 	return i, nil
 }
 
+// Parses a string into a bool
+// @param query - the string to be parsed 
 func ParseBooleanQuery(query string) (bool,error) {
 	b, err := strconv.ParseBool(query)
 	if err != nil {

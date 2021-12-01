@@ -47,7 +47,10 @@ func NewIngredientSearchByIDs() http.HandlerFunc {
 			http.Error(res, "Incorrect query parameters", http.StatusBadRequest)
 		}
 
-		ids := ParseIDsQuery(ingredientIDs)
+		ids, err := ParseNumbersQuery(ingredientIDs)
+		if err != nil {
+			http.Error(res, err.Error(), http.StatusBadRequest)
+		}
 		data := db.SearchIngredientsByIDs(ids)
 		fmt.Fprint(res, data)
 	}

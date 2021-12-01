@@ -24,29 +24,28 @@ func NewRecipesSearchHandler() http.HandlerFunc {
 		limitFilter := req.URL.Query().Get("limitFilter")
 		amountFilter := req.URL.Query().Get("amountFilter")
 
-		fmt.Println(amounts, limitFilter, amountFilter)
-
 		// Reject requests without query
 		if ingredients == "" {
 			log.Println("Received request without query; rejecting")
 			http.Error(res, "Incorrect request schema", http.StatusBadRequest)
+			return
 		}
 
 		search, err := ProcessSearch(ingredients, amounts, limitFilter, amountFilter)
 		if err != nil {
 			http.Error(res, err.Error(), http.StatusBadRequest)
+			return
 		}
 		recipes := db.SearchRecipes(search.Ingredients)
-		fmt.Print(recipes)
 		fmt.Fprint(res, recipes)
 	}
 }
 
 // Process a search
-func ProcessSearch(ingredints string, amounts string, limitFilter string, amountFilter string) (SearchObject, error) {
+func ProcessSearch(ingredients string, amounts string, limitFilter string, amountFilter string) (SearchObject, error) {
 	var searchObject SearchObject
 	var err error
-	searchObject.Ingredients, err = ParseNumbersQuery(ingredints)
+	searchObject.Ingredients, err = ParseNumbersQuery(ingredients)
 	if err != nil {
 		return SearchObject{}, err
 	}
@@ -55,6 +54,10 @@ func ProcessSearch(ingredints string, amounts string, limitFilter string, amount
 		return SearchObject{}, err
 	}
 	searchObject.LimitFilter, err = ParseNumberQuery(limitFilter)
+	if err != nil {
+		return SearchObject{}, err
+	}
+	searchObject.AmountFilter, err = ParseBooleanQuery(amountFilter)
 	if err != nil {
 		return SearchObject{}, err
 	}
