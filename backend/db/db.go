@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 
@@ -52,8 +53,8 @@ func DisconnectDatabase() {
 }
 
 // Search ingredients based on search term and return results as json string
-// @param term - The term that is going to be used in the search 
-// @return the results of the search 
+// @param term - The term that is going to be used in the search
+// @return the results of the search
 func SearchIngredients(term string) string {
 	collection := client.
 		Database(database).
@@ -62,7 +63,7 @@ func SearchIngredients(term string) string {
 	ngrams := MakeNgrams(term, 2)
 
 	opts := options.Find().
-		SetProjection(bson.D{{"_id", 0}, {"id", 1}, {"name", 1}, {"unit", 1}, {"img",1}, {"score", bson.D{{"$meta", "textScore"}}},{"amount",1}}).
+		SetProjection(bson.D{{"_id", 0}, {"id", 1}, {"name", 1}, {"unit", 1}, {"img", 1}, {"score", bson.D{{"$meta", "textScore"}}}, {"amount", 1}}).
 		SetSort(bson.D{{"score", bson.D{{"$meta", "textScore"}}}})
 
 	cursor, err := collection.Find(context.TODO(), bson.D{{"$text", bson.D{{"$search", ngrams}}}}, opts)
@@ -93,7 +94,7 @@ func SearchIngredients(term string) string {
 }
 
 // Queries the database for recipes that matches the slice of ingredientIDs
-// @param ingredientIDs - The slice of ingredientIDs to be searched for 
+// @param ingredientIDs - The slice of ingredientIDs to be searched for
 // @return All recipes that contains all the ingredientIDs provided
 func SearchRecipes(searchObject types.SearchObject) string {
 	collection := client.
@@ -109,7 +110,7 @@ func SearchRecipes(searchObject types.SearchObject) string {
 	}
 
 	var results []bson.M
-	
+
 	err = cursor.All(context.TODO(), &results)
 
 	if err != nil {
@@ -122,11 +123,18 @@ func SearchRecipes(searchObject types.SearchObject) string {
 		log.Fatal("Failed to marshal bson to json")
 	}
 
-	
 	var recipes []types.Recipe
 	json.Unmarshal(data, &recipes)
 
-	return string(data)
+	filteredRecipes := FilterRecipeSearch(searchObject, recipes)
+
+	res, err := json.Marshal(filteredRecipes)
+	
+	if err != nil {
+		log.Fatal(err)
+	}
+	
+	return string(res)
 }
 
 // Fetches all ingredients that matches the provided id
@@ -159,4 +167,41 @@ func SearchIngredientsByIDs(ingredientIDs []int) string {
 	}
 
 	return string(data)
+}
+
+// Further filters a recipe search based on the searchObject and a recipe array
+// @param searchObject - The object containing information regarding the search
+// @param recipes - The slice to be further filtered
+func FilterRecipeSearch(searchObject types.SearchObject, recipes []types.Recipe) []types.Recipe {
+	var filteredRecipes []types.Recipe
+	if searchObject.AmountFilter { // If the amountFilter is to be used
+		// Perform amount checking
+	}
+	var missingIngredients int
+	for _, recipe := range recipes {
+		missingIngredients = 0
+		for _, ingredient := range recipe.Ingredients {
+			if (!contains(searchObject.Ingredients,ingredient.ID)) {
+				missingIngredients++
+			}
+		}
+		if missingIngredients <= searchObject.LimitFilter {
+			filteredRecipes = append(filteredRecipes, recipe)
+		}
+	}
+
+	return filteredRecipes
+}
+
+// Checks if an ingredientID exists in an slice of ingredientIDs
+// @param ingredientIDs - The slice to search in
+// @param ingredientID - The id to search for
+// @return Wheter or not the id exists in the slice
+func contains(ingredientIDs []int, ingredientID int) bool {
+	for _, id := range ingredientIDs {
+		if id == ingredientID {
+			return true
+		}
+	}
+	return false
 }
