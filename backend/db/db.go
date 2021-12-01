@@ -109,6 +109,7 @@ func SearchRecipes(searchObject types.SearchObject) string {
 	}
 
 	var results []bson.M
+	
 	err = cursor.All(context.TODO(), &results)
 
 	if err != nil {
@@ -120,6 +121,10 @@ func SearchRecipes(searchObject types.SearchObject) string {
 	if err != nil {
 		log.Fatal("Failed to marshal bson to json")
 	}
+
+	
+	var recipes []types.Recipe
+	json.Unmarshal(data, &recipes)
 
 	return string(data)
 }
