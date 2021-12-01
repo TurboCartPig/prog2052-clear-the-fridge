@@ -68,18 +68,23 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 					</button>
 				</div>
 				<div className="grid">
-					<h1 className="float-left md:mb-5 mb-2 font-bold text-2xl">
+					<h1 className="float-left mb-10 font-bold text-4xl">
 						{this.props.name}
 					</h1>
-					<img
-						className="float-right rounded-lg mb-5"
-						src={svgs["./" + this.props.img]}
-						alt={this.props.name}
-					/>
+					
 				</div>
-				<div className="grid">
-					<h3 className="mb-5 font-semibold text-lg">Ingredienser:</h3>
-					{this.print(this.ingredientsToString())}
+				<div className="grid grid-cols-2">
+					<div className="grid">
+						<h3 className="mb-5 font-semibold text-lg">Ingredienser:</h3>
+						{this.print(this.ingredientsToString())}
+					</div>
+					<div className="grid">
+						<img
+							className="rounded-lg mb-5"
+							src={svgs["./" + this.props.img]}
+							alt={this.props.name}
+						/>
+					</div>
 				</div>
 				<div className="grid">
 					<h3 className="mb-5 font-semibold text-lg">
@@ -94,7 +99,7 @@ class Recipe extends React.Component<RecipeData, RecipeState> {
 	ingredientsToString(): string[] {
 		var ingredientsAsStrings: string[] = [];
 		for (var ing of this.props.ingredients) {
-			ingredientsAsStrings.push(ing.ingredient.name + " " + ing.amount);
+			ingredientsAsStrings.push(ing.ingredient.name + " " + ing.amount + " " + ing.ingredient.unit);
 		}
 		return ingredientsAsStrings;
 	}
