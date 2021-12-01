@@ -6,7 +6,7 @@ type Recipe struct {
 	Ingredients  []Ingredients `json:"ingredients"`
 	Instructions []string      `json:"instructions"`
 	Name         string        `json:"name"`
-	Img         string        `json:"img"`
+	Img          string        `json:"img"`
 }
 type Ingredients struct {
 	Amount int `json:"amount"`
@@ -18,4 +18,9 @@ type SearchObject struct {
 	IngredientAmounts []int
 	LimitFilter       int
 	AmountFilter      bool
+}
+
+type FilterCheck struct {
+	LimitFilter bool
+	AmountFilter bool 
 }

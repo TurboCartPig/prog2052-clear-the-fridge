@@ -3,7 +3,6 @@ package db
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 
@@ -129,11 +128,11 @@ func SearchRecipes(searchObject types.SearchObject) string {
 	filteredRecipes := FilterRecipeSearch(searchObject, recipes)
 
 	res, err := json.Marshal(filteredRecipes)
-	
+
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	return string(res)
 }
 
@@ -174,20 +173,35 @@ func SearchIngredientsByIDs(ingredientIDs []int) string {
 // @param recipes - The slice to be further filtered
 func FilterRecipeSearch(searchObject types.SearchObject, recipes []types.Recipe) []types.Recipe {
 	var filteredRecipes []types.Recipe
-	if searchObject.AmountFilter { // If the amountFilter is to be used
-		// Perform amount checking
+	var ingredientsInSearch []int
+	var filterChecks []types.FilterCheck
+
+	for range recipes {
+		filterChecks = append(filterChecks, types.FilterCheck{false,false})
 	}
+
+	// Limit filter 
 	var missingIngredients int
-	for _, recipe := range recipes {
+	for i, recipe := range recipes { // Loops through all recipes
 		missingIngredients = 0
 		for _, ingredient := range recipe.Ingredients {
-			if (!contains(searchObject.Ingredients,ingredient.ID)) {
+			// Increments the counter if the ingredient does not exist in the searchObject
+			if !contains(searchObject.Ingredients, ingredient.ID) {
 				missingIngredients++
+			} else {
+				ingredientsInSearch = append(ingredientsInSearch, ingredient.ID)
 			}
 		}
 		if missingIngredients <= searchObject.LimitFilter {
-			filteredRecipes = append(filteredRecipes, recipe)
+			filterChecks[i].LimitFilter = true
 		}
+	}
+
+	// Amount filter 
+	if searchObject.AmountFilter { // If the amountFilter is to be used
+		// Only check the ingredients not currently "ignored" due to the limit filter
+		for 
+		
 	}
 
 	return filteredRecipes
@@ -204,4 +218,19 @@ func contains(ingredientIDs []int, ingredientID int) bool {
 		}
 	}
 	return false
+}
+
+// Inserts a recipe to the a slice of recipes if, and only if it is unique (does not exists already)
+// @param recipe - The recipe to maybe insert 
+// @param recipes - The slice to maybe insert into 
+func insertIfUnique(recipe types.Recipe, recipes []types.Recipe) {
+	exists := false
+	for _, r := range recipes {
+		if r.ID == recipe.ID {
+			exists = true 
+		}
+	}
+	if !exists {
+		recipes = append(recipes, recipe)
+	}
 }
