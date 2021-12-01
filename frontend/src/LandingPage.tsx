@@ -182,6 +182,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 	 */
 	async recipeSearch() {
 		try {
+			this.setState({ recipes: [] });
 			if (this.state.ingredients.length <= 0) return;
 
 			const res = await searchRecipes(
@@ -200,12 +201,11 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 					ingredients: ing,
 					instructions: recipe.instructions,
 					name: recipe.name,
-					img: recipe.img
+					img: recipe.img,
 				});
 			}
 
 			this.setState({ recipes: recipes });
-
 		} catch {
 			return;
 		}
