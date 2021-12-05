@@ -1113,7 +1113,7 @@ db.recipes.insertMany([
 			"Fordel eple og pære, legg over valnøtter og fetaost som er smuldret opp.",
 			"Lag dressing og hell over.",
 		],
-		img: "salat_med_feta_valnoett_paere.svg"
+		img: "salat_med_feta_valnoett_paerer.svg"
 	},
 ]);
 

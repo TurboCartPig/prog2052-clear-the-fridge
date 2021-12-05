@@ -84,7 +84,6 @@ func NewRouter() *chi.Mux {
 		r.Get("/ingredients", NewIngredientsHandler())
 		r.Get("/ingredients/search", NewIngredientsSearchHandler())
 		r.Get("/ingredients/search/id", NewIngredientSearchByIDs())
-		r.Get("/recipes", NewRecipesHandler())
 		r.Get("/recipes/search", NewRecipesSearchHandler())
 	})
 
