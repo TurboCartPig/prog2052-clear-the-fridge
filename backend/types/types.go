@@ -20,7 +20,3 @@ type SearchObject struct {
 	AmountFilter      bool
 }
 
-type FilterCheck struct {
-	LimitFilter bool
-	AmountFilter bool 
-}
