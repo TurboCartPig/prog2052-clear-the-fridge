@@ -30,11 +30,11 @@ class LimitFilter extends React.Component<LimitFilterProps, LimitFilterState> {
 			>
 				<div className="grid grid-cols-10 justify-items-center items-center h-12">
 					<div className="ml-2 col-start-1 col-span-7 justify-self-start">
-						Antall tillatte manglende ingredienser
+						Grensefilter
 					</div>
 
 					{!this.state.isOpen && (
-						<div className="col-start-8 col-span-2 justify-self-end">
+						<div className="col-start-8 col-span-2 justify-self-end mr-2">
 							{this.props.amount}
 						</div>
 					)}

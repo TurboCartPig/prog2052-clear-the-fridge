@@ -26,7 +26,7 @@ class AmountFilter extends React.Component<
 			<div className="mt-3 bg-gray-200 w-full text-sm rounded-lg border">
 				<div className="grid grid-cols-10 justify-items-center items-center h-12">
 					<div className="ml-2 col-start-1 col-span-7 justify-self-start">
-						Søk med mengde
+						Mengdefilter
 					</div>
 					<div className="grid col-start-10 w-full h-full col-span-1 justify-items-center items-center">
 						<input
