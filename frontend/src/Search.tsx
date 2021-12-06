@@ -65,7 +65,7 @@ class Search extends React.Component<SearchProps, SearchState> {
 				<div
 					className={`${
 						this.state.focused ? "" : "h-12"
-					}  w-10/12 lg:w-8/12 rounded-lg bg-search-bar`}
+					}  w-full lg:w-8/12 rounded-lg bg-search-bar`}
 					// Stop propagation of click event bubbling up to the body.
 					// Prevents the search component from closing immediately
 					onClick={(e) => e.stopPropagation()}
