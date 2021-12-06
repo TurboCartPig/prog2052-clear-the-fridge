@@ -174,16 +174,12 @@ func SearchIngredientsByIDs(ingredientIDs []int) string {
 func FilterRecipeSearch(searchObject types.SearchObject, recipes []types.Recipe) []types.Recipe {
 	var filteredRecipes []types.Recipe
 	var ingredientsInSearch []int
-	var filterChecks []types.FilterCheck
 
-	for range recipes {
-		filterChecks = append(filterChecks, types.FilterCheck{false, false})
-	}
-
-	// Limit filter
 	var missingIngredients int
-	for i, recipe := range recipes { // Loops through all recipes
+	for _, recipe := range recipes { // Loops through all recipes
 		missingIngredients = 0
+
+		// Limit filter
 		for _, ingredient := range recipe.Ingredients {
 			// Increments the counter if the ingredient does not exist in the searchObject
 			if !contains(searchObject.Ingredients, ingredient.ID) {
@@ -192,36 +188,24 @@ func FilterRecipeSearch(searchObject types.SearchObject, recipes []types.Recipe)
 				ingredientsInSearch = append(ingredientsInSearch, ingredient.ID)
 			}
 		}
-		if missingIngredients <= searchObject.LimitFilter {
-			filterChecks[i].LimitFilter = true
-		}
-	}
 
-	// Amount filter
-	if searchObject.AmountFilter { // If the amountFilter is to be used
-		// Only check the ingredients not currently "ignored" due to the limit filter
-		for i, recipe := range recipes {
+		// Amount filter
+		if searchObject.AmountFilter {
 			for _, ingredient := range recipe.Ingredients {
 				if contains(ingredientsInSearch, ingredient.ID) {
 					for j, searchIngredient := range searchObject.Ingredients {
 						if searchIngredient == ingredient.ID {
-							if searchObject.IngredientAmounts[j] >= ingredient.Amount {
-								filterChecks[i].AmountFilter = true
+							if searchObject.IngredientAmounts[j] < ingredient.Amount {
+								missingIngredients++
 							}
 						}
 					}
 				}
 			}
 		}
-	}
 
-	for i, filterCheck := range filterChecks {
-		if filterCheck.LimitFilter {
-			if filterCheck.AmountFilter {
-				filteredRecipes = append(filteredRecipes, recipes[i])
-			} else if !searchObject.AmountFilter {
-				filteredRecipes = append(filteredRecipes, recipes[i])
-			}
+		if missingIngredients <= searchObject.LimitFilter {
+			filteredRecipes = append(filteredRecipes, recipe)
 		}
 	}
 
