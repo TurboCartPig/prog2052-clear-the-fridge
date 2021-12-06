@@ -43,7 +43,7 @@ export async function searchIngredients(
 
 export async function searchRecipes(ingredients: IngredientData[], amountFilter: boolean, limitFilter: number): Promise<TempRecipeData[]> {
 	let base_url = api_version + "/recipes/search";
-
+	
 	if (ingredients.length > 0) {
 		let ingredientIDs: number[] = [];
 		let ingredientAmounts: number[] = [];
@@ -56,7 +56,8 @@ export async function searchRecipes(ingredients: IngredientData[], amountFilter:
 		base_url += "&limitFilter=" + limitFilter.toString();
 		base_url += "&amountFilter=" + amountFilter.toString();
 	}
-	let url = new URL(base_url,backend);
+	let uri = encodeURI(base_url)
+	let url = new URL(uri,backend);
 	let res;
 	try {
 		res = await debouncedFetch(url);

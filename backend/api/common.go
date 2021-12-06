@@ -1,7 +1,6 @@
 package api
 
 import (
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -9,6 +8,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
+
 )
 
 // Middleware for setting content-type to json.
@@ -26,21 +26,43 @@ func ReturnMessage(msg string, code int) http.HandlerFunc {
 	})
 }
 
-// Parses a comma separated list of id's in string format to a slice of ints
+// Parses a comma separated list of numbers's in string format to a slice of ints
 // @param query - The string to be parsed
-// @return the new int slice with the ids
-func ParseIDsQuery(query string) []int {
+// @return the new int slice with the numbers
+func ParseNumbersQuery(query string) ([]int,error) {
 	ids := strings.Split(query, ",")
 	var ingredientIDs = []int{}
 	for _, id := range ids {
 		i, err := strconv.Atoi(id)
 		if err != nil {
-			log.Fatal(err)
+			return nil, err
 		}
 		ingredientIDs = append(ingredientIDs, i)
 	}
-	return ingredientIDs
+	return ingredientIDs, nil
 }
+
+// Parses a string into a int
+// @param query - The string to be parsed
+// @return The parsed int
+func ParseNumberQuery(query string) (int,error) {
+	i, err := strconv.Atoi(query)
+	if err != nil {
+		return -1,err
+	}
+	return i, nil
+}
+
+// Parses a string into a bool
+// @param query - the string to be parsed 
+func ParseBooleanQuery(query string) (bool,error) {
+	b, err := strconv.ParseBool(query)
+	if err != nil {
+		return false, err
+	}
+	return b, nil
+}
+
 // Construct a new router for the API.
 func NewRouter() *chi.Mux {
 	// Setup new chi router
@@ -62,7 +84,6 @@ func NewRouter() *chi.Mux {
 		r.Get("/ingredients", NewIngredientsHandler())
 		r.Get("/ingredients/search", NewIngredientsSearchHandler())
 		r.Get("/ingredients/search/id", NewIngredientSearchByIDs())
-		r.Get("/recipes", NewRecipesHandler())
 		r.Get("/recipes/search", NewRecipesSearchHandler())
 	})
 
