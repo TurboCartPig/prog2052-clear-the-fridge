@@ -7,13 +7,13 @@ A website/web app for figuring out what you can make from the food in your fridg
 Start only MongoDB (For development):
 
 ```sh
-docker compose up mongo
+docker compose up -d mongo
 ```
 
 Start all containers:
 
 ```sh
-docker compose up
+docker compose up -d --build
 ```
 
 Stop all containers:
